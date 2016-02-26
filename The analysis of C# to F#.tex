@@ -159,12 +159,55 @@ There are two paths to achieve this goal: Either by first porting to F\# and the
 \section{sTranslate}
 sTranslate are a module that are part of a bigger program. The purpose module is to take in a word as an argument and then use a language database to translate the word. It is written in C\# and we are looking at it translated into F\#, then look at performance, difficulty of programming and all other obvious differences.\\
 
+sTranslate module is supposed to be used with both C\# and F\# programs. It is important that the module is taking the same inputs and same outputs in both languages. Figure \ref{fig:sTranslate_communication} show this communication.
+
+\begin{figure}[!h]
+    \includegraphics[scale=0.5]{image02}
+    \centering
+    \caption{How they want the sCore.Translation application to communicate.}
+    \label{fig:sTranslate_communication}
+\end{figure}
+
 The main part of the module is two functions: toText and getToText. Both functions do the same thing but there are one major difference in them. In getToText you have to open the language database each time you want a word but in toText the database is cashed so it does not need to reopen the database.
 
 \newpage
 
 \subsection{Solution}
-There are two ways of translating code, the first one is to directly translate the program and the other is to translate it how it shod be written in the new language. Here we look at both, the direct translation and the more functional approach and look at pros and cons of the methods. 
+There are two ways of translating code, the first one is to directly translate the program and the other is to translate it how it shod be written in the new language. Here we look at both, the direct translation and the more functional approach and look at pros and cons of the methods.
+
+\begin{figure}[!h]
+\begin{lstlisting}
+if (a = b){
+	Console.WriteLine("equal");
+}
+else{
+	Console.WriteLine("not equal");
+}
+\end{lstlisting}
+\caption{C\# code example}
+\label{fig:CSharpIf}
+\end{figure}
+
+\begin{figure}[!h]
+\begin{lstlisting}
+if a = b then 
+	Console.WriteLine("equal");
+else 
+	Console.WriteLine("not equal");
+\end{lstlisting}
+\caption{Direct translation code example}
+\label{fig:directTranslationIf}
+\end{figure}
+
+\begin{figure}[!h]
+\begin{lstlisting}
+match a with
+    | b -> printfn "equal"
+    | _ -> printfn "not equal"
+\end{lstlisting}
+\caption{Functional approach code example}
+\label{fig:functionalApproachIf}
+\end{figure}
 
 \newpage
 
