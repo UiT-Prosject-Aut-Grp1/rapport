@@ -1,5 +1,5 @@
 \documentclass[12pt, a4paper]{article}
-\usepackage[utf8]{inputenc}
+
 
 % Package to use images
 \usepackage{graphicx}
@@ -11,12 +11,16 @@
 % Package to use tables
 \usepackage{tabularx}
 
+% Standard scool format commented out
 %\usepackage[a4paper, left=3cm,right=3cm,top=2.5cm,bottom=2.5cm]{geometry}
 
+% No indent at pargagraph
 \setlength{\parindent}{0pt} 
- 
+
+
 \begin{document}
 
+% Front page
 \begin{titlepage}
 
 \Large Automasjon 2016 \\
@@ -49,8 +53,9 @@ Automation \vspace{5mm}\\
 
 
 \end{titlepage}
-
 \newpage
+
+%Page 2 from PDF
 \includepdf[pages=-]{page2.pdf}
 
 \newpage
@@ -64,7 +69,6 @@ Automation \vspace{5mm}\\
 
 \newpage
 \section{Introduction}
-
 \subsection{Background}
 One of the biggest problems in modern application development is the rapidly growing complexity of all major software systems. This complexity makes it almost impossible to ensure the quality and accuracy of the code. It also becomes harder and harder to make changes to existing code without introducing new errors. All these difficulties multiply when you also want utilize modern computers with many CPU (central processing unit) cores for increased performance.\\
 
@@ -137,12 +141,51 @@ There are two paths to achieve this goal: Either by first porting to F\# and the
 \end{figure}
 
 \newpage
+
+\section{F\# programming language}
+\newpage
+
+\section{Imperative and functional programming}
+\newpage
+
+\section{Project speciﬁcation}
+\newpage
+
+\section{sTranslate}
+sTranslate are a module that are part of a bigger program. The purpose module is to take in a word as an argument and then use a language database to translate the word. It is written in C\# and we are looking at it translated into F\#, then look at performance, difficulty of programming and all other obvious differences.\\
+
+The main part of the module is two functions: toText and getToText. Both functions do the same thing but there are one major difference in them. In getToText you have to open the language database each time you want a word but in toText the database is cashed so it does not need to reopen the database.
+
+\subsection{Solution}
+There are two ways of translating code, the first one is to directly translate the program and the other is to translate it how it shod be written in the new language. Here we look at both, the direct translation and the more functional approach and look at pros and cons of the methods. 
+
+\subsubsection{Direct translation}
+The direct translation is maybe the most easy and the fastest method to translate the program. But i maybe have more flaws and have more poor performance to do it this ways. Below we have some examples from the translation that show the direct translation.
+
+\subsubsection{Functional approach}
+The functional approach is the more proper way to do it but it can take longer time and be harder to do if the person is not fluent in the new language. But the benefits can be better preference and less flaws and bugs. Below we have some examples from the translation that show the functional approach.
+
+\subsection{Analysis}
+\newpage
+
+\section{Next Module}
+\subsection{Solution}
+\subsection{Analysis}
+\newpage
+
+\section{Complete analysis}
+\subsection{Development time}
+\subsection{Readability and clarity}
+\subsection{Debugging and error handling}
+\subsection{Performance}
+\newpage
+
 \section{Conclusion}
-
 \newpage
+
 \section{Reference list}
-
 \newpage
+
 \section{Attachments}
 
 
