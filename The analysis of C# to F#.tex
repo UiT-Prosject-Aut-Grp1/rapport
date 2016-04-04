@@ -182,7 +182,20 @@ sTranslate module is supposed to be used with both C\# and F\# programs. It is i
     \label{fig:sTranslate_communication}
 \end{figure}
 
-The main part of the module is two functions: toText and getToText. Both functions do the same thing but there are one major difference in them. In getToText you have to open the language database each time you want a word but in toText the database is cashed so it does not need to reopen the database.\\
+The main part of the module is two functions: toText and getToText, you can see this in figure \ref{fig:sTranslateWorkings}. Both functions do the same thing but there are one major difference in them. In getToText you have to open the language database each time you want a word but in toText the database is cashed so it does not need to reopen the database.\\
+
+\newpage
+\subsubsection{Inputs}
+The sTranslate module takes in 5 inputs:
+
+\begin{itemize}
+	\item \textbf{fromText}, the language the module is going to translate from. examples: no, en, ge. 
+	\item \textbf{context}, information over how the word is used, examples: string, title, lable.  
+	\item \textbf{property}, what the word have a property against, examples: id, text, tooltlip...  
+	\item \textbf{criteria}, the criteria that the search is going to get a match, examples: startWidth, endWidth, Contains.
+	\item \textbf{toLang} the language the module is going to translate from.
+\end{itemize}
+
 
 \newpage
 
@@ -237,6 +250,7 @@ Insert code here!!!
 
 \newpage
 
+
 \subsubsection{Functional approach}
 The functional approach is the more proper way to do it but it can take longer time and be harder to do if the person is not fluent in the new language. But the benefits can be better preference, less flaws and bugs. Below we have some examples from the translation that show the functional approach.
 
@@ -254,7 +268,16 @@ Insert code here!!!
 
 \section{Complete analysis}
 \subsection{Development time}
+
+\newpage
 \subsection{Readability and clarity}
+Readability and clarity is really important when writing code. The reason for this is that it is much more easy to find bugs, remove bugs and add future content to the code. If it is a bad written code a programmer can use a lot of time just familiarize themselves with the code before he can do changes to it.\\
+
+For the most part i is up to the programmer to write readable and clear code, but the program language can have a lot to do with helping the programmer in this matter. Some programming languages like for example Assembly can be seen as programming language that makes it hard for the programmer to writhe readable code. Other like for example Python make it really easy for the programmer.\\
+
+So the question is how does F\# do in this matter? Is it easy or hard to write readable and clear code. How bad would a bad or new programmers code look? And how readable is a perfect code? 
+
+\newpage
 \subsection{Debugging and error handling}
 \subsection{Performance}
 \newpage
