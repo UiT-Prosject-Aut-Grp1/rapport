@@ -10,6 +10,9 @@
 % Package to use tables
 \usepackage{tabularx}
 
+% Web links package
+%\usepackage{hyperref}
+
 % Standard scool format commented out
 %\usepackage[a4paper, left=3cm,right=3cm,top=2.5cm,bottom=2.5cm]{geometry}
 
@@ -185,8 +188,12 @@ sTranslate module is supposed to be used with both C\# and F\# programs. It is i
 The main part of the module is two functions: toText and getToText, you can see this in figure \ref{fig:sTranslateWorkings}. Both functions do the same thing but there are one major difference in them. In getToText you have to open the language database each time you want a word but in toText the database is cashed so it does not need to reopen the database.\\
 
 \newpage
-\subsubsection{Inputs}
-The sTranslate module takes in 5 inputs:
+\subsubsection{Inputs and Outputs}
+The way a module like sTranslate works is that it takes in inputs and give out outputs just like a function. This make it really easy to use, change and reuse a module or a part of a program.\\
+
+This works really well with C\# and F\# because their close integration with the .net system. A C\# can easy give inputs or take outputs from F\# and the other way around. How we are going to use this feature can be seen in figure \ref{fig:sTranslate_communication}.\\
+
+sTranslate is taking in 5 inputs:
 
 \begin{itemize}
 	\item \textbf{fromText}, the language the module is going to translate from. examples: no, en, ge. 
@@ -196,6 +203,7 @@ The sTranslate module takes in 5 inputs:
 	\item \textbf{toLang} the language the module is going to translate from.
 \end{itemize}
 
+sTranslate gives only out one output and that are the translated word. 
 
 \newpage
 
@@ -286,6 +294,19 @@ So the question is how does F\# do in this matter? Is it easy or hard to write r
 \newpage
 
 \section{Reference list}
+
+\begin{thebibliography}{9}
+
+\bibitem{latexcompanion} 
+F\# for fun and profit\\
+\emph{https://fsharpforfunandprofit.com}
+
+\bibitem{latexcompanion} 
+F\# for fun and profit\\
+\emph{https://fsharpforfunandprofit.com}
+
+ 
+\end{thebibliography}
 \newpage
 
 \section{Attachments}
