@@ -22,7 +22,12 @@
 % To the code snipping
 \usepackage{listings}
 \lstset{
-    tabsize=2
+    tabsize=2,
+    numbers=left,
+  	stepnumber=1,    
+  	firstnumber=1,
+  	numberfirstline=true,
+  	xleftmargin=6mm
 }
 
 
@@ -163,7 +168,7 @@ There are two paths to achieve this goal: Either by first porting to F\# and the
 \section{sTranslate}
 sTranslate are a module that are part of a bigger program. The purpose module is to take in a word as an argument and then use a language database to translate the word.\\
 
-The module is written in C\# and contains 2 major function, one is designed to use when you are only going to translate one word and the other one is designed to be better translating multiple words. Even though the function works different they have the same inputs and outputs, that means that they do the same thing if you look at it from outside. You can see a illustration of the module in figure \ref{fig:sTranslateWorkings}.\\
+The module is written in C\# and contains 2 major functions, one is designed to use when you are only going to translate one word and the other one is designed to be better at translating multiple words. Even though the function works different they have the same inputs and outputs, that means that they do the same thing if you look at it from outside. You can see a illustration of the module in figure \ref{fig:sTranslateWorkings}.\\
 
 Our task from Serit is to take this C\# code and translate it into F\# with 2 different approaches. The first one we translate line for line and make the code the same way that the C\# is coded, the other one is to translate the program the way F\# is meant to be written. After we have translated it we have to a lot of optimizing to make the code better, faster and shorter. Then look at performance, difficulty of programming and all other obvious differences.\\
 
@@ -281,9 +286,44 @@ Insert code here!!!
 \subsection{Readability and clarity}
 Readability and clarity is really important when writing code. The reason for this is that it is much more easy to find bugs, remove bugs and add future content to the code. If it is a bad written code a programmer can use a lot of time just familiarize themselves with the code before he can do changes to it.\\
 
-For the most part i is up to the programmer to write readable and clear code, but the program language can have a lot to do with helping the programmer in this matter. Some programming languages like for example Assembly can be seen as programming language that makes it hard for the programmer to writhe readable code. Other like for example Python make it really easy for the programmer.\\
+For the most part i is up to the programmer to write readable and clear code, but the programing language can have a lot to do with helping the programmer in this matter. Some programming languages like for example Assembly can be seen as programming language that makes it hard for the programmer to writhe readable code. Other like for example Python make it really easy for the programmer.\\
 
-So the question is how does F\# do in this matter? Is it easy or hard to write readable and clear code. How bad would a bad or new programmers code look? And how readable is a perfect code? 
+So the question is how does F\# do in this matter? Is it easy or hard to write readable and clear code. How would a bad or new programmers code look? And how readable is a perfect written code code?
+
+\newpage
+\subsubsection{Indentation and code structure}
+F\# is a whitespace sensitive programming language this means that indentation do have a meaning and will be read when you compile the code. When you are using indentation the compiler will read the indented lines as a sub code of the code over. You can se this illustrated by code in figure \ref{fig:indentationExample}.
+
+\begin{figure}[!h]
+	\begin{lstlisting}
+let f = 	// Line 2-5 is the sub code of this line
+	let x = // Line 3 is the sub code of this line
+		5+5	
+	let y=1
+  	x+y
+let a = f+2	// This line is not a sub code
+	\end{lstlisting}
+	\caption{Example of how indentation works in F\#.}
+	\label{fig:indentationExample}
+\end{figure}
+
+That means that to some extent the F\# language force the programmer to write code that have good structure in the code. This make it easy to understand and read the code even if you don't know it beforehand.\\
+
+For an inexperienced programmer this can be a little confusing at fist. But as this is a really good practise to learn early on it can help the inexperienced programmer write better code.\\
+
+Indentation and code structure wise is F\# doing really good when it comes to readability and clarity.
+
+\subsubsection{File structure}
+
+\newpage
+\subsubsection{Similarity to other coding languages}
+
+Even though F\# have taking inspiration from a lot of different modern programming languages it still have a lot of roots to ML that is a old and not that popular language. This makes the syntax really strange to any programmer that are not used to ML or other similar programming languages.\\
+
+One other thing that makes F\# a little odd when compared to other languages is that is it a functional programming language. This makes the syntax a lot different to all other major languages.\\
+
+Those 2 things makes F\# really different to other languages. This can make it very hard for a experienced programmer learn to read and write this way. For an experienced programmer to learn F\# you have to use a lot of time and resources. For a new programmer it can maybe be easier to learn F\# just because he will not fall into old habits.
+
 
 \newpage
 \subsection{Debugging and error handling}
