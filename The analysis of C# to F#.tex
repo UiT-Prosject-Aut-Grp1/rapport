@@ -4,6 +4,8 @@
 \usepackage{graphicx}
 \graphicspath{{img/}}
 
+\usepackage[utf8]{inputenc}
+
 % Package to import PDF documents (for page2)
 \usepackage[final]{pdfpages}
 
@@ -74,9 +76,19 @@ Automation \vspace{5mm}\\
 
 \newpage
 \section*{Summary}
+This report is written by 3 students from the final year in the Automation class at “UiT: University of Tromsø - Arctic university of Norway”.\\
+
+The assignment is given by a company named Serit - IT Partner from Tromsø. They wanted us to find out the benefits, flaws and our experience from learning a new programming language called F\#. Today Serit mostly uses the famous programming language C\# which is widely used around the world today. The time spent writing code, debugging and stability in these languages is very valuable.
 
 \newpage
 \section*{Preface}
+This thesis is written by graduates from the automation program at the department of engineering  at UiT: University of Tromsø - Norway's Arctic university. This thesis will be used by Serit to help them decide if they are going to incorporate the programming language F\# or not.\\
+
+We chose this assignment because everyone in our group enjoys programming, it had some database management and set up, and because it looked like an interesting project overall. Since we already had some experience in C\#, we thought it would be fun to find the “pros and cons” of this relatively new programming language.\\
+
+We have written the thesis in LaTeX which is a word processor and a document markup language. When we were working on the raw text we used Google documents so that we all could work together simultaneously on writing and editing the text for the thesis. On the main assignment we used Visual Studio (with C\# and F\# tools), Atlassian Sourcetree and Github to write and manage our code, and SQL Server Management Studio to handle the database. By using both C\# and database we covered a wide area of our education from the previous semester. We have learnt a lot and have had the privilege of testing out the new attractive programming language F\# that may just be the future.\\ 
+
+We want to give out a special thanks to Serit for all the great support and advice given, on all the regular follow up meetings we had and by email. We also want to give a big thanks to our mentor Puneet Sharma for his great support and contribution to the assignment.
 
 \newpage
 \tableofcontents
@@ -108,7 +120,50 @@ The programming language F\# claims to be a solution to these problems by using 
 \newpage
 
 \subsection{Formulations of objectives}
-To work on an analysis (compare code) of the old code compared to the new code, where we will look at how compact the code is, how many errors there are, how self-explaining the code is and how easy it is to develop the code.
+%To work on an analysis (compare code) of the old code compared to the new code, where we will look at how compact the code is, how many errors there are, how self-explaining the code is and how easy it is to develop the code.
+
+We want to find out if it is worth it for Serit to change their main programming language from C\# to F\#. To do this will we do a thorough analysis to find out what the good and bad sides of F\# programming are. All this is done according to our goals:
+
+\begin{itemize}
+
+	\item Learn to program in F\# to:
+	\begin{itemize}
+		\item get a good enough understanding of how to write simple programs.
+		\item see how it is for a programmer to learn learn the new language.
+		\item get our own opinions about the language.
+	\end{itemize}
+	
+	\item Learn from translating a real program from Serit by:
+	\begin{itemize}
+		\item finding the best translating method.
+		\item looking at the development process for F\#.
+		\item learning how F\# handles databases.
+		\item looking how F\# does with debugging and error handling.
+		
+	\end{itemize}
+	\item Learn from online research by looking at:
+	\begin{itemize}
+		\item other people's opinions about F\#.
+		\item how other companies take advantage of F\#.
+		\item good code examples that others have written.
+		\item what are some good usages of F\#.
+	\end{itemize}
+	
+	\item Write a complete analysis that contains information about:
+	\begin{itemize}
+		\item development time.
+		\item readability and clarity.
+		\item debugging and error handling.
+		\item performance.
+	\end{itemize}
+	
+	\item Make a conclusion if we think Serit should change their main programming language from C\# to F\#.
+	
+\end{itemize}
+
+
+
+
 
 \newpage
 \subsection{Project specification }
@@ -156,10 +211,15 @@ There are two paths to achieve this goal: Either by first porting to F\# and the
 
 \newpage
 
-\section{F\# programming language}
-\newpage
+\section{Different programming paradigms}
+There are many different ways of classifying programming languages and styles, the most common being imperative versus declarative programming. In imperative programming, statements are used to tell the computer program what to do. It is the programmer’s job to tell the computer how to solve the problem. Declarative programming on the other hand, focuses instead on telling the computer program what the desired result is, and then the implementation of the programming language decides how to do it. For instance, if an imperative program should make a person get a cup of coffee, it would have to list all the individual tasks they had to do, like stand up, walk to the coffee machine, place the cup, press the button and so on. While a declarative program would simply state “Give me a cup of espresso”. Examples of declarative programming include database query languages and functional programming.\\
 
-\section{Imperative and functional programming}
+Another distinction is that of procedural versus object-oriented. These are different styles of breaking the program down into smaller, reusable parts. In a procedural style, the program would be broken down into subroutines or functions which would take arguments and may return results to the caller. In object-oriented programming, tasks are broken down into objects that expose behavior and data using interfaces. Going back to the coffee example, a procedural program would call a “get coffee” function that would take two arguments: which person should get the coffee and what type of coffee he should get. Whereas an object-oriented program would invoke the “get coffee” method of an instance of the class “person”.\\
+
+(Part about functional programming goes here)
+
+\newpage
+\section{F\# programming language}
 \newpage
 
 \section{Project specification}
@@ -204,11 +264,11 @@ sTranslate is taking in 5 inputs:
 	\item \textbf{fromText}, the language the module is going to translate from. examples: no, en, ge. 
 	\item \textbf{context}, information over how the word is used, examples: string, title, lable.  
 	\item \textbf{property}, what the word have a property against, examples: id, text, tooltlip...  
-	\item \textbf{criteria}, the criteria that the search is going to get a match, examples: startWidth, endWidth, Contains.
-	\item \textbf{toLang} the language the module is going to translate from.
+	\item \textbf{criteria}, the criteria that the search is going to get a match, examples: startWith, endWith, Contains.
+	\item \textbf{toLang} the language the module is going to translate to.
 \end{itemize}
 
-sTranslate gives only out one output and that are the translated word. 
+sTranslate gives only out one output and that is the translated word. 
 
 \newpage
 
@@ -217,7 +277,7 @@ There are two ways of translating code, the first one is to directly translate t
 
 \begin{figure}[!h]
 \begin{lstlisting}
-if (a = b){
+if (a == b){
 	Console.WriteLine("equal");
 }
 else{
@@ -277,6 +337,18 @@ Insert code here!!!
 \newpage
 
 \subsection{Analysis}
+In this chapter we are gonna take a look at the analysis of the module sTranslate.
+\subsubsection{Performance}
+This chapter is not a demand from Serit, insted this was something we wanted to test out for ourselves and is just a bonus for Serit if there proves to be better performance in F\# vs C\#.
+\subsubsection{Experiences}
+The experiences that we can draw from this assignment is that in F\#, it is firstly very easy to read the code and what it does, and you hardly need to comment the code. But the thing we appreciated the most was the direct response from the compiler and Microsoft’s Intellisense technology in real time while writing the code. At first we thought that this was a bit annoying since you always saw errors made in code with the red lines everywhere. But since the language is very strict about types and such, you are forced to root out many errors before you even run the program. You don't have to deal with the problem later when running the program and making it crash instead. So we grew to really enjoy this feature. It makes you put a little more time in thinking about what you want the code to do, but you will spend less time dealing with problems later while running the program.\\
+
+In Michael’s experience the hardest part and the thing he struggled and is still struggling with is that he kept finding himself getting back in think in object-oriented “thinking”. Its hard to think in a more functioning approch.
+\subsubsection{Lines of code}
+C\# - about 280 lines, 3 files of source code, 1 project + 1 project of autogenerated code for entity framework\\
+F\# imperative style - 170 lines, 4 files, 1 project\\
+
+F\# functional style - 145 lines, 2 files, 1 project.
 \newpage
 
 \section{Complete analysis}
@@ -314,6 +386,8 @@ For an inexperienced programmer this can be a little confusing at fist. But as t
 Indentation and code structure wise is F\# doing really good when it comes to readability and clarity.
 
 \subsubsection{File structure}
+
+Vanligvis en modul per fil. fil må være i rekkefølge. Vanligvis alle filene i samme mappe
 
 \newpage
 \subsubsection{Similarity to other coding languages}
