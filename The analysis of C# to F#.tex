@@ -104,11 +104,11 @@ We've received an assignment from Serit to translate parts of an existing projec
 
 \newpage
 \subsection{Problem for discussion}
-C\# and F\# works in different ways, they both have benefits and downsides. The main question is if it is worth it for a company to change their main programming language. We have to look at what the company wants to achieve by making the change, and that boils down to making quality programs for a low price. \\
+C\# and F\# works in different ways, they both have benefits and drawbacks. The main question is if it is worth it for a company to change their main programming language. We have to look at what the company wants to achieve by making the change, and that boils down to making quality programs for a low price. \\
 
 A modern IT company uses a lot of time developing, changing and fixing code. If we can use a programming language that takes less time to develop and at the same time works better without generating errors, that could be very cost saving.\\
 
-The programming language F\# claims to be a solution to these problems by using less code, be more simple and have better error handling than other programming languages. Our task is to find out if those claims are true by answering these questions:
+The programming language F\# claims to be a solution to these problems by using fewer lines of code, be more simple and have better error handling than other programming languages. Our task is to find out if those claims are true by answering these questions:
 
 \begin{itemize}
 \item What are the benefits of switching from C\# to F\#?
@@ -129,7 +129,7 @@ We want to find out if it is worth it for Serit to change their main programming
 	\item Learn to program in F\# to:
 	\begin{itemize}
 		\item get a good enough understanding of how to write simple programs.
-		\item see how it is for a programmer to learn learn the new language.
+		\item see how it is for a programmer to learn the new language.
 		\item get our own opinions about the language.
 	\end{itemize}
 	
@@ -137,8 +137,8 @@ We want to find out if it is worth it for Serit to change their main programming
 	\begin{itemize}
 		\item finding the best translating method.
 		\item looking at the development process for F\#.
-		\item learning how F\# handles databases.
-		\item looking how F\# does with debugging and error handling.
+		\item learning how F\# handles the databases.
+		\item looking on how F\# does with debugging and error handling.
 		
 	\end{itemize}
 	\item Learn from online research by looking at:
@@ -155,9 +155,10 @@ We want to find out if it is worth it for Serit to change their main programming
 		\item readability and clarity.
 		\item debugging and error handling.
 		\item performance.
+		\item our experiences.
 	\end{itemize}
 	
-	\item Make a conclusion if we think Serit should change their main programming language from C\# to F\#.
+	\item Make a conclusion if we think that Serit should change their main programming language from C\# to F\#.
 	
 \end{itemize}
 
@@ -172,7 +173,7 @@ We want to find out if it is worth it for Serit to change their main programming
 
 \begin{itemize}
 	\item They have an ASP.NET Web application in C\# where the user interface is based on ASP Web Forms. All code is written in English, as well as all the text in the user interface.
-	\item Language support is dissolved in a separate module sCore.Translation which is called from the application and performs translation according to data recorded in a translation table.
+	\item Language support is dissolved in a separate library sCore.Translation which is called from the application and performs translation according to data recorded in a translation table.
 	\item Translation tables are located in a SQL database.
 
 \end{itemize}
@@ -187,7 +188,7 @@ We want to find out if it is worth it for Serit to change their main programming
 \subsubsection{What Serit wants}
 
 \begin{itemize}
-	\item They want to have the existing translation module sCore.Translation developed as a separate module in the functional language F\#. This should be able to be called from the present imperative program (C\#) and from functional programs (F\#).
+	\item They want to have the existing translation library sCore.Translation developed as a separate library in the functional language F\#. This should be able to be called from the present imperative program (C\#) and from functional programs (F\#).
 	\item With the translation from C\# to F\# done, both languages and programming paradigms can be compared analytically. By this we can evaluate benefits (and possible disadvantages) with the functional paradigm in relation to an object-oriented imperative paradigm. The analysis will provide a better basis in the choice of programming language in future development projects.
 \end{itemize}
 
@@ -222,26 +223,23 @@ Another distinction is that of procedural versus object-oriented. These are diff
 \section{F\# programming language}
 \newpage
 
-\section{Project specification}
-\newpage
-
 \section{sTranslate}
-sTranslate are a module that are part of a bigger program. The purpose module is to take in a word as an argument and then use a language database to translate the word.\\
+sTranslate are a library that are part of a bigger program. The purpose library is to take in a word as an argument and then use a language database to translate the word.\\
 
-The module is written in C\# and contains 2 major functions, one is designed to use when you are only going to translate one word and the other one is designed to be better at translating multiple words. Even though the function works different they have the same inputs and outputs, that means that they do the same thing if you look at it from outside. You can see a illustration of the module in figure \ref{fig:sTranslateWorkings}.\\
+The library is written in C\# and contains 2 major functions, one is designed to use when you are only going to translate one word and the other one is designed to be better at translating multiple words. Even though the function works different they have the same inputs and outputs, that means that they do the same thing if you look at it from outside. You can see a illustration of the library in figure \ref{fig:sTranslateWorkings}.\\
 
 Our task from Serit is to take this C\# code and translate it into F\# with 2 different approaches. The first one we translate line for line and make the code the same way that the C\# is coded, the other one is to translate the program the way F\# is meant to be written. After we have translated it we have to a lot of optimizing to make the code better, faster and shorter. Then look at performance, difficulty of programming and all other obvious differences.\\
 
 \begin{figure}[!h]
     \includegraphics[width=0.8\textwidth]{sTranslateWorkings}
     \centering
-    \caption{sTranslate module illustrated.}
+    \caption{sTranslate library illustrated.}
     \label{fig:sTranslateWorkings}
 \end{figure}
 
 \newpage
 \subsection{How it works}
-sTranslate module is supposed to be used with both C\# and F\# programs. It is important that the module is taking the same inputs and same outputs in both languages. Figure \ref{fig:sTranslate_communication} show this communication.
+sTranslate library is supposed to be used with both C\# and F\# programs. It is important that the library is taking the same inputs and same outputs in both languages. Figure \ref{fig:sTranslate_communication} show this communication.
 
 \begin{figure}[!h]
     \includegraphics[scale=0.5]{image02}
@@ -250,25 +248,26 @@ sTranslate module is supposed to be used with both C\# and F\# programs. It is i
     \label{fig:sTranslate_communication}
 \end{figure}
 
-The main part of the module is two functions: toText and getToText, you can see this in figure \ref{fig:sTranslateWorkings}. Both functions do the same thing but there are one major difference in them. In getToText you have to open the language database each time you want a word but in toText the database is cashed so it does not need to reopen the database.\\
+The main part of the library is two functions: toText and getToText, you can see this in figure \ref{fig:sTranslateWorkings}. Both functions do the same thing but there are one major difference in them. In getToText you have to open the language database each time you want a word but in toText the database is cashed so it does not need to reopen the database.\\
 
 \newpage
 \subsubsection{Inputs and Outputs}
-The way a module like sTranslate works is that it takes in inputs and give out outputs just like a function. This make it really easy to use, change and reuse a module or a part of a program.\\
+The way a library like sTranslate works is that it takes in inputs and give out outputs just like a function. This make it really easy to use, change and reuse a library or a part of a program.\\
 
-This works really well with C\# and F\# because their close integration with the .net system. A C\# can easy give inputs or take outputs from F\# and the other way around. How we are going to use this feature can be seen in figure \ref{fig:sTranslate_communication}.\\
+This works really well with C\# and F\# because their close integration with the .net system. A C\# program can easy give inputs or take outputs from F\# and the other way around. How we are going to use this feature can be seen in figure \ref{fig:sTranslate_communication}.\\
 
 sTranslate is taking in 5 inputs:
 
 \begin{itemize}
-	\item \textbf{fromText}, the language the module is going to translate from. examples: no, en, ge. 
+	\item \textbf{fromText}, the word in English that the library is translating. 
 	\item \textbf{context}, information over how the word is used, examples: string, title, lable.  
-	\item \textbf{property}, what the word have a property against, examples: id, text, tooltlip...  
+	\item \textbf{property}, that the word's property, examples: id, text, tooltlip...  
 	\item \textbf{criteria}, the criteria that the search is going to get a match, examples: startWith, endWith, Contains.
-	\item \textbf{toLang} the language the module is going to translate to.
+	\item \textbf{toLang} the language the library is going to translate to.  examples: no, ge.
 \end{itemize}
 
-sTranslate gives only out one output and that is the translated word. 
+sTranslate gives only out one output and that is the translated word. All the inputs have to match up to the row in the database to send the output. In there is no match fromText (the English word) will be sent back as output and if there is two matches in the database only the first one will be sent back.\\
+
 
 \newpage
 
@@ -337,7 +336,7 @@ Insert code here!!!
 \newpage
 
 \subsection{Analysis}
-In this chapter we are gonna take a look at the analysis of the module sTranslate.
+In this chapter we are gonna take a look at the analysis of the library sTranslate.
 \subsubsection{Performance}
 This chapter is not a demand from Serit, insted this was something we wanted to test out for ourselves and is just a bonus for Serit if there proves to be better performance in F\# vs C\#.
 \subsubsection{Experiences}
@@ -385,7 +384,12 @@ For an inexperienced programmer this can be a little confusing at fist. But as t
 
 Indentation and code structure wise is F\# doing really good when it comes to readability and clarity.
 
+\newpage
 \subsubsection{File structure}
+
+In most programming languages do the file structure nothing to do in how the program is rune. F\# does this a little different all the files have to be in a specific order to run the program correct.\\
+
+When you do a call to function 
 
 Vanligvis en modul per fil. fil må være i rekkefølge. Vanligvis alle filene i samme mappe
 
