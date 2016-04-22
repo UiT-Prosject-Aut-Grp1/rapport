@@ -509,7 +509,16 @@ A good practice when organize the files is to only have one module per file and 
 \newpage
 \subsubsection{Similarity to other coding languages}
 
-Even though F\# have taking inspiration from a lot of different modern programming languages it still have a lot of roots to ML that is a old and not that popular language. This makes the syntax really strange to any programmer that are not used to ML or other similar programming languages.\\
+Even though F\# have taking inspiration from a lot of different modern programming languages it still have a lot of roots to ML that is a old and not that popular programming language. This makes the syntax very different to how syntaxes normally looks today, and can make the syntax hard to read and write to any programmer that are not used to ML or other similar programming languages.\\
+
+\begin{figure}[!h]
+	\begin{lstlisting}
+fun factorial 0 = 1
+  | factorial (n:int) = n * factorial (n-1)
+	\end{lstlisting}
+	\caption{ML code example of a recursion function (function that's call itself) that are calculating factorials. Example from Carnegie Mellon University\cite{carnegieMellon}}
+	\label{fig:factorialMLExample}
+\end{figure}
 
 One other thing that makes F\# a little odd when compared to other languages is that is it a functional programming language. This makes the syntax a lot different to all other major languages.\\
 
@@ -541,6 +550,11 @@ F\# for fun and profit\\
 \bibitem{tutorialspoint} 
 Tutorialspoint\\
 \emph{http://www.tutorialspoint.com/assembly\_programming/}
+
+\bibitem{carnegieMellon} 
+Carnegie Mellon School of Computer Science\\
+\emph{https://www.cs.cmu.edu/\textasciitilde rwh/introsml/core/recfns.htm}
+
 
  
 \end{thebibliography}
