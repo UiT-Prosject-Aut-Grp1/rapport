@@ -417,11 +417,11 @@ F\# functional style - 145 lines, 2 files, 1 project.
 
 \newpage
 \subsection{Readability and clarity}
-Readability and clarity is really important when writing code. The reason for this is that it is much more easy to find bugs, remove bugs and add future content to the code. If it is a bad written code a programmer can use a lot of time just familiarize themselves with the code before he can do changes to it.\\
+Readability and clarity is really important when writing code. The reason for this is that it is much easier to find and remove bugs and add future content, if the programmer does not need to use a lot of time simply to understand what the code is supposed to do. Poorly written code can cause a programmer to spend a lot of time familiarizing themselves with the code before they can do changes to it.\\
 
-For the most part i is up to the programmer to write readable and clear code, but the programming language can have a lot to do with helping the programmer in this matter.\\
+For the most part it is up to the programmer to write readable and clear code, but the programming language can have a lot to do with helping the programmer in this matter.\\
 
-One programming language a lot of programmers can agree on being easy to read and understand is Python. Python is a very high-level language that have a syntax that help programmers write programs in few lines of code. They have a large library that are easy to understand and use. Examples of Python code can bee seen in figure \ref{fig:pythonHelloWorld} and \ref{fig:pythonFactorial}.\\
+One programming language a lot of programmers can agree on being easy to read and understand is Python. Python is a language with a high level of abstraction, which means it acts as a "middle man" between the nitty gritty stuff that happens inside the computer, and abstract ideas. The syntax of Python has been designed to remove curly braces and semicolons that are used in languages like C and Java, using indentations instead to separate code blocks. Examples of Python code can bee seen in figure \ref{fig:pythonHelloWorld} and \ref{fig:pythonFactorial}.\\
 
 \begin{figure}[!h]
 	\begin{lstlisting}
@@ -439,12 +439,12 @@ def factorial(n):
     else:
         return n * factorial(n-1)
 	\end{lstlisting}
-	\caption{Python code example of a recursion function (function that's call itself) that are calculating factorials. This can be shorted down by using a function from the math library.}
+	\caption{Python code example of a recursive function (a function that calls itself) calculating factorials. Python also has a factorial function built in to the Math library.}
 	\label{fig:pythonFactorial}
 \end{figure}
 
 \newpage
-One commonly used example for a programming language that is not easy to read or understand is Assembly. The reason that assembly can be hard to read and understand for some people is that it is for the most parts using only instructions and memory addresses. In figure \ref{fig:assemblyExample} you can see an example of a "Hello world!" program, most other modern programming languages does this in only one line like you can see at the Python example in figure \ref{fig:pythonHelloWorld}.\\
+One commonly used example for a programming language that is not easy to read or understand is Assembly. The reason that Assembly can be hard to read and understand for some people is that the programmer is working directly with CPU instructions and memory addresses. Even mundane tasks like moving a value to a registry must be explicitly programmed. In figure \ref{fig:assemblyExample} you can see an example of a "Hello world!" program, most other modern programming languages does this in only one line like you can see at the Python example in figure \ref{fig:pythonHelloWorld}.\\
 
 \begin{figure}[!h]
 	\begin{lstlisting}
@@ -470,20 +470,20 @@ len equ $ - msg     ;length of the string
 
 %Some programming languages like for example Assembly can be seen as programming language that makes it hard for the programmer to writhe readable code. Other like for example Python make it really easy for the programmer.\\
 
-So the question is how does F\# do in this matter? Is it easy or hard to write readable and clear code. How would a bad or new programmers code look? And how readable is a perfect written code code?
+So the question is how does F\# do in this matter? Is it easy or hard to write readable and clear code. How would a bad or new programmer's code look? And how readable is a perfect written code?
 
 \newpage
 \subsubsection{Indentation and code structure}
-F\# is a whitespace sensitive programming language this means that indentation do have a meaning and will be read when you compile the code. When you are using indentation the compiler will read the indented lines as a sub code of the code over. You can se this illustrated by code in figure \ref{fig:indentationExample}.
+F\# is a whitespace sensitive programming language, this means that indentation do have a meaning and will be read when you compile the code. When you are using indentation the compiler will read the indented lines as a code block belonging to the code above. You can se this illustrated by code in figure \ref{fig:indentationExample}.
 
 \begin{figure}[!h]
 	\begin{lstlisting}
-let f = 	// Line 2-5 is the sub code of this line
+let f = 	// Line 2-5 belongs to this block
 	let x = // Line 3 is the sub code of this line
 		5+5	
 	let y=1
   	x+y
-let a = f+2	// This line is not a sub code
+let a = f+2	// On the same indentation as line 1, starting a new block
 	\end{lstlisting}
 	\caption{Example of how indentation works in F\#.}
 	\label{fig:indentationExample}
@@ -491,7 +491,7 @@ let a = f+2	// This line is not a sub code
 
 That means that to some extent the F\# language force the programmer to write code that have good structure in the code. This make it easy to understand and read the code even if you don't know it beforehand.\\
 
-For an inexperienced programmer this can be a little confusing at fist. But as this is a really good practise to learn early on it can help the inexperienced programmer write better code.\\
+For an inexperienced programmer this can be a little confusing at fist. But as this is a really good practice to learn early on it can help the inexperienced programmer write better code.\\
 
 Indentation and code structure wise is F\# doing really good when it comes to readability and clarity.
 
@@ -513,10 +513,10 @@ Even though F\# have taking inspiration from a lot of different modern programmi
 
 One other thing that makes F\# a little odd when compared to other languages is that is it a functional programming language. This makes the syntax a lot different to all other major languages.\\
 
-Those 2 things makes F\# really different to other languages. This can make it very hard for a experienced programmer learn to read and write this way. For an experienced programmer to learn F\# you have to use a lot of time and resources. For a new programmer it can maybe be easier to learn F\# just because he will not fall into old habits.
+Those two things makes F\# really different to other languages. This can make it very hard for a experienced programmer learning to read and write this way. For an experienced programmer to learn F\# you have to use a lot of time and resources. For a new programmer it can perhaps be easier to learn F\# just because they will not fall into old habits.
 
 \begin{shadequote}{Mikkel Eltervåg}
-After working width an object oriented mindset in programming for several years I found it very difficult to write good functionally code. Often I went back to old habits and used code written in a object oriented way when there were much better ways to do it functionally.
+After working width an object oriented mindset in programming for several years I found it very difficult to write good functional code. Often I went back to old habits and used code written in a object oriented way when there were much better ways to do it functionally.
 \end{shadequote}
 
 
