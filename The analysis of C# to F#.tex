@@ -1,5 +1,70 @@
 \documentclass[12pt, a4paper]{article}
 
+\usepackage{ifxetex,ifluatex}
+\usepackage{etoolbox}
+\usepackage[svgnames]{xcolor}
+
+\usepackage{tikz}
+
+\usepackage{framed}
+
+% conditional for xetex or luatex
+\newif\ifxetexorluatex
+\ifxetex
+  \xetexorluatextrue
+\else
+  \ifluatex
+    \xetexorluatextrue
+  \else
+    \xetexorluatexfalse
+  \fi
+\fi
+%
+\ifxetexorluatex%
+  \usepackage{fontspec}
+  \usepackage{libertine} % or use \setmainfont to choose any font on your system
+  \newfontfamily\quotefont[Ligatures=TeX]{Linux Libertine O} % selects Libertine as the quote font
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{libertine} % or any other font package
+  \newcommand*\quotefont{\fontfamily{LinuxLibertineT-LF}} % selects Libertine as the quote font
+\fi
+
+\newcommand*\quotesize{60} % if quote size changes, need a way to make shifts relative
+% Make commands for the quotes
+\newcommand*{\openquote}
+   {\tikz[remember picture,overlay,xshift=-4ex,yshift=-2.5ex]
+   \node (OQ) {\quotefont\fontsize{\quotesize}{\quotesize}\selectfont``};\kern0pt}
+
+\newcommand*{\closequote}[1]
+  {\tikz[remember picture,overlay,xshift=4ex,yshift={#1}]
+   \node (CQ) {\quotefont\fontsize{\quotesize}{\quotesize}\selectfont''};}
+
+% select a colour for the shading
+\colorlet{shadecolor}{Azure}
+
+\newcommand*\shadedauthorformat{\emph} % define format for the author argument
+
+% Now a command to allow left, right and centre alignment of the author
+\newcommand*\authoralign[1]{
+ 	\def\authorfill{\hfill}\def\quotefill{}
+}
+% wrap everything in its own environment which takes one argument (author) and one optional argument
+% specifying the alignment [l, r or c]
+%
+\newenvironment{shadequote}[2][l]%
+{\authoralign{#1}
+\ifblank{#2}
+   {\def\shadequoteauthor{}\def\yshift{-2ex}\def\quotefill{\hfill}}
+   {\def\shadequoteauthor{\par\authorfill\shadedauthorformat{#2}}\def\yshift{2ex}}
+\begin{snugshade}\begin{quote}\openquote}
+{\shadequoteauthor\quotefill\closequote{\yshift}\end{quote}\end{snugshade}}
+
+
+%----------------------------------------%
+
+
 % Package to use images
 \usepackage{graphicx}
 \graphicspath{{img/}}
@@ -12,11 +77,7 @@
 % Package to use tables
 \usepackage{tabularx}
 
-% Web links package
-%\usepackage{hyperref}
 
-% Standard scool format commented out
-%\usepackage[a4paper, left=3cm,right=3cm,top=2.5cm,bottom=2.5cm]{geometry}
 
 % No indent at pargagraph
 \setlength{\parindent}{0pt} 
@@ -31,6 +92,7 @@
   	numberfirstline=true,
   	xleftmargin=6mm
 }
+
 
 
 \begin{document}
@@ -357,7 +419,56 @@ F\# functional style - 145 lines, 2 files, 1 project.
 \subsection{Readability and clarity}
 Readability and clarity is really important when writing code. The reason for this is that it is much more easy to find bugs, remove bugs and add future content to the code. If it is a bad written code a programmer can use a lot of time just familiarize themselves with the code before he can do changes to it.\\
 
-For the most part i is up to the programmer to write readable and clear code, but the programing language can have a lot to do with helping the programmer in this matter. Some programming languages like for example Assembly can be seen as programming language that makes it hard for the programmer to writhe readable code. Other like for example Python make it really easy for the programmer.\\
+For the most part i is up to the programmer to write readable and clear code, but the programming language can have a lot to do with helping the programmer in this matter.\\
+
+One programming language a lot of programmers can agree on being easy to read and understand is Python. Python is a very high-level language that have a syntax that help programmers write programs in few lines of code. They have a large library that are easy to understand and use. Examples of Python code can bee seen in figure \ref{fig:pythonHelloWorld} and \ref{fig:pythonFactorial}.\\
+
+\begin{figure}[!h]
+	\begin{lstlisting}
+print "Hello world!"
+	\end{lstlisting}
+	\caption{Hello world program in Python}
+	\label{fig:pythonHelloWorld}
+\end{figure}
+
+\begin{figure}[!h]
+	\begin{lstlisting}
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+	\end{lstlisting}
+	\caption{Python code example of a recursion function (function that's call itself) that are calculating factorials. This can be shorted down by using a function from the math library.}
+	\label{fig:pythonFactorial}
+\end{figure}
+
+\newpage
+One commonly used example for a programming language that is not easy to read or understand is Assembly. The reason that assembly can be hard to read and understand for some people is that it is for the most parts using only instructions and memory addresses. In figure \ref{fig:assemblyExample} you can see an example of a "Hello world!" program, most other modern programming languages does this in only one line like you can see at the Python example in figure \ref{fig:pythonHelloWorld}.\\
+
+\begin{figure}[!h]
+	\begin{lstlisting}
+section	.text
+    global _start   ;must be declared for linker (ld)
+_start:	            ;tells linker entry point
+    mov	edx,len     ;message length
+    mov	ecx,msg     ;message to write
+    mov	ebx,1       ;file descriptor (stdout)
+    mov	eax,4       ;system call number (sys_write)
+    int	0x80        ;call kernel
+	
+    mov	eax,1       ;system call number (sys_exit)
+    int	0x80        ;call kernel
+
+section	.data
+msg db 'Hello, world!', 0xa  ;string to be printed
+len equ $ - msg     ;length of the string
+	\end{lstlisting}
+	\caption{Assembly "Hello world!" code example from tutorialspoint.com \cite{tutorialspoint}.}
+	\label{fig:assemblyExample}
+\end{figure}
+
+%Some programming languages like for example Assembly can be seen as programming language that makes it hard for the programmer to writhe readable code. Other like for example Python make it really easy for the programmer.\\
 
 So the question is how does F\# do in this matter? Is it easy or hard to write readable and clear code. How would a bad or new programmers code look? And how readable is a perfect written code code?
 
@@ -389,9 +500,11 @@ Indentation and code structure wise is F\# doing really good when it comes to re
 
 In most programming languages do the file structure nothing to do in how the program is rune. F\# does this a little different all the files have to be in a specific order to run the program correct.\\
 
-When you do a call to function 
+Whenever you call a function you have to make sure that the function is written before the call in the code. And since all the files are read in order you have to make sure that if the function is in another file it have to be over in the file structure.\\
 
-Vanligvis en modul per fil. fil må være i rekkefølge. Vanligvis alle filene i samme mappe
+The most common way to organize the files in a project is to have all the files in the same folder. This makes it more transparent and easy to order the code. This way of organization can word really well for small and medium sized projects, but for really big projects it may be better to organize in multiple folders.\\
+
+A good practice when organize the files is to only have one module per file and make the functions inside correspond to the file name.\\
 
 \newpage
 \subsubsection{Similarity to other coding languages}
@@ -401,6 +514,12 @@ Even though F\# have taking inspiration from a lot of different modern programmi
 One other thing that makes F\# a little odd when compared to other languages is that is it a functional programming language. This makes the syntax a lot different to all other major languages.\\
 
 Those 2 things makes F\# really different to other languages. This can make it very hard for a experienced programmer learn to read and write this way. For an experienced programmer to learn F\# you have to use a lot of time and resources. For a new programmer it can maybe be easier to learn F\# just because he will not fall into old habits.
+
+\begin{shadequote}{Mikkel Eltervåg}
+After working width an object oriented mindset in programming for several years I found it very difficult to write good functionally code. Often I went back to old habits and used code written in a object oriented way when there were much better ways to do it functionally.
+\end{shadequote}
+
+
 
 
 \newpage
@@ -415,13 +534,13 @@ Those 2 things makes F\# really different to other languages. This can make it v
 
 \begin{thebibliography}{9}
 
-\bibitem{latexcompanion} 
+\bibitem{fsharpforfunandprofit} 
 F\# for fun and profit\\
 \emph{https://fsharpforfunandprofit.com}
 
-\bibitem{latexcompanion} 
-F\# for fun and profit\\
-\emph{https://fsharpforfunandprofit.com}
+\bibitem{tutorialspoint} 
+Tutorialspoint\\
+\emph{http://www.tutorialspoint.com/assembly\_programming/}
 
  
 \end{thebibliography}
