@@ -619,18 +619,18 @@ In this chapter we will take a look at the complete analysis of the previous cha
 
 \newpage
 \subsection{Readability and clarity}
-Readability and clarity is really important when writing code. The reason for this is that it is much easier to find and remove bugs and add future content, if the programmer does not need to use a lot of time simply to understand what the code is supposed to do. Poorly written code can cause a programmer to spend a large amount of time familiarizing themselves with the code before they can do changes to it.\\
+Readability and clarity is really important when writing code. The reason for this is that it is much easier to find and remove bugs and add future content. If the programmer does not need to use a lot of time simply to understand what the code is supposed to do. Poorly written code can cause a programmer to spend a lot of time familiarizing themselves with the code before they can do changes to it.\\
 
 For the most part it is up to the programmer to write readable and clear code, but the programming language can have a lot to do with helping the programmer in this matter.\\
 
 %Some programming languages like for example Assembly can be seen as programming language that makes it hard for the programmer to writhe readable code. Other like for example Python make it really easy for the programmer.\\
 
-So the question is how does F\# do in this matter? Is it easy or hard to write readable and clear code. How would a bad or new programmer's code look? And how readable is a perfect written code?
+So the question is how does F\# do in this matter? How difficult is it to write readable and clear code. How would a bad or new programmer's code look like? And how readable is a perfect written code?
 
 \newpage
 \subsubsection{Indentation and code structure}
 \label{indentationAndCodeStructure}
-F\# is a whitespace sensitive programming language, this means that indentation do have a meaning and will be read when you compile the code. When you are using indentation the compiler will read the indented lines as a code block belonging to the code above. You can se this illustrated by code in figure \ref{fig:indentationExample}.
+F\# is a whitespace sensitive programming language, this means that indentation do have a meaning and will be read when you compile the code. When you are using indentation the compiler will read the indented lines as a code block that belonging to the code above. You can see this illustrated by code in figure \ref{fig:indentationExample}.
 
 \begin{figure}[!h]
 	\begin{lstlisting}
@@ -639,35 +639,36 @@ let f = 	// Line 2-5 belongs to this block
 		5+5	
 	let y=1
   	x+y
-let a = f+2	// On the same indentation as line 1, starting a new block
+let a = f+2	// A standalone block
+	// On the same indentation as line 1, starting a new block
 	\end{lstlisting}
 	\caption{Example of how indentation works in F\#.}
 	\label{fig:indentationExample}
 \end{figure}
 
-That means that to some extent the F\# language force the programmer to write code that have good structure in the code. This make it easy to understand and read the code even if you don't know it beforehand.\\
+That means that to some extent the F\# language force the programmer to write code that have good structure in the code. This can make it easier to understand and read the code even if you don't know it beforehand.\\
 
 For an inexperienced programmer this can be a little confusing at fist. But as this is a really good practice to learn early on it can help the inexperienced programmer write better code.\\
 
-Indentation and code structure wise is F\# doing really good when it comes to readability and clarity.
+In indentation and code structure, F\# really does a good jobb when it comes down to readability and clarity.
 
 \newpage
 \subsubsection{File structure}
 
-In most programming languages do the file structure nothing to do in how the program is rune. F\# does this a little different all the files have to be in a specific order to run the program correct.\\
+In most programming languages the file structure have nothing to do in how the program is compiled or run. F\# does this a little different, all the files have to be in a specific order to run the program correct.\\
 
-Whenever you call a function you have to make sure that the function is written before the call in the code. And since all the files are read in order you have to make sure that if the function is in another file it have to be over in the file structure.\\
+Whenever you call a function you have to make sure that the function is written before the call in the code is made. And since all the files are read in order you have to make sure that if the function is in another file it has to be placed above the current file in the file structure.\\
 
-The most common way to organize the files in a project is to have all the files in the same folder. This makes it more transparent and easy to order the code. This way of organization can word really well for small and medium sized projects, but for really big projects it may be better to organize in multiple folders.\\
+The most common way to organize the files in a project is to have all the files in the same folder. This makes it more transparent and easy to order the code. This way of organization can work really well for small and medium sized projects, but for really big projects it may be better to organize in multiple folders.\\
 
-A good practice when organize the files is to only have one module per file and make the functions inside correspond to the file name.\\
+A good practice when organising the files is to only have one module per file and make the functions inside correspond to the file name.\\
 
 \newpage
 \subsubsection{Similarity to other coding languages}
 
 \paragraph{ML Programming Language}
 
-Even though F\# have taking inspiration from a lot of different modern programming languages it still have a lot of roots to ML that is a old and not that popular programming language. This makes the syntax very different to how syntaxes normally looks today, and can make the syntax hard to read and write to any programmer that are not used to ML or other similar programming languages.\\
+Even though F\# has taken inspiration from a lot of different modern programming languages it still have a lot of roots to ML. This is a old and not that popular programming language. This makes the syntax very different to how syntaxes normally looks like today, and can make the syntax hard to read and write to any programmer that are not used to ML or other similar programming languages.\\
 
 If we take a close look at figure \ref{fig:factorialMLExample} and \ref{fig:factorialFsharpExample} we see a lot of similarity in how the programs work. In the F\# example we can read match, that is a way of doing pattern matching. The ML code does also use pattern matching with a small change in the syntax. Line 1 in the ML code we can see that if the function gets a 0 as an input the output will be 1, the same thing happens at line 3 in the F\# example. Line 2 in the ML code tells us that if the input is an int the output will be \code{n * factorial (n-1)} and the same thing happens in F\# line 4 if the input is not 0.\\
 
@@ -712,16 +713,16 @@ def factorial(n):
     else:
         return n * factorial(n-1)
 	\end{lstlisting}
-	\caption{Python code example of a recursive function (a function that calls itself) calculating factorials. Python also has a factorial function built in to the Math library. The equivalent F\# vertion of this program can be seen in figue \ref{fig:factorialFsharpExample}.}
+	\caption{Python code example of a recursive function (a function that calls itself) calculating factorials. Python also has a factorial function built in to the Math library. The equivalent F\# version of this program can be seen in figue \ref{fig:factorialFsharpExample}.}
 	\label{fig:pythonFactorial}
 \end{figure}
 
-At a first glance Python and F\# can look alike because both languages is a white space sensitive programming language (Explained on page \ref{indentationAndCodeStructure}). But if you take a closer look the programming languages works really different, the main reason for this is that F\# is meant to be a functional programming language and Python is not even though it's supports it.\\
+At a first glance Python and F\# can look similar because both languages is a white space sensitive programming language (Explained on page \ref{indentationAndCodeStructure}). But if you take a closer look at the programming languages they really works different, the main reason for this is that F\# is meant to be a functional programming language and Python is not, even though it have support for it.\\
 
-Python is one of the programming languages that the creators of F\# have been using as a inspiration when making F\#. It is not hard to see that reason for this is the easy readability of the language. Both of them can be really self explanatory and forces the programmer to  write the code in a good structured way. This have made F\# more easy read and understand for programmers that look at programs others have written.
+Python is one of the programming languages that the creators of F\# have been using as a inspiration when making F\#. It is not hard to see the reason for this, because Python has an easy readability as an programming language. Both of them can be really self explanatory and forces the programmer to  write the code in a good structured way. This have made F\# more easy read and understand for programmers that looks at programs others have written.
 
 \newpage
-\paragraph{Assembly} One commonly used example for a programming language that is not easy to read or understand is Assembly. The reason that Assembly can be hard to read and understand for some people is that the programmer is working directly with CPU instructions and memory addresses. Even mundane tasks like moving a value to a registry must be explicitly programmed. In figure \ref{fig:assemblyExample} you can see an example of a "Hello world!" program, most other programming languages does this in only one line like you can see at the F\# example in figure \ref{fig:fSharpHelloWorld}.\\
+\paragraph{Assembly} One commonly used example for a programming language that is not easy to read or understand is Assembly. The reason that Assembly can be hard to read and understand for some people is that the programmer is working directly with CPU instructions and memory addressing. Even mundane tasks like moving a value to a registry must be explicitly programmed. In figure \ref{fig:assemblyExample} you can see an example of a "Hello world!" program. Most of the other programming languages does this in only one line . You can see an example of this in the F\# example in figure \ref{fig:fSharpHelloWorld}.\\
 
 \begin{figure}[!h]
 	\begin{lstlisting}
@@ -753,7 +754,7 @@ printfn "Hello, world!"
 	\label{fig:fSharpHelloWorld}
 \end{figure}
 
-It is maybe a little unfair to compare F\# with Assembly as Assembly is a really low level programming language. But there are 2 points that we can get out from this comparison and that is firstly that F\# is a lot more easy language to write and understand, but this comes with the cost of less control over very basic computing that is important for really good optimization.
+It is maybe a little unfair to compare F\# with Assembly because Assembly is a really low level programming language. But there are two points that we can get out from this comparison and that is firstly that F\# is a easier language to write and understand, but this comes with the cost of less control over very basic computing that is important for really good optimization.
 
 \newpage
 
@@ -772,10 +773,10 @@ It is maybe a little unfair to compare F\# with Assembly as Assembly is a really
 
 \subsubsection{Conclusion readability and clarity}
 
-After analysing the readability and clarity of the F\# programming language we can together with the book "Expert F\#"\cite{ExpertFsharp} divide how easy it woudh for a programmer to learn F\# into 4 groups. 
+After analysing the readability and clarity of the F\# programming language we can divide how easy it would be for a programmer to learn F\# into 4 groups.
 
 \paragraph{Inexperienced}
-For a person that is new to programming it will take some time to learn programming regardless of the programming language. But F\# can be a good place to start. It can be easy to read and understand simple code from only looking at the code and you have other mindset that can stand in your way of understanding.
+For a person that is new to programming it will take some time to learn programming regardless of the programming language. But F\# can be a good place to start. It can be easy to read and understand simple code from only looking at the code and you don't already have any mindset that can stand in your way of understanding.
 
 \paragraph{Object-oriented}
 A programmer that have background from object-oriented programming languages like C++, C\#, Java and Visual Basic can have a problem getting used to F\#. The reason for this is that F\# is a functional programming language the difference is explaind in section \ref{functVSobject}.
@@ -785,11 +786,11 @@ After working width an object oriented mindset in programming for several years 
 \end{shadequote}
 
 \paragraph{Dynamical typed}
-Python and Ruby are examples of dynamical typed languages. Those languages have a similar syntax to F\# but are works a little different in how it is typed. It can be easier for programmers that are used to dynamical typed programming languages to learn F\# than it is for a programmer with object-oriented background.  
+Python and Ruby are examples of dynamical typed languages. Those languages have a similar syntax to F\# but they are works a little different in how it is typed. It can be easier for programmers that are used to dynamical typed programming languages to learn F\# than it is for programmers with object-oriented background.  
 
 
 \paragraph{Functional}
-Programmer that have background from functional languages like Haskell, OCaml or Standard ML will F\# be really familiar. They will probably find that F\# to be really easy to read, understand and write. The reason for this is that F\# is a functional language itself. 
+Programmers that have background from functional languages like Haskell, OCaml or Standard ML for them F\# will be really familiar. They will probably find that F\# to be really easy to read, understand and write. The reason for this is that F\# is a functional language itself. 
 
 
 \newpage
