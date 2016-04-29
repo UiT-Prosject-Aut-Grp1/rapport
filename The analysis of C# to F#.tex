@@ -610,6 +610,39 @@ We took the basic C\# code from 16 lines down to 9 lines. This almost took down 
 What we can conclude with this short example is that F\# in this case was superior in many ways, more easy to read, more compact and you can easily check the gained outputs through the interactive window. 
 
 \newpage
+\subsection{Rotate a tuple}
+Here we are gonna take a look at one more example, this time very short and easy function. The function simply is used to change the order of a tuple (a tuple is set of values, f.ex. cordinates in an aksis).\\
+   
+\paragraph{F\#}
+First lets take a look on how we would to this in F\#, we can se this in figure below.
+
+\begin{figure}[!h]
+\begin{lstlisting}
+let rotate (x,y,z) = (z,x,y)
+\end{lstlisting}
+\caption{Rotate a tuple example made in F\#}
+\label{fig:RotateTupleFSharp}
+\end{figure}
+
+\paragraph{C\#}
+Since we can’t just rearrange the order easily on a tuple in C\#, we have to do it in a little different approach. This is shown in figure below.\\
+
+\begin{figure}[!h]
+\begin{lstlisting}
+Tuple<V,T,U> Rotate(Tuple<T,U,V> t) 
+{ 
+    return new Tuple<V,T,U>(t.Item3,t.Item1,t.Item2); 
+}
+\end{lstlisting}
+\caption{Rotate a tuple example made in C\#}
+\label{fig:RotateTupleCSharp}
+\end{figure}
+
+So firstly here we have to define that its a tuple first, and then give it a name and in this case it’s Rotate. When we are returning the new values we have to tell the compiler what tuple we are gonna return as well as ref to each item in the new tuple.\\
+
+This is a good example to show how easy things can be done in F\#.
+
+\newpage
 \section{Complete analysis}
 In this chapter we will take a look at the complete analysis of the previous chapters. 
 
