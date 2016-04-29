@@ -152,9 +152,9 @@ This thesis is written by graduates from the automation program at the departmen
 
 We chose this assignment because everyone in our group enjoys programming, it had some database management and set up, and because it looked like an interesting project overall. Since we already had some experience in C\#, we thought it would be fun to find the “pros and cons” of this relatively new programming language.\\
 
-We have written the thesis in LaTeX which is a word processor and a document markup language. When we were working on the raw text we used Google documents so that we all could work together simultaneously on writing and editing the text for the thesis. On the main assignment we used Visual Studio (with C\# and F\# tools), Atlassian Sourcetree and Github to write and manage our code, and SQL Server Management Studio to handle the database. By using both C\# and database we covered a wide area of our education from the previous semester. We have learnt a lot and have had the privilege of testing out the new attractive programming language F\# that may just be the future.\\ 
+We have written the thesis in LaTeX which is a word processor and a document markup language. When we were working on the raw text we used Google documents so that we all could work together simultaneously on writing and editing the text for the thesis. On the main assignment we used Visual Studio (with C\# and F\# tools), Atlassian Sourcetree and Github to write and manage our code, and SQL Server Management Studio to handle the database. By using both C\# and database we covered a wide area of our education from the previous semester. We have learnt a lot and have had the privilege of testing out the new attractive programming language F\# that may just be the future. \\
 
-We want to give out a special thanks to Serit for all the great support and advice given, on all the regular follow up meetings we had and by email. We also want to give a big thanks to our mentor Puneet Sharma for his great support and contribution to the assignment.
+We want to give out a special thanks to Jonas Juselius and Jens Blomli at Serit for all the great support and advice given, on all the regular follow up meetings we had and by email. We also want to give a big thanks to our mentor Puneet Sharma for his great support and contribution to the assignment.\\
 
 \newpage
 \tableofcontents
@@ -412,28 +412,206 @@ Insert code here!!!
 \newpage
 
 \subsection{Analysis}
-In this chapter we are gonna take a look at the analysis of the library sTranslate.
+In this chapter we are gonna take a look at the analysis of the module sTranslate.
+Looking back on how we did the two different methods of writing the F\# code, the line by line translation and the functional approach we can say that the direct translation was clearly not the way to go. It became much harder to do the actual programming in an non-object oriented way. We found that by doing it the direct translation way, we got more lines of code, and much more errors that came up. We could also notice in the result a clear difference in actual speed of the program where the direct translation was inferior to the other way. We get into this a little more later.
+
 \subsubsection{Performance}
 This chapter is not a demand from Serit, insted this was something we wanted to test out for ourselves and is just a bonus for Serit if there proves to be better performance in F\# vs C\#.
 \subsubsection{Experiences}
-The experiences that we can draw from this assignment is that in F\#, it is firstly very easy to read the code and what it does, and you hardly need to comment the code. But the thing we appreciated the most was the direct response from the compiler and Microsoft’s Intellisense technology in real time while writing the code. At first we thought that this was a bit annoying since you always saw errors made in code with the red lines everywhere. But since the language is very strict about types and such, you are forced to root out many errors before you even run the program. You don't have to deal with the problem later when running the program and making it crash instead. So we grew to really enjoy this feature. It makes you put a little more time in thinking about what you want the code to do, but you will spend less time dealing with problems later while running the program.\\
+The experiences that we can draw from this assignment is that in F\#, it’s very easy to read the code and what it does, and that you almost don’t need to comment the code. But the thing we appreciated the most was the direct response from the compiler and Microsoft’s Intellisense technology in real time while writing the code. At first we thought that this was a bit annoying since you always saw errors made in code with the red lines everywhere. But since the language is very strict about types and such, you are forced to root out many errors before you even run the program. You don't have to deal with the problems later while running the program, that could make it misbehave or even crash. So we grew to really enjoy this feature. It makes you put a little more time in thinking about what you want the code to do, but you will spend less time dealing with problems later while running the program.\\
 
-In Michael’s experience the hardest part and the thing he struggled and is still struggling with is that he kept finding himself getting back in think in object-oriented “thinking”. Its hard to think in a more functioning approch.
+Since all of us in the group have object oriented programming background, we kept struggling with keeping getting back to old habits and thinking in object oriented way of programming. The new thinking in functional programming was harder than we imagined. The thing is that it’s probably easier for a person who have never done programming before to learn F\# then a person coming from a background with object oriented programming at least in some aspects. Of course that is not completely true because a skilled programmer can fast find and see patterns in the code and structure, this ofc varies from programmer to programmer. We had to let go of a lot of hard learned coding and try and think “out of the box” to be able to write “decent” F\# code.\\
+
+We found out that we could almost everytime we had written code, we could write it a little bit shorter or/and in a better way. F\# is mainly function based programming but it actually allows object oriented programming in some way. Since it’s integrated into Visual Studio .net framework they have added a lot of futures that is inherited from f.ex. C\#. That will allow the user to use loops instead of listing functions etc. \\
+
+In Michael’s experience the hardest part and the thing he struggled and is still struggling with is that he kept finding himself getting back in think in object-oriented “thinking”. It's hard to think in a more functioning approach.\\
 \subsubsection{Lines of code}
-C\# - about 280 lines, 3 files of source code, 1 project + 1 project of autogenerated code for entity framework\\
-F\# imperative style - 170 lines, 4 files, 1 project\\
+When it breaks down to how many lines of code there is in each project we can right away see big differences.\\
 
-F\# functional style - 145 lines, 2 files, 1 project.
+Here is a short outline on how many files and lines each project got:\\
+
+\begin{tabular}{ |p{4cm}|p{3cm}|p{2cm}|p{3cm}|  }
+ \hline
+ \multicolumn{4}{|c|}{Short outline} \\
+ \hline
+ Language & Lines of code & Files & Projects\\
+ \hline
+ C\# & 280 & 3 & 2\\
+ F\# imperative style & 170 & 4 & 1\\
+ F\# functional style & 145 & 2 & 1\\
+ \hline
+\end{tabular}
+
+\newpage
+\subsection{Closer look at our code}
+Let’s take a closer look to some code examples and how they are different from each other. We are first gonna look at the GetTranslations function and how it’s done in the different methods.\\
+
+\subsubsection{C\# code}
+If we take a look at figure \ref{fig:GetTranslationsCSharp} this is how the code looks like in the C\# project. 
+ 
+\begin{figure}[!h]
+\begin{lstlisting}
+private static List<Model.Translation> _translateColl = null; 
+public static List<Model.Translation> GetTranslations(bool reRead = false)
+{
+    if (_translateColl == null || reRead == true)
+    {
+        using (var ctx = new Model.TranslationEntities())
+        {
+            _translateColl = (from xl in ctx.Translation select xl).ToList();
+            if (_translateColl == null)
+                _translateColl = new List<Model.Translation>();
+            return _translateColl;
+        }
+    }
+    return _translateColl;
+}
+\end{lstlisting}
+\caption{GetTranslations function in C\#}
+\label{fig:GetTranslationsCSharp}
+\end{figure}
+
+\newpage
+
+\subsubsection{F\# imperative}
+The imperative version retained the functionality of the C\# version. The function is called and makes changes to a mutable value, and does not return anything. The search function must refer to the variable \_ translateColl to do the searching. We can see the code from the F\# imperative in figure \ref{fig:GetTranslationsFSharpImperative} below.
+
+\begin{figure}[!h]
+\begin{lstlisting}
+let mutable _translateColl : List<Translation> = []
+let GetTranslations (reRead : bool) =
+    if _translateColl = [] || reRead = true then
+        use db = dbSchema.GetDataContext(Settings.ConnectionStrings.DbConnectionString)
+        _translateColl <- 
+        query {
+            for xl in db.Translation do 
+                select xl
+        } |> Seq.toList |> List.map toTranslation
+
+\end{lstlisting}
+\caption{GetTranslations function in F\# imperative}
+\label{fig:GetTranslationsFSharpImperative}
+\end{figure}
+
+\newpage
+
+\subsubsection{F\# functional}
+The functional version of this part of the program was split into two functions. A mutable value is still used, but both functions return a list of database rows for the search function to use. As a further refinement, it is possible to drop the \_ translateColl mutable and the GetCachedCollection. This is because a let binding in F\# is by default static and will always have the same value (unless it’s bound to a different value). So once it has gotten the rows from the database and turned it into a list, it will be there on demand until the program ends. We can see how we did this in figure \ref{fig:GetTranslationsFSharpFunctional} below.
+
+\begin{figure}[!h]
+\begin{lstlisting}
+let mutable _translateColl : List<Translation> = []
+
+let GetTranslations =
+    use db = dbSchema.GetDataContext(Settings.ConnectionStrings.DbConnectionString)
+    query {
+        for row in db.Translation do 
+            select row
+    } |> Seq.toList |> List.map toTranslation 
+
+let GetCachedCollection =
+    if _translateColl = [] then
+        _translateColl <- GetTranslations
+    _translateColl
+\end{lstlisting}
+\caption{GetTranslations function in F\# functional}
+\label{fig:GetTranslationsFSharpFunctional}
+\end{figure}
+
 \newpage
 
 \section{Online research}
 
+\newpage
 \subsection{Testimonials}
 
+\newpage
 \subsection{Code examples}
+We have done some research on the web to find some concrete code examples to highlight some differences in these two coding languages.
+
+\subsubsection{Basic from 1 to N square function}
+\paragraph{F\#}
+A Lot of our research comes from the web page fsharpforfunandprofit, and there they highlight a simple task where they are gonna sum the squares from 1 to N. We can see how the code could look like if it was written in F\# in figure \ref{fig:SquareFunctionFSharp}.
+
+\begin{figure}[!h]
+\begin{lstlisting}
+// define the square function
+let square x = x * x
+
+// define the sumOfSquares function
+let sumOfSquares n = 
+   [1..n] |> List.map square |> List.sum
+\end{lstlisting}
+\caption{Basic from 1 to N square function made in F\#.}
+\label{fig:SquareFunctionFSharp}
+\end{figure}
+
+Here they made 2 functions, where one uses the other function as an output on it’s own. The \code{|>} is used to send the output from one function and send it as an input to the other.
+If we break this down to what it does it’s basically, first an function is made that is called square, it simply takes itself and multiply it with itself. Then an other function is made sumOfSquares, it makes a loop from 1 to n, then puts them into a list and each element is used with the square function. Then it sums the list up and sends it back as the output. We didn’t need to do any type declarations, because the compiler figured out that it has to be an integer. That is because the input in sumOfSquares is used to create an array, and that needs an integer. If we now try to write a piece of code that would send for example a floating point number to that function, the program wouldn’t even compile, and you would save yourself some debugging time.\\
+
+\newpage
+
+\paragraph{C\#}
+Now if we take a look at how the code would look like in classic C\# (non-functional) style of a C-based language. First we take a look at the code seen in figure \ref{fig:SquareFunctionCSharp} below.
+
+\begin{figure}[!h]
+\begin{lstlisting}
+public static class SumOfSquaresHelper
+{
+   public static int Square(int i)
+   {
+      return i * i;
+   }
+
+   public static int SumOfSquares(int n)
+   {
+      int sum = 0;
+      for (int i = 1; i <= n; i++)
+      {
+         sum += Square(i);
+      }
+      return sum;
+   }
+}
+\end{lstlisting}
+\caption{Basic from 1 to N square function made in C\#.}
+\label{fig:SquareFunctionCSharp}
+\end{figure}
+
+So this code basically does the same thing. The interesting part here is that what F\# could to with 2-3 lines of code, the basic C\# would to in about 16 (to be fair most of the lines is just { and }) that is pretty impressive. However you could make this much more compact but that would make it much harder to read, since this is the standard that is mostly used.\\
+
+So to highlight the differences of these two code examples. First it is that the F\# code is much more compact and still is very readable (almost self explained). The F\# code didn't have any type declarations (f.ex C\# have to do int sum = 0, before sum is even used). The last thing is that F\# can be developed interactively. With that we mean that we can test the functions right away and check if we get back what we want or not without having to go in and out of functions with the use on the interactive window that F\# has.
+
+\newpage
+
+\paragraph{C\# LINQ}
+Today many C\# programmers uses LINQ, a much more modern tool with C\# that in someway lets C\# be more functional.\\
+
+So let’s take a look at how the code would look like using the C\# LINQ extension, we can see this in figure \ref{fig:SquareFunctionCSharpLINQ} below.
+
+\begin{figure}[!h]
+\begin{lstlisting}
+public static class FunctionalSumOfSquaresHelper
+{
+   public static int SumOfSquares(int n)
+   {
+      return Enumerable.Range(1, n)
+         .Select(i => i * i)
+         .Sum();
+   }
+}
+\end{lstlisting}
+\caption{Basic from 1 to N square function made in C\# LINQ.}
+\label{fig:SquareFunctionCSharpLINQ}
+\end{figure}
+
+We took the basic C\# code from 16 lines down to 9 lines. This almost took down the C\# code to half, but still not near the F\# code. Also here we can see that the C\# code is bound to use the  curly braces and periods and semicolons. The code also still needs to be declared to be able to use variables, that we don’t need to do in F\#.
+
+What we can conclude with this short example is that F\# in this case was superior in many ways, more easy to read, more compact and you can easily check the gained outputs through the interactive window. 
 
 \newpage
 \section{Complete analysis}
+In this chapter we will take a look at the complete analysis of the previous chapters. 
 
 \subsection{F\# compared to C\#}
 
