@@ -171,11 +171,11 @@ We've received an assignment from Serit to translate parts of an existing projec
 
 \newpage
 \subsection{Problem for discussion}
-C\# and F\# works in different ways, they both have benefits and drawbacks. The main question is if it is worth it for a company to change their main programming language. We have to look at what the company wants to achieve by making the change, and that boils down to making quality programs for a low price. \\
+Programming in C\# and F\# works in different ways, they both have benefits and drawbacks. The main question is if it is worth it for a company to change their main programming language. We have to look at what the company wants to achieve by making the change, and that boils down to making quality programs for a low price. \\
 
 A modern IT company uses a lot of time developing, changing and fixing code. If we can use a programming language that takes less time to develop and at the same time works better without generating errors, that could be very cost saving.\\
 
-The programming language F\# claims to be a solution to these problems by using fewer lines of code, be more simple and have better error handling than other programming languages. Our task is to find out if those claims are true by answering these questions:
+The programming language F\# claims to be a solution to these problems by using fewer lines of code, be more simple to write, be easier to understand and have better error handling than other programming languages. Our task is to find out if those claims are true by answering these questions:
 
 \begin{itemize}
 \item What are the benefits of switching from C\# to F\#?
@@ -230,6 +230,52 @@ Serit IT Partner want to find out if it is worth changing their main programming
 \end{itemize}
 
 
+\newpage
+
+\subsection{Different programming paradigms}
+There are many different ways of classifying programming languages and styles. One of the most common ways of classifying is imperative versus declarative programming. The distinction is that imperative programming states the order in which the operations execute, while declarative does not. Another important feature is if side effects are allowed or not. By this, we mean if a function or subroutine can change the state of other parts of the program. In imperative programming, this is allowed, while in functional programming, it is not. Finally, there are different ways of organizing programs and breaking down problems into smaller, reusable pieces. Procedural programming focuses on breaking down the program into functions (also commonly called subroutines). Object-oriented programming organizes the program by grouping together the functions (methods) with the state they are allowed to modify (properties).
+
+\paragraph{Imperative} Imperative programming is a paradigm where statements are used to tell the computer program what to do. It is the programmer’s job to tell the computer how to solve the problem. If an imperative program were to make a person get a cup of coffee, it would have to list all the individual tasks they had to do, like stand up, walk to the coffee machine, place the cup, press the button and so on. 
+
+\paragraph{Declarative} Declarative programming focuses instead on telling the computer program what the desired result is, and then the implementation of the programming language decides how to do it. A declarative program would simply state “Give me a cup of espresso”. Examples of declarative programming include database query languages and functional programming.
+
+\paragraph{Functional} Functional programming is a form of declarative programming. Instead of using statements, like in imperative programming, functional programming uses expressions. An expression is a combination of one or more values, operators or functions that produce a resulting value when evaluated. A goal in functional programming is to limit side effects and mutable values. This means that if you call a function with the same arguments you should get the same result everytime. In other words, the output of a function should only rely on the inputs to that function, and not any other values or variables.
+
+\newpage
+\paragraph{Procedural} Procedural programming breaks programs down into subroutines or functions which take arguments as input, and produces an output or result that is sent back to the caller. Functions can be designed to be as generic as possible so they can be used again in many parts of the program, which means less repetition of code.
+
+\paragraph{Object-oriented} Object-oriented programming instead focuses on categorizing the entities in the program as different objects, that expose behavior and data using interfaces. Objects may contain both data and methods. Methods are functions that are only allowed to change the data of the object to which it belongs. This is a way of protecting against side effects that is called encapsulation.
+
+
+\newpage
+\subsection{F\# programming language}
+F\# is a modern multi-paradigm programming language with a focus on functional programming. It was originally invented as an implementation of the OCaml language (which comes from ML) in the .NET platform. The first stable version was F\# 2.0 which came in 2010. F\# is open source and cross platform. F\# was influenced by a number of other languages. It gets it’s object model from C\#. Sequence expressions and computation expressions come from Haskell. Finally, the indentation-aware syntax was inspired by Python. F\# began as a .NET language, working together with C\# and .NET libraries. It can also be compiled to Android, Apple iOS, Linux, JavaScript, and GPU code.\\
+
+F\# is “functional first” which means that functional programming is the preferred go-to method for solving problems. But, unlike many other functional languages, F\# works well with imperative and object-oriented programming where those styles are required. F\# is statically typed and type-safe which means the compiler can optimize the code deeply to increase performance, which is not possible in dynamic languages where types do not need to be known during compilation. Despite this, since F\# uses type inference (the compiler deduces what type a value has based on the context and data) it can be more expressive, like a dynamic language..\\
+
+There are four main differences between F\# and a standard imperative language such as C\# or Java.
+\begin{itemize}
+\item Function-oriented rather than object-oriented
+\item Expressions rather than statements
+\item Algebraic types for creating domain models
+\item Pattern matching for control flow
+\end{itemize}
+
+\paragraph{Function oriented}
+In F\#, functions are First-Class Citizens. This means that functions can be passed as arguments, returned from functions, and assigned to values. Composition is the technique of making basic functions, then functions that use those functions, and so on. Functional code is by it’s nature high level and declarative.
+
+\paragraph{Expressions}
+In functional languages, there are no statements, only expression. Every code chunk must always return a value. Rather than using a list of statements that are executed in order, larger chunks of code are created by combining smaller chunks. There are no such thing as unassigned values, they must be assigned to when declared. Every possible branch of a control flow construct must be explicitly handled and must also return the same value. This makes code built from expressions safer than code using statements.
+
+\paragraph{Algebraic types}
+In F\#, new compound types are built by combining existing types in two different ways. First, a combination of values from a set of types. These are called product types, and are similar to structs or record types from other languages. Second, a disjoint union, representing a choice of types. These are called sum types.
+
+\paragraph{Pattern matching}
+Imperative languages have many different constructs for control flow and looping, including if-then-else, switch and case, for, foreach and while. In F\#, all of these can be replaced by pattern matching and the single keyword match. Conditionals such as if and switch are replaced by simple pattern matching, and loops are replaced by pattern matching and recursion. And finally, inheritance, a defining feature of object-oriented programming can be replaced by pattern matching on union types.
+
+\begin{shadequote}{From the foreword of the book Expert F\#}
+F\# is unique amongst both imperative and declarative languages in that it is the golden middle road where these two extremes converge. F\# takes the best features of both paradigms and tastefully combines them in a highly productive and elegant language that both scientists and developers identify with. F\# makes programmers better mathematicians and mathematicians better programmers.
+\end{shadequote}
 
 
 
@@ -277,65 +323,16 @@ There are two paths to achieve this goal: Either by first porting to F\# and the
     \caption{Method's of translating from C\# to F\#.}
 \end{figure}
 
-\newpage
-
-\section{Different programming paradigms}
-There are many different ways of classifying programming languages and styles. One of the most common ways of classifying is imperative versus declarative programming. The distinction is that imperative programming states the order in which the operations execute, while declarative does not. Another important feature is if side effects are allowed or not. By this, we mean if a function or subroutine can change the state of other parts of the program. In imperative programming, this is allowed, while in functional programming, it is not. Finally, there are different ways of organizing programs and breaking down problems into smaller, reusable pieces. Procedural programming focuses on breaking down the program into functions (also commonly called subroutines). Object-oriented programming organizes the program by grouping together the functions (methods) with the state they are allowed to modify (properties).
-
-\paragraph{Imperative} Imperative programming is a paradigm where statements are used to tell the computer program what to do. It is the programmer’s job to tell the computer how to solve the problem. If an imperative program were to make a person get a cup of coffee, it would have to list all the individual tasks they had to do, like stand up, walk to the coffee machine, place the cup, press the button and so on. 
-
-\paragraph{Declarative} Declarative programming focuses instead on telling the computer program what the desired result is, and then the implementation of the programming language decides how to do it. A declarative program would simply state “Give me a cup of espresso”. Examples of declarative programming include database query languages and functional programming.
-
-\paragraph{Functional} Functional programming is a form of declarative programming. Instead of using statements, like in imperative programming, functional programming uses expressions. An expression is a combination of one or more values, operators or functions that produce a resulting value when evaluated. A goal in functional programming is to limit side effects and mutable values. This means that if you call a function with the same arguments you should get the same result everytime. In other words, the output of a function should only rely on the inputs to that function, and not any other values or variables.
-
-\newpage
-\paragraph{Procedural} Procedural programming breaks programs down into subroutines or functions which take arguments as input, and produces an output or result that is sent back to the caller. Functions can be designed to be as generic as possible so they can be used again in many parts of the program, which means less repetition of code.
-
-\paragraph{Object-oriented} Object-oriented programming instead focuses on categorizing the entities in the program as different objects, that expose behavior and data using interfaces. Objects may contain both data and methods. Methods are functions that are only allowed to change the data of the object to which it belongs. This is a way of protecting against side effects that is called encapsulation.
-
-\newpage
-\subsection{Sett inn funsjonelt mot object basert her }
-\label{functVSobject}
-
-\newpage
-\section{F\# programming language}
-F\# is a modern multi-paradigm programming language with a focus on functional programming. It was originally invented as an implementation of the OCaml language (which comes from ML) in the .NET platform. The first stable version was F\# 2.0 which came in 2010. F\# is open source and cross platform. F\# was influenced by a number of other languages. It gets it’s object model from C\#. Sequence expressions and computation expressions come from Haskell. Finally, the indentation-aware syntax was inspired by Python. F\# began as a .NET language, working together with C\# and .NET libraries. It can also be compiled to Android, Apple iOS, Linux, JavaScript, and GPU code.\\
-
-F\# is “functional first” which means that functional programming is the preferred go-to method for solving problems. But, unlike many other functional languages, F\# works well with imperative and object-oriented programming where those styles are required. F\# is statically typed and type-safe which means the compiler can aggressively optimize the code to increase performance. Since F\# uses type inference (the compiler deduces what type a value has based on the context and data) it can be more expressive, like a dynamic language.\\
-
-There are four main differences between F\# and a standard imperative language.
-\begin{itemize}
-\item Function-oriented rather than object-oriented
-\item Expressions rather than statements
-\item Algebraic types for creating domain models
-\item Pattern matching for control flow
-\end{itemize}
-
-\paragraph{Function oriented}
-In F\#, functions are First-Class Citizens. This means that functions can be passed as arguments, returned from functions, and assigned to values. Composition is the technique of making basic functions, then functions that use those functions, and so on. Functional code is by it’s nature high level and declarative.
-
-\paragraph{Expressions}
-In functional languages, there are no statements, only expression. Every code chunk must always return a value. Rather than using a list of statements that are executed in order, larger chunks of code are created by combining smaller chunks. There are no such thing as unassigned values, they must be assigned to when declared. Every possible branch of a control flow construct must be explicitly handled and must also return the same value. This makes code built from expressions safer than code using statements.
-
-\paragraph{Algebraic types}
-In F\#, new compound types are built by combining existing types in two different ways. First, a combination of values from a set of types. These are called product types, and are similar to structs or record types from other languages. Second, a disjoint union, representing a choice of types. These are called sum types.
-
-\paragraph{Pattern matching}
-Imperative languages have many different constructs for control flow and looping, including if-then-else, switch and case, for, foreach and while. In F\#, all of these can be replaced by pattern matching and the single keyword match. Conditionals such as if and switch are replaced by simple pattern matching, and loops are replaced by pattern matching and recursion. And finally, inheritance, a defining feature of object-oriented programming can be replaced by pattern matching on union types.
-
-\begin{shadequote}{From the foreword of the book Expert F\#}
-F\# is unique amongst both imperative and declarative languages in that it is the golden middle road where these two extremes converge. F\# takes the best features of both paradigms and tastefully combines them in a highly productive and elegant language that both scientists and developers identify with. F\# makes programmers better mathematicians and mathematicians better programmers.
-\end{shadequote}
 
 
 \newpage
 
 \section{sTranslate}
-sTranslate are a library that are part of a bigger program. The purpose library is to take in a word as an argument and then use a language database to translate the word.\\
+sTranslate are a library that are part of a bigger program. The purpose of the library is to take in a word as an argument and then use a language database to translate the word.\\
 
 The library is written in C\# and contains 2 major functions, one is designed to use when you are only going to translate one word and the other one is designed to be better at translating multiple words. Even though the function works different they have the same inputs and outputs, that means that they do the same thing if you look at it from outside. You can see a illustration of the library in figure \ref{fig:sTranslateWorkings}.\\
 
-Our task from Serit is to take this C\# code and translate it into F\# with 2 different approaches. The first one we translate line for line and make the code the same way that the C\# is coded, the other one is to translate the program the way F\# is meant to be written. After we have translated it we have to a lot of optimizing to make the code better, faster and shorter. Then look at performance, difficulty of programming and all other obvious differences.\\
+Our task from Serit is to take this C\# code and translate it into F\# with 2 different approaches. The first one we translate line by line and make the code the same way that the C\# is coded, the other one is to translate the program the way F\# is meant to be written. After we have translated it we have to do lot of optimizing to make the code better, faster and shorter. Finally, we look at performance, difficulty of programming and all other obvious differences.\\
 
 \begin{figure}[!h]
     \includegraphics[width=0.8\textwidth]{sTranslateWorkings}
@@ -355,7 +352,7 @@ sTranslate library is supposed to be used with both C\# and F\# programs. It is 
     \label{fig:sTranslate_communication}
 \end{figure}
 
-The main part of the library is two functions: toText and getToText, you can see this in figure \ref{fig:sTranslateWorkings}. Both functions do the same thing but there are one major difference in them. In getToText you have to open the language database each time you want a word but in toText the database is cashed so it does not need to reopen the database.\\
+The main part of the library is two functions: toText and getToText, you can see this in figure \ref{fig:sTranslateWorkings}. Both functions do the same thing but there is one major difference in them. In getToText you have to open the language database each time you want a word but in toText the database is cached so it does not need to reopen the database.\\
 
 \newpage
 \subsubsection{Inputs and Outputs}
@@ -373,7 +370,7 @@ sTranslate is taking in 5 inputs:
 	\item \textbf{toLang} the language the library is going to translate to.  examples: no, ge.
 \end{itemize}
 
-sTranslate gives only out one output and that is the translated word. All the inputs have to match up to the row in the database to send the output. In there is no match fromText (the English word) will be sent back as output and if there is two matches in the database only the first one will be sent back.\\
+sTranslate gives only out one output and that is the translated word. All the inputs have to match up to the row in the database to send the output. If there is no match fromText (the English word) will be sent back as output and if there is two matches in the database only the first one will be sent back.\\
 
 
 \newpage
@@ -555,6 +552,20 @@ let GetCachedCollection =
 
 \newpage
 \subsection{Testimonials}
+
+To get a better understanding of how companies could benefit using F\# do we have to look at what experiences programmers and companies have with F\#. The internet contains a lot of testimonials where people write their personal experiences with F\#. Here we have taken some of those testimonials to take a closer look.
+
+\paragraph{Simon Cousins}
+
+Simon is a developer at UK-based Power Company. He uses both C\# and F\# to write his applications. What we can learn from what he have written is that F\# and C\# can be used together. He uses C\# to write the client and server components and F\# to write the calculation engine. This is a really smart usage of both programming languages as he uses the best language to each task.\\
+
+He does also write that he is still waiting for the first bug from a bug to came in from a delivered F\# project and that this is not the case with C\#. Here we can see the effect of the strong type system in the F\# compiler.
+
+\begin{shadequote}{Simon Cousins}
+I have now delivered three business critical projects written in F\#. I am still waiting for the first bug to come in.
+\end{shadequote}
+
+
 
 \newpage
 \subsection{Code examples}
@@ -842,11 +853,11 @@ After analysing the readability and clarity of the F\# programming language we c
 For a person that is new to programming it will take some time to learn programming regardless of the programming language. But F\# can be a good place to start. It can be easy to read and understand simple code from only looking at the code and you don't already have any mindset that can stand in your way of understanding.
 
 \paragraph{Object-oriented}
-A programmer that have background from object-oriented programming languages like C++, C\#, Java and Visual Basic can have a problem getting used to F\#. The reason for this is that F\# is a functional programming language the difference is explaind in section \ref{functVSobject}.
+A programmer that have background from object-oriented programming languages like C++, C\#, Java and Visual Basic can have a problem getting used to F\#. F\# is a functional programming language and works very different to object-oriented language.
 
-\begin{shadequote}{Mikkel Eltervåg}
-After working with an object oriented mindset in programming for several years I found it very difficult to write a good functionally code. Often I went back to old habits and used code written in a object oriented way when there were much better ways to do it functionally.
-\end{shadequote}
+%\begin{shadequote}{Mikkel Eltervåg}
+%After working with an object oriented mindset in programming for several years I found it very difficult to write a good functionally code. Often I went back to old habits and used code written in a object oriented way when there were much better ways to do it functionally.
+%\end{shadequote}
 
 \paragraph{Dynamical typed}
 Python and Ruby are examples of dynamical typed languages. Those languages have a similar syntax to F\# but they are works a little different in how it is typed. It can be easier for programmers that are used to dynamical typed programming languages to learn F\# than it is for programmers with object-oriented background.  
@@ -901,6 +912,10 @@ Carnegie Mellon School of Computer Science\\
 Antonio Cisternino, Adam Granicz and Don Syme,
 \textit{Expert F}, 
 2007
+
+\bibitem{fsharporg} 
+F\# Software Foundation\\
+\emph{http://fsharp.org/testimonials/}
 
 
  
