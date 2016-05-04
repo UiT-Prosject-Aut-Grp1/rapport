@@ -71,6 +71,10 @@
 \usepackage{graphicx}
 \graphicspath{{img/}}
 
+\usepackage{float}
+
+\usepackage{tikz}
+
 \usepackage[utf8]{inputenc}
 
 % Package to import PDF documents (for page2)
@@ -140,12 +144,30 @@ Automation \vspace{5mm}\\
 
 %Page 2 from PDF
 \includepdf[pages=-]{page2.pdf}
+\newpage
+
+
+\makebox{\vbox to 0pt{\hfill
+\makebox{\includegraphics[height=2.5cm]{LogoEngelsk}}}}
+
+\textbf{\Large Project rapport - Page 2}\\
+
+\textbf{Universitetet i Tromsø}\\
+\textbf{Institutt for ingeniørvitenskap og sikkerhet}\\
+\textbf{9037 TROMSØ}\\
+
+\begin{tabular}{ |p{8cm}|p{4cm}|  }
+ \hline
+ lol&lol\\
+ \hline
+\end{tabular}
+
 
 \newpage
 \section*{Summary}
 This report is written by 3 students from the final year in the Automation class at “UiT: University of Tromsø - Arctic university of Norway”.\\
 
-The assignment is given by a company named Serit - IT Partner from Tromsø. They wanted us to identify the benefits, flaws and our experience from learning a new programming language called F\#. Today Serit mostly uses the famous programming language C\# which is currently widely used around the world. The time spent writing code and debugging, and the stability in these languages is very valuable.
+The assignment is given by a company named Serit IT Partner from Tromsø. They wanted us to identify the benefits, flaws and our experience from learning a new programming language called F\#. Today Serit mostly uses the famous programming language C\# which is currently widely used around the world. The time spent writing code and debugging, and the stability in these languages is very valuable.
 
 \newpage
 \section*{Preface}
@@ -167,7 +189,9 @@ One of the biggest problems in modern application development is the rapidly gro
 
 The imperative object-oriented programming paradigm has been dominant in software development for over 20 years. In the imperative paradigm the state variables will be handled explicitly, which can quickly give too much complexity. The functional programming paradigm has been known since the 1930’s, but has not been popular with professional developers because of the slightly lower (single core) performance and greater resource use. Today these obstacles are long gone, and functional programming is experiencing a new renaissance due to significantly better control over complexity and parallelism.\\
 
-We've received an assignment from Serit to translate parts of an existing project from C\# code to F\# code. C\# is meant to be a simple, modern, flexible and object oriented programming language. It is developed and maintained by Microsoft and is inspired by previous popular object-oriented languages like C++ and Java. F\# is a hybrid language that supports both the familiar object-oriented method and functional programming. F\# is also developed by Microsoft, and like C\# also has access to Microsoft’s .NET framework. Serit wants us to find out the benefits of  switching from the programming language C\# development to F\#.\\
+%We've received an assignment from Serit to translate parts of an existing project from C\# code to F\# code.
+C\# is meant to be a simple, modern, flexible and object oriented programming language. It is developed and maintained by Microsoft and is inspired by previous popular object-oriented languages like C++ and Java. F\# is a hybrid language that supports both the familiar object-oriented method and functional programming. F\# is also developed by Microsoft, and like C\# also has access to Microsoft’s .NET framework. 
+%Serit wants us to find out the benefits of  switching from the programming language C\# development to F\#.\\
 
 \newpage
 \subsection{Problem for discussion}
@@ -554,7 +578,7 @@ let GetCachedCollection =
 \newpage
 \subsection{Testimonials}
 
-To get a better understanding of how companies could benefit using F\# do we have to look at what experiences programmers and companies have with F\#. The internet contains a lot of testimonials where people write their personal experiences with F\#. Here we have taken some of those testimonials to take a closer look.
+To get a better understanding of how companies could benefit using F\# do we have to look at what experiences programmers and companies have with F\#. The internet contains a lot of testimonials where people write their personal experiences with F\#. It is important to note that those companies have already done the choice of using F\# in their applications. This means that they have found F\# useful and therefore more likely to talk possessively about the language. Here we have taken some of those testimonials to take a closer look.
 
 \paragraph{Simon Cousins}
 
@@ -576,7 +600,18 @@ What we can learn from this is that is really well integrated with the .NET fram
 We would recommend F\# as an additional tool in the kit of any company building software on the .NET stack.
 \end{shadequote}
 
+%\newpage
 
+%\paragraph{Marty Dill}
+
+%\begin{shadequote}{Marty Dill}
+%\end{shadequote}
+
+
+%\paragraph{}
+
+%\begin{shadequote}{}
+%\end{shadequote}
 
 \newpage
 \subsection{Code examples}
