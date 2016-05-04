@@ -475,7 +475,21 @@ A private variable is declared whose purpose it is to hold the contents of the d
 
 \begin{figure}[!h]
 \begin{lstlisting}
-Insert code here!!!
+private static List<Model.Translation> _translateColl = null; 
+public static List<Model.Translation> GetTranslations(bool reRead = false)
+{
+    if (_translateColl == null || reRead == true)
+    {
+        using (var ctx = new Model.TranslationEntities())
+        {
+            _translateColl = (from xl in ctx.Translation select xl).ToList();
+            if (_translateColl == null)
+                _translateColl = new List<Model.Translation>();
+            return _translateColl;
+        }
+    }
+    return _translateColl;
+}
 \end{lstlisting}
 \caption{C\# version of the GetTranslations function}
 \end{figure}
@@ -488,7 +502,15 @@ The imperative version retained the functionality of the C\# version. The functi
 
 \begin{figure}[!h]
 \begin{lstlisting}
-Insert code here!!!
+let mutable _translateColl : List<Translation> = []
+let GetTranslations (reRead : bool) =
+    if _translateColl = [] || reRead = true then
+        use db = dbSchema.GetDataContext(Settings.ConnectionStrings.DbConnectionString)
+        _translateColl <- 
+        query {
+            for xl in db.Translation do 
+                select xl
+        } |> Seq.toList |> List.map toTranslation
 \end{lstlisting}
 \caption{Direct translation of the code}
 \end{figure}
@@ -501,7 +523,12 @@ The functional version gets rid of the mutable value alltogether. The \code{GetT
 
 \begin{figure}[!h]
 \begin{lstlisting}
-Insert code here!!!
+let GetTranslations =
+    use db = dbSchema.GetDataContext(Settings.ConnectionStrings.DbConnectionString)
+    query {
+        for row in db.Translation do 
+            select row
+    } |> Seq.toList |> List.map toTranslation 
 \end{lstlisting}
 \caption{Refactored to functional code}
 \end{figure}
