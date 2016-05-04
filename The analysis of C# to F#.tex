@@ -471,7 +471,7 @@ For a complete study of the different versions of the sTranslate program, the co
 \newpage
 
 \subsubsection{C\# code}
-A private variable is declared whose purpose it is to hold the contents of the database when the user calls the \code{toText} function. This variable is visible to all functions inside the \code{XltTool} class, but not to external users of the class. The \code{GetTranslations} function both mutates the \code{_translateColl} variable, and has it as a return value. Since the function is public, this makes the contents of \code{_translateColl} accessible to users. The \code{GetTranslations} function will open and read the database if either the \code{_translateColl} variable is empty, or the user has specified that it wants to read the database again.
+A private variable is declared whose purpose it is to hold the contents of the database when the user calls the \code{toText} function. This variable is visible to all functions inside the \code{XltTool} class, but not to external users of the class. The \code{GetTranslations} function both mutates the \code{\_translateColl} variable, and has it as a return value. Since the function is public, this makes the contents of \code{\_translateColl} accessible to users. The \code{GetTranslations} function will open and read the database if either the \code{\_translateColl} variable is empty, or the user has specified that it wants to read the database again.
 
 \begin{figure}[!h]
 \begin{lstlisting}
