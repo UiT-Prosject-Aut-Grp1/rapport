@@ -428,7 +428,9 @@ sTranslate gives only one output, which is the translated phrase (a string). All
 \newpage
 
 \subsection{Solution}
-There are two ways of translating code, the first one is to directly translate the program and the other is to translate it how it should be written in the new language. Here we look at both, the direct translation and the more functional approach and consider pros and cons of the methods.
+When porting code from C\# to F\# there are two ways of refactoring the code into being functional. The first is to translate the C\# code directly to F\#, almost line by line, and then refactor the F\# imperative code into functional code. The second way is to use the functional programming tools in C\# to refactor the program, and then translating that to F\#. We chose to use the first method.\\
+
+In the figures below, we show an extremely simple code example of translating a piece of C\# code to F\# using an iterative approach. First the code is translated directly, then the \code{if-then-else} construct is replaced by pattern matching to make it more functional. It is important to remember that for such a simple code, the \code{if} construct would actually work fine in F\# (see figure \ref{fig:directTranslationIf}). This is because \code{if} constructs work a little different in F\#: The entire if is itself an expression, and both (or all) conditional branches must evaluate to the same type. In this case, writing to the console evaluates to \code{unit()}. Since both branches evaluate to \code{unit()}, the expression is valid. Similarly, when using pattern matching for control flow as in figure \ref{fig:functionalApproachIf}, all patterns must evaluate to the same type, and just like \code{Console.WriteLine}, the \code{printfn} function evaluates to \code{unit()}.
 
 \begin{figure}[!h]
 \begin{lstlisting}
@@ -464,30 +466,46 @@ match a with
 \label{fig:functionalApproachIf}
 \end{figure}
 
+For a complete study of the different versions of the sTranslate program, the complete libraries with comments are documented in attachments (insert ref later). In this chapter, we will be taking a closer look at one part of the program, which is the part that reads the database and provides a list that another function can use to perform the search.
+
 \newpage
 
-\subsubsection{Direct translation}
-The direct translation is maybe the most easy and the fastest method to translate the program. But it might have more flaws and result in worse performance to use this approach. Below examples are presented that show the direct translation.
+\subsubsection{C\# code}
+A private variable is declared whose purpose it is to hold the contents of the database when the user calls the \code{toText} function. This variable is visible to all functions inside the \code{XltTool} class, but not to external users of the class. The \code{GetTranslations} function both mutates the \code{_translateColl} variable, and has it as a return value. Since the function is public, this makes the contents of \code{_translateColl} accessible to users. The \code{GetTranslations} function will open and read the database if either the \code{_translateColl} variable is empty, or the user has specified that it wants to read the database again.
 
 \begin{figure}[!h]
 \begin{lstlisting}
 Insert code here!!!
 \end{lstlisting}
-\caption{Direct translation code}
+\caption{C\# version of the GetTranslations function}
 \end{figure}
 
 \newpage
 
 
-\subsubsection{Functional approach}
-The functional approach is the more proper way to do it but it can take longer time and be harder to do if the person is not fluent in the new language. The benefits can be better performance, less bugs and more readable code. Below examples are presented that show the functional approach.
+\subsubsection{F\# imperative version}
+The imperative version retained the functionality of the C\# version. The function is called and makes changes to a mutable value, and also returns that value to the caller. Note that we are still using mutable values even if we are working with F\#.
 
 \begin{figure}[!h]
 \begin{lstlisting}
 Insert code here!!!
 \end{lstlisting}
-\caption{Functional approach code}
+\caption{Direct translation of the code}
 \end{figure}
+
+\newpage
+
+
+\subsubsection{F\# functional version}
+The functional version gets rid of the mutable value alltogether. The \code{GetTranslations} function uses the \code{FSharp.Data.TypeProviders} library, which gives typed access to the tables of the database. The Type Provider handles caching of the database automatically, so we can get rid of the “storage variable” that was used in the imperative version. The \code{GetTranslations} expression is evaluated once when it is needed, and then the data is there, ready to be used until the program ends.
+
+\begin{figure}[!h]
+\begin{lstlisting}
+Insert code here!!!
+\end{lstlisting}
+\caption{Refactored to functional code}
+\end{figure}
+
 
 \newpage
 
@@ -521,82 +539,6 @@ Here is a short outline on how many files and lines each project got:\\
  F\# functional style & 145 & 2 & 1\\
  \hline
 \end{tabular}
-
-\newpage
-\subsection{A closer look at our code}
-Let’s take a closer look to some code examples and how they are different from each other. We are first gonna look at the GetTranslations function and how it’s done in the different methods.\\
-
-\subsubsection{C\# code}
-If we take a look at figure \ref{fig:GetTranslationsCSharp} this is how the code looks like in the C\# project. 
- 
-\begin{figure}[!h]
-\begin{lstlisting}
-private static List<Model.Translation> _translateColl = null; 
-public static List<Model.Translation> GetTranslations(bool reRead = false)
-{
-    if (_translateColl == null || reRead == true)
-    {
-        using (var ctx = new Model.TranslationEntities())
-        {
-            _translateColl = (from xl in ctx.Translation select xl).ToList();
-            if (_translateColl == null)
-                _translateColl = new List<Model.Translation>();
-            return _translateColl;
-        }
-    }
-    return _translateColl;
-}
-\end{lstlisting}
-\caption{GetTranslations function in C\#}
-\label{fig:GetTranslationsCSharp}
-\end{figure}
-
-\newpage
-
-\subsubsection{F\# imperative}
-The imperative version retained the functionality of the C\# version. The function is called and makes changes to a mutable value, and does not return anything. The search function must refer to the variable \_ translateColl to do the searching. We can see the code from the F\# imperative in figure \ref{fig:GetTranslationsFSharpImperative} below.
-
-\begin{figure}[!h]
-\begin{lstlisting}
-let mutable _translateColl : List<Translation> = []
-let GetTranslations (reRead : bool) =
-    if _translateColl = [] || reRead = true then
-        use db = dbSchema.GetDataContext(Settings.ConnectionStrings.DbConnectionString)
-        _translateColl <- 
-        query {
-            for xl in db.Translation do 
-                select xl
-        } |> Seq.toList |> List.map toTranslation
-
-\end{lstlisting}
-\caption{GetTranslations function in F\# imperative}
-\label{fig:GetTranslationsFSharpImperative}
-\end{figure}
-
-\newpage
-
-\subsubsection{F\# functional}
-The functional version of this part of the program was split into two functions. A mutable value is still used, but both functions return a list of database rows for the search function to use. As a further refinement, it is possible to drop the \_ translateColl mutable and the GetCachedCollection. This is because a let binding in F\# is by default static and will always have the same value (unless it’s bound to a different value). So once it has gotten the rows from the database and turned it into a list, it will be there on demand until the program ends. We can see how we did this in figure \ref{fig:GetTranslationsFSharpFunctional} below.
-
-\begin{figure}[!h]
-\begin{lstlisting}
-let mutable _translateColl : List<Translation> = []
-
-let GetTranslations =
-    use db = dbSchema.GetDataContext(Settings.ConnectionStrings.DbConnectionString)
-    query {
-        for row in db.Translation do 
-            select row
-    } |> Seq.toList |> List.map toTranslation 
-
-let GetCachedCollection =
-    if _translateColl = [] then
-        _translateColl <- GetTranslations
-    _translateColl
-\end{lstlisting}
-\caption{GetTranslations function in F\# functional}
-\label{fig:GetTranslationsFSharpFunctional}
-\end{figure}
 
 \newpage
 
