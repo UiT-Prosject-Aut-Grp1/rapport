@@ -6,8 +6,12 @@
 \usepackage{etoolbox}
 \usepackage[svgnames]{xcolor}
 
-\usepackage{tikz}
 
+
+\usepackage{lastpage}
+
+\usepackage{tikz}
+\usepackage{pbox}
 \usepackage{framed}
 
 % conditional for xetex or luatex
@@ -85,7 +89,7 @@
 
 % Package to use tables
 \usepackage{tabularx}
-
+\usepackage{booktabs}
 
 
 % No indent at pargagraph
@@ -159,35 +163,50 @@ Automation \vspace{5mm}\\
 \textbf{Institutt for ingeniørvitenskap og sikkerhet}\\
 \textbf{9037 TROMSØ}\\
 
-\begin{tabular}{ |p{(\textwidth / 10)*7}|p{(\textwidth / 10)*3}|  }
- \hline
- \textbf{Study:} Automation&\textbf{Year:} 2016\\
- \hline
-\end{tabular}\\
-
-\begin{tabular}{ |p{(\textwidth / 10)*7}|p{(\textwidth / 10)*3}|  }
+\begin{tabularx}{\textwidth}{|p{9cm}|X|}
  	\hline
- 	\vspace{1mm}
- 	\textbf{Title:}\\
- 	The analysis of C\# to F\#\vspace{5mm}
+ 	\pbox{\textwidth}{
+ 		\vspace{1mm}
+ 		\textbf{Study:} Automation
+	} 
+ 	&
+ 	\pbox{\textwidth}{
+ 		\vspace{1mm}
+ 		\textbf{Year:} 2016
+	}
+	\\
+ \hline
+\end{tabularx}\\
+
+\begin{tabularx}{\textwidth}{|p{9cm}|X|}
  	
- 	\textbf{Authors:}
- 	\begin{itemize}
- 		\item Jostein Andreassen
- 		\item Michael Blomli
- 		\item Mikkel Eltervåg
- 	\end{itemize}
-	 	
+ 	\hline
+ 	\parbox[t]{\textwidth}{
+ 		\vspace{1mm}
+ 		\textbf{Title:}\\
+ 		The analysis of C\# to F\#\\[2mm]
+ 		\textbf{Authors:}\\
+ 		Jostein Andreassen\\
+ 		Michael Blomli\\
+ 		Mikkel Eltervåg
+ 		
+	}
  	
  	&
- 	\vspace{1mm} 	
- 	\textbf{Date:} May 12th
- 	\textbf{Date:} May 12th
- 	\textbf{Date:} May 12th
- 	\textbf{Date:} May 12th
- 	\textbf{Date:} May 12th\\
+ 	\parbox[t]{\textwidth}{
+ 		\vspace{1mm}
+ 		\textbf{Date:}\\
+ 		May 12th\\[2mm]
+ 		\textbf{Grading:}\\ 
+ 		Open\\[2mm]
+ 		\textbf{Pages:}\\
+ 		\pageref{LastPage} \\[2mm]
+ 		\textbf{Attachments:}\\
+ 		4\\
+	}
+ 	\\
  	\hline
-\end{tabular}\\
+\end{tabularx}\\
 
 
 \newpage
