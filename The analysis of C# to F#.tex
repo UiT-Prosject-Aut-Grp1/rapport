@@ -206,14 +206,59 @@ Automation \vspace{5mm}\\
 	}
  	\\
  	\hline
-\end{tabularx}\\
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{|X|}
+\pbox{\textwidth}{
+\vspace{1mm}
+\textbf{Mentor:}\\
+Puneet Sharma
+\vspace{1mm}
+}
+\\
+\hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{|X|X|}
+ 	\pbox{\textwidth}{
+ 		\vspace{1mm}
+ 		\textbf{Contracting entity:}\\
+ 		Serit IT Partner Tromsø
+ 		\vspace{1mm}
+	} 
+ 	&
+ 	\pbox{\textwidth}{
+ 		\vspace{1mm}
+ 		\textbf{Contact person:}\\
+ 		Jonas Juselius
+ 		\vspace{1mm}
+	}
+	\\
+ \hline
+\end{tabularx}\\[2mm]
+
+
+
+\begin{tabularx}{\textwidth}{|X|}
+\hline
+\pbox{\textwidth}{
+\vspace{1mm}
+\textbf{Summary:}\\
+Puneet Sharma
+\vspace{1mm}
+}
+\\
+\hline
+
+\hline
+\end{tabularx}
 
 
 \newpage
 \section*{Summary}
 This report is written by 3 students from the final year in the Automation class at “UiT: University of Tromsø - Arctic university of Norway”.\\
 
-The assignment is given by a company named Serit IT Partner from Tromsø. They wanted us to identify the benefits, flaws and our experience from learning a new programming language called F\#. Today Serit mostly uses the famous programming language C\# which is currently widely used around the world. The time spent writing code and debugging, and the stability in these languages is very valuable. Serit IT Partner wanted us to test out if a change of main programming language from C# to F# would have an impact on time spent on coding, reduce the number of lines of code and would improve stability.\\
+The assignment is given by a company named Serit IT Partner from Tromsø. They wanted us to identify the benefits, flaws and our experience from learning a new programming language called F\#. Today Serit mostly uses the famous programming language C\# which is currently widely used around the world. The time spent writing code and debugging, and the stability in these languages is very valuable. Serit IT Partner wanted us to test out if a change of main programming language from C\# to F\# would have an impact on time spent on coding, reduce the number of lines of code and would improve stability.\\
 
 We found that we could clearly see a difference regarding the numbers of lines of code and the performance in the application that was given to us. Indeed, F\# is better (or perhaps, more convenient) than C\# in some cases. F\# is a programming language which is very good at handling large amounts of data, and is also good with concurrency (dealing with multiple things at the same time). Due to the nature of the language, large operations on data can be broken down into smaller tasks and calculations can be made without fear of unintended side effects.\\
 
@@ -339,7 +384,7 @@ There are four main differences between F\# and a standard imperative language s
 In F\#, functions are First-Class Citizens. This means that functions can be passed as arguments, returned from functions, and assigned to values. Composition is the technique of making basic functions, then functions that use those functions, and so on. Functional code is by it’s nature high level and declarative.
 
 \paragraph{Expressions}
-In functional languages, there are no statements, only expression. Every code chunk must always return a value. Rather than using a list of statements that are executed in order, larger chunks of code are created by combining smaller chunks. There are no such thing as unassigned values, they must be assigned to when declared. Every possible branch of a control flow construct must be explicitly handled and must also return the same value. This makes code built from expressions safer than code using statements.
+In functional languages, there are no statements, only expression. Every code chunk must always return a value. Rather than using a list of statements that are executed in order, larger chunks of code are created by combining smaller chunks. There are no such thing as unassigned values, they must be assigned to when declared. Every possible branch of a control flow construct must be explicitly handled and must also return the same type. This makes code built from expressions safer than code using statements.
 
 \paragraph{Algebraic types}
 In F\#, new compound types are built by combining existing types in two different ways. First, a combination of values from a set of types. These are called product types, and are similar to structs or record types from other languages. Second, a disjoint union, representing a choice of types. These are called sum types.
@@ -453,7 +498,11 @@ sTranslate gives only one output, which is the translated phrase (a string). All
 \subsection{Solution}
 When porting code from C\# to F\# there are two ways of refactoring the code into being functional. The first is to translate the C\# code directly to F\#, almost line by line, and then refactor the F\# imperative code into functional code. The second way is to use the functional programming tools in C\# to refactor the program, and then translating that to F\#. We chose to use the first method.\\
 
-In the figures below, we show an extremely simple code example of translating a piece of C\# code to F\# using an iterative approach. First the code is translated directly, then the \code{if-then-else} construct is replaced by pattern matching to make it more functional. It is important to remember that for such a simple code, the \code{if} construct would actually work fine in F\# (see figure \ref{fig:directTranslationIf}). This is because \code{if} constructs work a little different in F\#: The entire if is itself an expression, and both (or all) conditional branches must evaluate to the same type. In this case, writing to the console evaluates to \code{unit()}. Since both branches evaluate to \code{unit()}, the expression is valid. Similarly, when using pattern matching for control flow as in figure \ref{fig:functionalApproachIf}, all patterns must evaluate to the same type, and just like \code{Console.WriteLine}, the \code{printfn} function evaluates to \code{unit()}.
+In the figures below, we show an extremely simple code example of translating a piece of C\# code to F\# using an iterative approach. First the code is translated directly, then the \code{if-then-else} construct is replaced by pattern matching to make it more functional. It is important to remember that for such a simple code, the \code{if} construct would actually work fine in F\# (see figure \ref{fig:directTranslationIf}). This is because \code{if} constructs work a little different in F\#: The entire if is itself an expression, and both (or all) conditional branches must evaluate to the same type. In this case, writing to the console evaluates to \code{unit()}. Since both branches evaluate to \code{unit()}, the expression is valid. Similarly, when using pattern matching for control flow as in figure \ref{fig:functionalApproachIf}, all patterns must evaluate to the same type, and just like \code{Console.WriteLine}, the \code{printfn} function evaluates to \code{unit()}.\\
+
+For a complete study of the different versions of the sTranslate program, the complete libraries with comments are documented in attachments (insert ref later). In this chapter, we will be taking a closer look at one part of the program, which is the part that reads the database and provides a list that another function can use to perform the search.
+
+\newpage
 
 \begin{figure}[!h]
 \begin{lstlisting}
@@ -489,7 +538,7 @@ match a with
 \label{fig:functionalApproachIf}
 \end{figure}
 
-For a complete study of the different versions of the sTranslate program, the complete libraries with comments are documented in attachments (insert ref later). In this chapter, we will be taking a closer look at one part of the program, which is the part that reads the database and provides a list that another function can use to perform the search.
+
 
 \newpage
 
