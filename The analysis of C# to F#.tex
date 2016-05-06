@@ -197,7 +197,7 @@ Automation \vspace{5mm}\\
  		\vspace{1mm}
  		\textbf{Date:}\\
  		May 12th\\[2mm]
- 		\textbf{Grading:}\\ 
+ 		\textbf{Classification:}\\ 
  		Open\\[2mm]
  		\textbf{Pages:}\\
  		\pageref{LastPage} \\[2mm]
@@ -235,20 +235,29 @@ Puneet Sharma
 	}
 	\\
  \hline
-\end{tabularx}\\[2mm]
+\end{tabularx}\\[3mm]
 
 
 
 \begin{tabularx}{\textwidth}{|X|}
 \hline
-\pbox{\textwidth}{
+\pbox{\linewidth}{
 \vspace{1mm}
 \textbf{Summary:}\\
-Puneet Sharma
+In this report do we an analysis of a new programming language called F\#. This analysis is written for Serit IT Partner  to look at the possibility that F\# can be a replacement for the programming language they are using today that is C\#.\\[2mm]
+To help us write this analysis we have translated and optimized a program that Serit have written. This is to get an understanding of the benefits and drawbacks of changing from C\# to F\#. We have also looked at code examples that others have written and looked at what experiences that company's that already have changed language has.\\[2mm]
+Our conlution is that F\# should not completely replace C\# as their main programming language. F\# should be used together with C\# to get the benefits of both languages. 
 \vspace{1mm}
 }
 \\
 \hline
+\pbox{\linewidth}{
+\vspace{1mm}
+\textbf{Keywords:}\\
+F\#, C\#, Functional programming, analysis, programming, SQL
+\vspace{1mm}
+}
+\\
 
 \hline
 \end{tabularx}
@@ -1036,8 +1045,18 @@ F\# Software Foundation\\
 \end{thebibliography}
 \newpage
 
-\section{Attachments}
+\appendix
+\section{Appendices}	
+\subsection{sTranslate from Serit (C\#)}
+\lstinputlisting{code/sTranslate.cs}
 
+\subsection{sTranslate Direct from Serit (F\#)}
+\lstinputlisting{code/sTranslate_direct.fs}
 
+\subsection{sTranslate from Serit (C\#)}
+\lstinputlisting{code/sTranslate_fs.fs}
+
+\subsection{sTranslate from Serit (C\#)}
+\lstinputlisting{code/sTranslate_paralell.fs}
 
 \end{document}
