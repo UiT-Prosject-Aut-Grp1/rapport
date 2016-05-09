@@ -150,8 +150,8 @@ Automation \vspace{5mm}\\
 \newpage
 
 %Page 2 from PDF
-\includepdf[pages=-]{page2.pdf}
-\newpage
+%\includepdf[pages=-]{page2.pdf}
+%\newpage
 
 
 \makebox{\vbox to 0pt{\hfill
@@ -464,7 +464,7 @@ The library is written in C\# and contains two major functions, one is designed 
 Our task from Serit is to take this C\# code and translate it into F\# with two different approaches. The first one we translate line for line and program in an imperative style, the same way that the C\# program is coded. The other one is to refactor the program to a more functional approach, the way F\# is meant to be written. After we have translated it we have to do look at how we can optimize the code to improve performance and readability while reducing the number of lines of code. Finally we will compare and analyze it against C\# and look at performance, difficulty of programming and all other obvious differences.\\
 
 \begin{figure}[!h]
-    \includegraphics[width=0.8\textwidth]{sTranslateWorkings}
+    \includegraphics[width=0.7\textwidth]{sTranslateWorkings}
     \centering
     \caption{sTranslate library illustrated.}
     \label{fig:sTranslateWorkings}
@@ -509,18 +509,16 @@ When porting code from C\# to F\# there are two ways of refactoring the code int
 
 In the figures below, we show an extremely simple code example of translating a piece of C\# code to F\# using an iterative approach. First the code is translated directly, then the \code{if-then-else} construct is replaced by pattern matching to make it more functional. It is important to remember that for such a simple code, the \code{if} construct would actually work fine in F\# (see figure \ref{fig:directTranslationIf}). This is because \code{if} constructs work a little different in F\#: The entire if is itself an expression, and both (or all) conditional branches must evaluate to the same type. In this case, writing to the console evaluates to \code{unit()}. Since both branches evaluate to \code{unit()}, the expression is valid. Similarly, when using pattern matching for control flow as in figure \ref{fig:functionalApproachIf}, all patterns must evaluate to the same type, and just like \code{Console.WriteLine}, the \code{printfn} function evaluates to \code{unit()}.\\
 
-<<<<<<< HEAD
 For a complete study of the different versions of the sTranslate program, the complete libraries with comments are documented in attachments (insert ref later). In this chapter, we will be taking a closer look at one part of the program, which is the part that reads the database and provides a list that another function can use to perform the search.
 
 \newpage
-=======
 For a complete study of the different versions of the sTranslate program, the complete libraries with comments are documented in attachments (insert ref later). In this chapter, we will first be taking a closer look at one part of the program, which is the part that reads the database and provides a list that another function can use to perform the search. Finally we will examine some parts of the final F\# program and see how and why it differs from the C\# program.
 
 \newpage
 
 \subsubsection{Code examples}
 In the figures below are shown code chunks with identical functionality, one written in C\# and two different ways of doing it in F\#. 
->>>>>>> 12e676bfae4c0c08669cbe6205556b7b1db5c936
+
 
 \begin{figure}[!h]
 \begin{lstlisting}
@@ -556,11 +554,7 @@ match a with
 \label{fig:functionalApproachIf}
 \end{figure}
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 12e676bfae4c0c08669cbe6205556b7b1db5c936
 \newpage
 
 \subsubsection{C\# code}
@@ -699,18 +693,30 @@ What we can learn from this is that is really well integrated with the .NET fram
 We would recommend F\# as an additional tool in the kit of any company building software on the .NET stack.
 \end{shadequote}
 
-%\newpage
+\newpage
 
-%\paragraph{Marty Dill}
+\paragraph{Jan Erik Ekelof}
 
-%\begin{shadequote}{Marty Dill}
-%\end{shadequote}
+Jan Erik is Head IT-architect and lead developer at Handelsbanken. In 2009 he got the mission to implement a Real-time Counter-party Risk system. Their plan was to write the program in C\#, but they did a small proof-of-concept with F\#. When using F\# they got a significant productivity boost and now they have moved almost entirely into F\#.\\
+
+In one example application they wrote contains 35 000 to 40 000 lines of F\# code and an equal amount of C\# code. They found that at least 80\% of the functionality was in the F\# part of the application.\\
+
+This shows how much more compact an C\# application can get when translated into F\#. Less code tend to lead to shorter development time, less bugs and easier readability. 
+
+\begin{shadequote}{Jan Erik Ekelof}
+Our experience shows us that the number of code lines shrinks with a ratio of 1/2 to 1/4 by just porting functionality from C\# to F\#.
+\end{shadequote}
 
 
-%\paragraph{}
+\paragraph{Employee at Bayard Rock}
 
-%\begin{shadequote}{}
-%\end{shadequote}
+Bayard Rock is a company where they are trying to finding new approaches towards anti-money-laundering. Before they adopted F\# there where often months of turnaround time between development of an idea and actually testing. Now that they are using F\# they can often see their ideas come to life in just days.\\
+
+They find that this makes them really competitive in their field. Being one of the first to try out new technology can be risky but often with high reward. For Bayard Rock this have really beneficial, they can deliver projects faster and cheaper than their competitors and therefore corner the market.
+
+\begin{shadequote}{Employee at Bayard Rock}
+The benefits of functional programming have given us a great advantage over our slow moving competitors. Little do they know that it’s largely thanks to our secret weapon, F\#.
+\end{shadequote}
 
 \newpage
 \subsection{Code examples}
@@ -1018,6 +1024,25 @@ Programmers that have background from functional languages like Haskell, OCaml o
 \newpage
 \subsection{Debugging and error handling}
 \subsection{Performance}
+
+\newpage
+\subsection{Economic aspects}
+
+To be one of the first to try out new technology can be a high risk high reward scenario. Even though F\# is a relativity new programming language it have been tried out with success multiple of times.\\
+
+Changing programming language can be a costly a affair but in the long run it can be really beneficial and sometimes even necessary to survive in the marked. Here we look at the pros and cons of changing language in a economic aspect.
+
+\paragraph{Training employees}
+Learning a new programming language can take a lot of time from where the programmers could be making applications that generate income. This is especially true when it comes to F\# if the programmers is not used to functionally programming beforehand. Programmers time is really valuable and shod therefore be used wisely. 
+
+\paragraph{Recruiting new employees}
+In some parts of the word it can be hard to find and recruit new employees with programming background. In Tromsø, Norway where Serit IT Partner have their office is there specially hard to find good experienced programmers. Since F\# is a new language, it will be very difficult to find new programmers that don't need training before they start working. This can make changing language costly especially if the company needs to expand.
+
+\paragraph{Development time}
+
+\paragraph{Customer satisfaction}
+
+
 \newpage
 
 \section{Conclusion}
