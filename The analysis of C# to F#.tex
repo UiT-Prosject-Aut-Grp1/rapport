@@ -648,6 +648,7 @@ We realised that everytime we went ack to the written code, improvements could b
 
 For Michael, the biggest struggle of this experience was that he kept finding himself getting back in think in object-oriented “thinking”. It's hard to think in a more functional approach.\\
 \subsubsection{Lines of code}
+\label{linesOfCode}
 When it breaks down to how many lines of code there is in each project we can right away see big differences.\\
 
 Here is a short outline on how many files and lines each project got:\\
@@ -666,9 +667,8 @@ Here is a short outline on how many files and lines each project got:\\
 
 \newpage
 
-\section{Online research}
+\section{Additional research}
 
-\newpage
 \subsection{Testimonials}
 
 To get a better understanding of how companies could benefit using F\# do we have to look at what experiences programmers and companies have with F\#. The internet contains a lot of testimonials where people write their personal experiences with F\#. It is important to note that those companies have already done the choice of using F\# in their applications. This means that they have found F\# useful and therefore more likely to talk possessively about the language. Here we have taken some of those testimonials to take a closer look.
@@ -839,7 +839,6 @@ This is a good example to show how easy things can be done in F\#.
 \section{Complete analysis}
 In this chapter we will take a look at the complete analysis of the previous chapters. 
 
-\subsection{F\# compared to C\#}
 
 \subsection{Development time}
 
@@ -1039,9 +1038,16 @@ Learning a new programming language can take a lot of time from where the progra
 In some parts of the word it can be hard to find and recruit new employees with programming background. In Tromsø, Norway where Serit IT Partner have their office is there specially hard to find good experienced programmers. Since F\# is a new language, it will be very difficult to find new programmers that don't need training before they start working. This can make changing language costly especially if the company needs to expand.
 
 \paragraph{Development time}
+Time equals money, if a programmer can write a application in less time that can help a company save a lot of money. One major selling point for F\# is that you can write applications with much less code. This can save programmers huge amount of time and in extension save a company for a lot of money.
 
 \paragraph{Customer satisfaction}
+Costumers pay a high price for quality and shorter delivery time. In programming quality often refer the speed of the program and lack of bugs. From what we have found both from our code and research, can we see that F\# does this exceptionally well. This and what we can see from development time can lead to a very high customer satisfaction.
 
+\newpage
+\subsubsection{Conclusion economic aspects}
+The two main economic problems of switching programming language from C\# to F\# is training employees and recruiting new employees. Both of those problems can be gone in a long term perspective if F\# becomes popular.\\
+
+F\# does it really well in both saving money in development time and creating good customer satisfaction.  So a company that have the experience in F\# can have a great advantage over competitors that don't convert over to F\#. This means that if F\# becomes popular and more developers learn the language there can be a huge gain for a company that develop in F\#. 
 
 \newpage
 
@@ -1093,17 +1099,40 @@ F\# Software Foundation\\
 \newpage
 
 \appendix
+\scriptsize
 \section{Appendices}	
 \subsection{sTranslate from Serit (C\#)}
-\lstinputlisting{code/sTranslate.cs}
+\subsubsection*{Enums}
+\lstinputlisting{code/sTranslate/Enums.txt}
+\newpage
+\subsubsection*{XltEnums}
+\lstinputlisting{code/sTranslate/XltEnums.txt}
+\newpage
+\subsubsection*{XltTool}
+\lstinputlisting{code/sTranslate/XltTool.txt}
 
-\subsection{sTranslate Direct from Serit (F\#)}
-\lstinputlisting{code/sTranslate_direct.fs}
+\newpage
+\subsection{sTranslate Direct (F\#)}
+\subsubsection*{Enums}
+\lstinputlisting{code/sTranslate_direct/Enums.txt}
+\newpage
+\subsubsection*{XltEnums}
+\lstinputlisting{code/sTranslate_direct/XltEnums.txt}
+\newpage
+\subsubsection*{XltTool}
+\lstinputlisting{code/sTranslate_direct/XltTool.txt}
 
-\subsection{sTranslate from Serit (C\#)}
-\lstinputlisting{code/sTranslate_fs.fs}
+\newpage
+\subsection{sTranslate (F\#)}
+\subsubsection*{XltEnums}
+\lstinputlisting{code/sTranslate_fs/XltEnums.txt}
+\newpage
+\subsubsection*{XltTool}
+\lstinputlisting{code/sTranslate_fs/XltTool.txt}
 
-\subsection{sTranslate from Serit (C\#)}
-\lstinputlisting{code/sTranslate_paralell.fs}
+\newpage
+\subsection{sTranslate Parallel (F\#)}
+\subsubsection*{XltTool}
+\lstinputlisting{code/sTranslate_parallel/XltTool.txt}
 
 \end{document}
