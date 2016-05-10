@@ -620,26 +620,25 @@ let GetTranslations =
 \subsubsection{Detailed look at F\# sTranslate}
 There are a few key points where the functional F\# library differs from the C\# version:
 \begin{itemize}
-	\item The F\# SQL Type Provider is used instead of EntityFramework.
+	\item The F\# SQL Type Provider is used instead of Entity Framework.
 	\item GetToText takes Option string arguments instead of Enums.
 	\item GetTranslations produces an immutable list.
 	\item The ToText function was removed as it was obsolete.
 \end{itemize}
 
-\paragraph{F\# SQL Type Provider} 
+\paragraph{F\# SQL Type Provider} Type providers are the F\# way of accessing external data. They provide types, properties and methods for use in programs. When introducing data sources, they need to be represented in a way that makes sense for the programming language. A common way is to use code generators, but the disadvantage of this is that the generated code must be replaced if the target changes (a column in a database table is removed, added or renamed, for instance). Type providers are written targeting a specific service, for example databases, web resources or spreadsheets. The SQL Type Provider for F\# provides typed access to SQL databases, and when using Visual Studio, even connects to the database in real time when programming. This allows the programmer to explore the database structure by "dotting into" the database objects.
 
-\paragraph{Option type arguments}
+\paragraph{Option type arguments} The C\# version of the program used enumerations to enforce a set of correct arguments for \code{Property} and \code{Criteria}. In the F\# version, the functions perform the same check, but allows the program to continue in the case that a wrong value slipped through the cracks. By using option types, the functions can return a \code{None} value if the enum is not found. It will be up to the caller of the function to figure out what to do with this value. This is checked in the \code{GetToText} function, and if either of the arguments have the None type, the search is cancelled.
 
-\paragraph{Getting the database}
+\paragraph{Getting the database} The \code{GetTranslations} function was changed to an expression that is evaluated exactly once during program execution. It opens a connection to the database and reads the contents of the Translation table. The relevant data is copied into a \code{Translation} data type, and a list is built of all the translations. The \code{reRead} functionality of the C\# program is lost, but it can be safely assumed that the contents of the Translation table will not change during program execution. The data is required to be immutable for the pure functional approach to work.
 
-\paragraph{Removal of obsolete function}
-
+\paragraph{Removal of obsolete function} In the early versions of this program, we had both the \code{ToText} and the \code{GetToText} functions. However, they did the database searches in exactly the same amount of time, both when doing a single search, and doing many. This defeated the purpose of having one function that specialized in doing single searches. It was decided to cut the \code{ToText} function since it was obsolete.
 
 \newpage
 
 
 \subsubsection{Parallel version of sTranslate}
-We made this version of the program just to test out the possibilities of the language. Compared to the regular F\# version of sTranslate, this program ran three times faster on our test computer. Parallel programs gain most speed when it can distribute very time-consuming calculations to multiple processing cores. Since the sTranslate library just performs a database search, a significant amount of the processing power is spent just distributing tasks between the cores. Still, this program showcases how easy and streamlined parallel programming is in F\#. We also refined the syntax and structure of the program and took away unnecessary code to make it more idiomatic F\#.\\
+We made this version of the program just to test out the possibilities of the language. Compared to the regular F\# version of sTranslate, this program ran three times faster on our test computer. Parallel programs gain most speed when it can distribute very time-consuming calculations to multiple processing cores. Since the sTranslate library just performs a database search, a significant amount of the processing power is spent distributing tasks between the cores. Still, this program showcases how easy and streamlined parallel programming is in F\#. We also refined the syntax and structure of the program and took away unnecessary code to make it more idiomatic F\#.\\
 
 The parallel version of sTranslate differs from the regular version in the following ways:
 \begin{itemize}
@@ -647,16 +646,18 @@ The parallel version of sTranslate differs from the regular version in the follo
 	\item The function and value names were changed to \code{camelCase}.
 	\item A high speed data structure to cache the database was used.
 	\item The inputs and outputs were changed to accommodate parallel computing.
+	\item The entire Enum system was removed.
 \end{itemize}
 
-\paragraph{Search type} 
+\paragraph{Search type} We replaced the five input arguments of the regular F\# program with a record type that holds these arguments as members. The type is public so that users of the library can build lists of this type. This is used for the input to the parallel search function. This also helps the readability of the program, since the search function only needs to accept one argument, instead of five.
 
-\paragraph{Function and value names}
+\paragraph{Function and value names} The identifiers for functions and values were changed to \code{camelCase} to conform with the suggested naming conventions for F\# code. Type names and members were left as \code{PascalCase}. The public function GetToTextAsync is also \code{PascalCase}.
 
-\paragraph{FlatList data structure}
+\paragraph{FlatList data structure} The database is copied into a very fast data structure called FlatList. The FlatList is implemented as an array, but unlike arrays, it is an immutable data structure (which we want, to make our program purely functional). Since it is implemented as an array, it is faster than a regular list, except when one needs to append an element to it. Since we always construct the FlatList from a sequence, we don't need fast appending. We only care about iterating through the list and reading the items really fast.
 
-\paragraph{Input and output change}
+\paragraph{Input and output change} As mentioned before, the input arguments to the search function were collected in a record type. The users of the library only have the Search type and the GetToTextAsync function visible to them. The user must aggregate a list of Search items and provide it as input to GetToTextAsync. The output is a list of string which are the translations. The elements of the output list is in exactly the same order as the corresponding searches in the input, even if they might have been computed in a different order.
 
+\paragraph{Removal of Enum module} The Enum checking that was part of the original C\# program didn't feel like proper F\# programming. An invalid search in the database will now simply return the untranslated phrase, just as in the original program. We decided to remove the Enum module and keep all the members of the Search type as strings (and not Enums or option strings) for the sake of simplicity, clarity and speed. If we were to implement a similar feature to the one in the C\# program, we would use discriminated unions.
 
 \newpage
 
