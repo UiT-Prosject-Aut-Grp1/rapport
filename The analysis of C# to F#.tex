@@ -514,7 +514,7 @@ For a complete study of the different versions of the sTranslate program, the co
 \newpage
 
 \subsubsection{Basic code examples}
-In the figures below are shown code chunks with identical functionality, one written in C\# and two different ways of doing it in F\#.
+In the figures below are shown code chunks with identical functionality, one written in C\# and two different ways of doing it in F\#. This is not from the sTranslate program, just a simple demonstration example.
 
 \begin{figure}[!h]
 \begin{lstlisting}
@@ -639,6 +639,24 @@ There are a few key points where the functional F\# library differs from the C\#
 
 
 \subsubsection{Parallel version of sTranslate}
+We made this version of the program just to test out the possibilities of the language. Compared to the regular F\# version of sTranslate, this program ran three times faster on our test computer. Parallel programs gain most speed when it can distribute very time-consuming calculations to multiple processing cores. Since the sTranslate library just performs a database search, a significant amount of the processing power is spent just distributing tasks between the cores. Still, this program showcases how easy and streamlined parallel programming is in F\#. We also refined the syntax and structure of the program and took away unnecessary code to make it more idiomatic F\#.\\
+
+The parallel version of sTranslate differs from the regular version in the following ways:
+\begin{itemize}
+	\item All the search arguments were collected in a type.
+	\item The function and value names were changed to \code{camelCase}.
+	\item A high speed data structure to cache the database was used.
+	\item The inputs and outputs were changed to accommodate parallel computing.
+\end{itemize}
+
+\paragraph{Search type} 
+
+\paragraph{Function and value names}
+
+\paragraph{FlatList data structure}
+
+\paragraph{Input and output change}
+
 
 \newpage
 
