@@ -679,7 +679,7 @@ Simon is a developer at UK-based Power Company. He uses both C\# and F\# to writ
 
 He does also write that he is still waiting for the first bug from a bug to came in from a delivered F\# project and that this is not the case with C\#. Here we can see the effect of the strong type system in the F\# compiler.
 
-\begin{shadequote}{Simon Cousins}
+\begin{shadequote}{Simon Cousins, UK-based Power Company}
 I have now delivered three business critical projects written in F\#. I am still waiting for the first bug to come in.
 \end{shadequote}
 
@@ -689,7 +689,7 @@ Michael is a Senior Developer at a development company named 15below. Historical
 
 What we can learn from this is that is really well integrated with the .NET framework. This makes it really easy to use with the code that the company already have written. That can be really beneficial for Serit IT Partner as their code today is written in C\# that supports .NET. 
 
-\begin{shadequote}{Michael Newton}
+\begin{shadequote}{Michael Newton, 15below}
 We would recommend F\# as an additional tool in the kit of any company building software on the .NET stack.
 \end{shadequote}
 
@@ -703,7 +703,7 @@ In one example application they wrote contains 35 000 to 40 000 lines of F\# cod
 
 This shows how much more compact an C\# application can get when translated into F\#. Less code tend to lead to shorter development time, less bugs and easier readability. 
 
-\begin{shadequote}{Jan Erik Ekelof}
+\begin{shadequote}{Jan Erik Ekelof, Handelsbanken}
 Our experience shows us that the number of code lines shrinks with a ratio of 1/2 to 1/4 by just porting functionality from C\# to F\#.
 \end{shadequote}
 
@@ -837,10 +837,20 @@ This is a good example to show how easy things can be done in F\#.
 
 \newpage
 \section{Complete analysis}
-In this chapter we will take a look at the complete analysis of the previous chapters. 
+
 
 
 \subsection{Development time}
+Development time is the time a programmer takes from he gets the idea to the final product is ready. From a business point of view this is crucial, faster development of a project leads to that the programmer can start on the next project faster.\\
+
+Here we look on how the development time in F\# compares to C\# and what the reason might be. To analyse this we have used both our own experiences from development in the two languages and what we have found by researching what other company's have experienced.\\
+
+\paragraph{Code length}
+
+From what we have discussed in n
+
+\paragraph{F\# interactive}
+
 
 \newpage
 \subsection{Readability and clarity}
@@ -1102,37 +1112,37 @@ F\# Software Foundation\\
 \scriptsize
 \section{Appendices}	
 \subsection{sTranslate from Serit (C\#)}
-\subsubsection*{Enums}
+\subsubsection{Enums.cs}
 \lstinputlisting{code/sTranslate/Enums.txt}
 \newpage
-\subsubsection*{XltEnums}
+\subsubsection{XltEnums.cs}
 \lstinputlisting{code/sTranslate/XltEnums.txt}
 \newpage
-\subsubsection*{XltTool}
+\subsubsection{XltTool.cs}
 \lstinputlisting{code/sTranslate/XltTool.txt}
 
 \newpage
 \subsection{sTranslate Direct (F\#)}
-\subsubsection*{Enums}
+\subsubsection{Enums.fs}
 \lstinputlisting{code/sTranslate_direct/Enums.txt}
 \newpage
-\subsubsection*{XltEnums}
+\subsubsection{XltEnums.fs}
 \lstinputlisting{code/sTranslate_direct/XltEnums.txt}
 \newpage
-\subsubsection*{XltTool}
+\subsubsection{XltTool.fs}
 \lstinputlisting{code/sTranslate_direct/XltTool.txt}
 
 \newpage
 \subsection{sTranslate (F\#)}
-\subsubsection*{XltEnums}
+\subsubsection{XltEnums.fs}
 \lstinputlisting{code/sTranslate_fs/XltEnums.txt}
 \newpage
-\subsubsection*{XltTool}
+\subsubsection{XltTool.fs}
 \lstinputlisting{code/sTranslate_fs/XltTool.txt}
 
 \newpage
 \subsection{sTranslate Parallel (F\#)}
-\subsubsection*{XltTool}
+\subsubsection{XltTool.fs}
 \lstinputlisting{code/sTranslate_parallel/XltTool.txt}
 
 \end{document}
