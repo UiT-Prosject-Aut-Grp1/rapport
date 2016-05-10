@@ -6,7 +6,7 @@
 \usepackage{etoolbox}
 \usepackage[svgnames]{xcolor}
 
-
+\usepackage{nameref}
 
 \usepackage{lastpage}
 
@@ -698,7 +698,7 @@ Here is a short outline on how many files and lines each project got:\\
 \section{Additional research}
 
 \subsection{Testimonials}
-
+\label{Testimonials}
 To get a better understanding of how companies could benefit using F\# do we have to look at what experiences programmers and companies have with F\#. The internet contains a lot of testimonials where people write their personal experiences with F\#. It is important to note that those companies have already done the choice of using F\# in their applications. This means that they have found F\# useful and therefore more likely to talk possessively about the language. Here we have taken some of those testimonials to take a closer look.
 
 \paragraph{Simon Cousins}
@@ -767,7 +767,8 @@ let sumOfSquares n =
 \label{fig:SquareFunctionFSharp}
 \end{figure}
 
-Here they made 2 functions, where one uses the other function as an output on it’s own. The \code{|>} is used to send the output from one function and send it as an input to the other.
+Here they made 2 functions, where one uses the other function as an output on it’s own. The \code{|>} is used to send the output from one function and send it as an input to the other.\\
+
 If we break this down to what it does it’s basically, first an function is made that is called square, it simply takes itself and multiply it with itself. Then an other function is made sumOfSquares, it makes a loop from 1 to n, then puts them into a list and each element is used with the square function. Then it sums the list up and sends it back as the output. We didn’t need to do any type declarations, because the compiler figured out that it has to be an integer. That is because the input in sumOfSquares is used to create an array, and that needs an integer. If we now try to write a piece of code that would send for example a floating point number to that function, the program wouldn’t even compile, and you would save yourself some debugging time.\\
 
 \newpage
@@ -826,7 +827,7 @@ public static class FunctionalSumOfSquaresHelper
 \label{fig:SquareFunctionCSharpLINQ}
 \end{figure}
 
-We took the basic C\# code from 16 lines down to 9 lines. This almost took down the C\# code to half, but still not near the F\# code. Also here we can see that the C\# code is bound to use the  curly braces and periods and semicolons. The code also still needs to be declared to be able to use variables, that we don’t need to do in F\#.
+We took the basic C\# code from 16 lines down to 9 lines. This almost took down the C\# code to half, but still not near the F\# code. Also here we can see that the C\# code is bound to use the  curly braces and periods and semicolons. The code also still needs to be declared to be able to use variables, that we don’t need to do in F\#.\\
 
 What we can conclude with this short example is that F\# in this case was superior in many ways, more easy to read, more compact and you can easily check the gained outputs through the interactive window. 
 
@@ -875,9 +876,11 @@ Here we look on how the development time in F\# compares to C\# and what the rea
 
 \paragraph{Code length}
 
-From what we have discussed in n
+From what we have earlier discussed in \nameref{linesOfCode} at page \pageref{linesOfCode} and \nameref{Testimonials} at page \pageref{Testimonials} can we easy see that the code length in F\# is superior in comparison to C\#. The main reason for this is that F\# offers a way to get around using loops. It does this by substituting the loops with sequence functions. One other reason for the shorter code is that F\# uses a shorter and more simple syntax than C\#.\\
 
-\paragraph{F\# interactive}
+This shortens down the development time significantly just because the programmer have less code to write before a project is finished.
+
+\paragraph{Employee}
 
 
 \newpage
@@ -1069,16 +1072,25 @@ To be one of the first to try out new technology can be a high risk high reward 
 
 Changing programming language can be a costly a affair but in the long run it can be really beneficial and sometimes even necessary to survive in the marked. Here we look at the pros and cons of changing language in a economic aspect.
 
+\newpage
+\subsubsection{Training and recruiting employees}
+
 \paragraph{Training employees}
 Learning a new programming language can take a lot of time from where the programmers could be making applications that generate income. This is especially true when it comes to F\# if the programmers is not used to functionally programming beforehand. Programmers time is really valuable and shod therefore be used wisely. 
 
 \paragraph{Recruiting new employees}
 In some parts of the word it can be hard to find and recruit new employees with programming background. In Tromsø, Norway where Serit IT Partner have their office is there specially hard to find good experienced programmers. Since F\# is a new language, it will be very difficult to find new programmers that don't need training before they start working. This can make changing language costly especially if the company needs to expand.
 
-\paragraph{Development time}
-Time equals money, if a programmer can write a application in less time that can help a company save a lot of money. One major selling point for F\# is that you can write applications with much less code. This can save programmers huge amount of time and in extension save a company for a lot of money.
+\newpage
+\subsubsection{Development time}
+Time equals money, if a programmer can write a application in less time that can help a company save a lot of money.\\ 
 
-\paragraph{Customer satisfaction}
+From what we have earlier discussed in \nameref{linesOfCode} at page \pageref{linesOfCode} and \nameref{Testimonials} at page \pageref{Testimonials} can we easy see that the code length in F\# is superior in comparison to C\#. The main reason for this is that F\# offers a way to get around using loops. It does this by substituting the loops with sequence functions. One other reason for the shorter code is that F\# uses a shorter and more simple syntax than C\#. This can shorten down the development time significantly just because the programmer have less code to write before a project is finished.\\ 
+
+The shorter development time is major selling point for F\# as you can write applications with less code. This can save programmers huge amount of time and in extension save a company for a lot of money. But this shorter development time is only true if the company have good experienced F\# developers employed. A new and inexperienced developer can take a long time getting up to speed in a new language, this can be exceptionally true in F\# if the developer never have programmed functionally before.   
+
+\newpage
+\subsubsection{Customer satisfaction}
 Costumers pay a high price for quality and shorter delivery time. In programming quality often refer the speed of the program and lack of bugs. From what we have found both from our code and research, can we see that F\# does this exceptionally well. This and what we can see from development time can lead to a very high customer satisfaction.
 
 \newpage
