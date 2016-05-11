@@ -614,8 +614,6 @@ let GetTranslations =
 \caption{Refactored to functional code}
 \end{figure}
 
-This is just a short example from the full module that we have translated. For more code you can look at the Attachments section.
-
 \newpage
 
 
@@ -670,7 +668,6 @@ Looking back on how we used the two different methods of writing the F\# code, t
 
 \subsubsection{Performance}
 This chapter is not a demand from Serit, instead this was something we wanted to test out for ourselves, and is just a bonus for Serit if it proves to be better performance in F\# vs C\#.
-
 \subsubsection{Experiences}
 The experiences that we can draw from this assignment is that in F\#, it’s very easy to read the code and what it does, and that you almost don’t need to comment the code. But the thing we appreciated the most was the direct response from the compiler and Microsoft’s Intellisense technology in real time while writing the code. At first we thought that this was a bit unfavourable since you always saw errors made in code with the red lines everywhere. However, as the language is very strict about types and such, one is forced to root out many errors before the program even is able to run. Because programming with pure functions eleminates side effects and state changes, the programmer won't have to deal with unexpected errors later while running the program, which could make it misbehave or even crash. Hence we grew to really enjoy this feature. It makes the programmer put a little more time in thinking about what they want the code to do, but they will spend less time dealing with problems later.\\
 
@@ -693,7 +690,7 @@ Here is a short outline on how many files and lines each project got:\\
  \hline
  C\# & 280 & 3 & 2\\
  F\# imperative style & 170 & 4 & 1\\
- F\# functional style & 124 & 2 & 1\\
+ F\# functional style & 145 & 2 & 1\\
  \hline
 \end{tabular}
 
@@ -836,7 +833,7 @@ We took the basic C\# code from 16 lines down to 9 lines. This almost took down 
 What we can conclude with this short example is that F\# in this case was superior in many ways, more easy to read, more compact and you can easily check the gained outputs through the interactive window. 
 
 \newpage
-\subsection{Rotate a tuple}
+\subsubsection{Rotate a tuple}
 Here we are gonna take a look at one more example, this time very short and easy function. The function simply is used to change the order of a tuple (a tuple is set of values, f.ex. cordinates in an aksis).\\
    
 \paragraph{F\#}
@@ -870,10 +867,6 @@ This is a good example to show how easy things can be done in F\#.
 
 \newpage
 \section{Complete analysis}
-<<<<<<< HEAD
-Now that we have gone through the sTranslate module and the online research we are gonna take a look at the complete analysis. We are gonna walk through it a bit more in depth and draw conclusions.
-=======
->>>>>>> d9b4f62388a7dd836c0dce4e62810b2574066468
 
 
 
@@ -1066,11 +1059,18 @@ Python and Ruby are examples of dynamical typed languages. Those languages have 
 Programmers that have background from functional languages like Haskell, OCaml or Standard ML for them F\# will be really familiar. They will probably find that F\# to be really easy to read, understand and write. The reason for this is that F\# is a functional language itself. 
 
 
-\newpage
-
 
 \newpage
 \subsection{Debugging and error handling}
+
+
+
+\begin{figure}[!h]
+    \includegraphics[width=\textwidth]{visualstudio1}
+    \centering
+    \caption{Tekst her}
+\end{figure}
+
 \newpage
 \subsection{Performance}
 
@@ -1083,15 +1083,23 @@ Programmers that have background from functional languages like Haskell, OCaml o
 \newpage
 \subsection{Economic aspects}
 
-To be a company that is trying new untested new technology can be a high risk high reward scenario. Often when we are talking about new technology in software we are talking about new programming languages. Even though F\# is a relativity new programming language it have been tried out with success multiple of times.\\
+To be a company that is trying new untested technology can be a high risk, high reward scenario. Often when we are talking about new technology in software development we are talking about new programming languages. Some languages does never have the time to get popular before it flops and others have stick and have huge success.\\
 
-Changing programming language can be a costly a affair but in the long run it can be really beneficial and sometimes even necessary to survive in the marked. Here we look at the pros and cons of changing language in a economic aspect.
+F\# was developed in 2005 but did not become recognized as a good and stable programming language before when F\# 2.0 come out in 2010. Even though F\# is a relativity new programming language it have been tried out with success multiple of times. More about this have we written in \nameref{Testimonials} at page \pageref{Testimonials}.\\
+
+In comparison is was C\# released in 2000 and was based on the programming language C++ that was released in 1983. Both languages have had huge success and been well tested.\\
+
+Trying to adapt to new programming languages can be a costly affair but, in the long run it can be really beneficial and sometimes even necessary to survive in the marked. Here we look at the pros and cons of changing programming language from C\# to F\# with a economic standpoint.
 
 \newpage
 \subsubsection{Training and recruiting employees}
 
 \paragraph{Training employees}
-Learning a new programming language can take a lot of time from where the programmers could be making applications that generate income. This is especially true when it comes to F\# if the programmers is not used to functionally programming beforehand. Programmers time is really valuable and shod therefore be used wisely. 
+Learning a new programming language can take a lot of time from where the programmers could be making applications that generate income. This is especially true when it comes to F\# if the programmers is not used to functionally programming beforehand. This is both because F\# have a not that well known syntax and \\
+
+
+
+Programmers time is really valuable and shod therefore be used wisely. 
 
 \paragraph{Recruiting new employees}
 In some parts of the word it can be hard to find and recruit new employees with programming background. In Tromsø, Norway where Serit IT Partner have their office is there specially hard to find good experienced programmers. Since F\# is a new language, it will be very difficult to find new programmers that don't need training before they start working. This can make changing language costly especially if the company needs to expand.
@@ -1164,7 +1172,7 @@ F\# Software Foundation\\
 \newpage
 
 \appendix
-\scriptsize
+\footnotesize
 \section{Appendices}	
 \subsection{sTranslate from Serit (C\#)}
 \subsubsection{Enums.cs}
@@ -1199,5 +1207,9 @@ F\# Software Foundation\\
 \subsection{sTranslate Parallel (F\#)}
 \subsubsection{XltTool.fs}
 \lstinputlisting{code/sTranslate_parallel/XltTool.txt}
+
+\newpage
+\subsection{Matlab performance program}
+\lstinputlisting{code/matlab.txt}
 
 \end{document}
