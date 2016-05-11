@@ -911,6 +911,7 @@ This is a good example to show how easy things can be done in F\#.
 \newpage
 \section{Complete analysis}
 
+Now that we have gone through the sTranslate module and the online research we are gonna take a look at the complete analysis. We are gonna walk through it a bit more in depth and draw conclusions.
 
 
 %\subsection{Development time}
@@ -927,7 +928,6 @@ This is a good example to show how easy things can be done in F\#.
 %\paragraph{Employee}
 
 
-\newpage
 \subsection{Readability and clarity}
 Readability and clarity is really important when writing code. The reason for this is that it is much easier to find and remove bugs and add future content. If the programmer does not need to use a lot of time simply to understand what the code is supposed to do. Poorly written code can cause a programmer to spend a lot of time familiarizing themselves with the code before they can do changes to it.\\
 
@@ -1103,7 +1103,12 @@ Programmers that have background from functional languages like Haskell, OCaml o
 
 \newpage
 \subsection{Debugging and error handling}
+<<<<<<< HEAD
+\label{debug}
+The debugging and error handling in F\# is one of the very important part on the comparing of the two languages.\\
+=======
 The debugging and error handling in F\# is one of the important parts in the comparing of the two languages.\\
+>>>>>>> 05e3b9f138ee1ec85061ac681f31ed8c9a6c38ed
  
 The debugging in F\# is a bit different from C\# and other programming languages. When you are writing the code in F\# you are basically already debugging while you are writing the code since the compiler is going through all the code while typing. If we take a look at C\# there is also some response back from the compiler while you write the code, some minor things like spelling and declaring of variables etc. But more important and bigger things like responses from databases and inputs and outputs from functions you have to run the code for it to be accessible.
 
@@ -1113,9 +1118,8 @@ The debugging in F\# is a bit different from C\# and other programming languages
 
 F\# is using something called type provider where it has an live communication to the database while coding. Lets say that you are making an application where you are going to use an database to import data from. In this case let's say that you are going to use excel as an database tool where the spreadsheets is the tables in the database and the cells in it represents data that is important. \\
 
-In F\# you can easily integrate excel, and with the help of type provider you can access the data in each individual cell. If we also take a quick look at working with a standard database like SQL Server, when writing the code you can "dot" into the database. With that we mean that if we were to make a database connection and store it as \code{db}, we can get access to the table names in the database by using the "dot" in tool without even starting the application. We can see this in \ref{fig:DotInTool}, in this case the table name is "Translations" and when we "dot" into the \code{db} connection we can see it in the dropdown list with a short information window next to it. This is not the case in C\# where you have to start up the application before it makes the connection to the database.
+In F\# you can easily integrate excel, and with the help of type provider you can access the data in each individual cell. If we also take a quick look at working with a standard database like SQL Server, when writing the code you can "dot" into the database. With that we mean that if we were to make a database connection and store it as \code{db}, we can get access to the table names in the database by using the "dot" in tool without even starting the application. We can see this in figure \ref{fig:DotInTool}, in this case the table name is "Translations" and when we "dot" into the \code{db} connection we can see it in the dropdown list with a short information window next to it. This is not the case in C\# where you have to start up the application before it makes the connection to the database.
 
-\ref{fig:nameOfFigure}
 
 \begin{figure}[!h]
     \includegraphics[width=\textwidth]{visualstudio1}
@@ -1132,7 +1136,11 @@ When it comes to error handling in F\# it's just like any other .Net languages i
 \newpage
 
 \subsection{Performance}
+<<<<<<< HEAD
 As shown in the chapter \nameref{sTranslatePerformance}, page \pageref{sTranslatePerformance}, there were performance gains to be found by translating the program to F\#. An important point to remember is that the C\# code was not optimized, and there is reason to believe that the C\# code could be made just as fast as the F\# code. The main difference is that we think some problems are easier to solve in F\#.
+=======
+\label{AnalysisPerformance}
+>>>>>>> da134bb5600e5359834d2eab50eccf14f38ba628
 
 \subsubsection{Optimizing the code}
 %mange iterasjoner for å komme til optimalisert versjon
@@ -1162,32 +1170,52 @@ Trying to adapt to new programming languages can be a costly affair but, in the 
 \subsubsection{Training and recruiting employees}
 
 \paragraph{Training employees}
-Learning a new programming language can take a lot of time away from the programmers, this time could be used to making applications that generate income for the company.\\
+Learning a new programming language can take a lot of time away from the programmers, this time could be used to making applications that generate income for the company instead.\\
 
-This is especially true when it comes to F\#. This is both because F\# have a less known syntax and that F\# is a functional programming language.\\
+This is especially true when it comes to F\#. The reason for this is because F\# have a less known syntax and that F\# is a functional programming language. This means that the company have to use a lot of time and resources training the employees in the language.\\
 
-Programmers time is really valuable and shod therefore be used wisely. 
+In comparison does C\# have a syntax that is very similar to other languages.
 
 \paragraph{Recruiting new employees}
-In some parts of the word it can be hard to find and recruit new employees with programming background. In Tromsø, Norway where Serit IT Partner have their office is there specially hard to find good experienced programmers. Since F\# is a new language, it will be very difficult to find new programmers that don't need training before they start working. This can make changing language costly especially if the company needs to expand.
+In some parts of the word it can be hard to find and recruit new employees with programming background. In Tromsø, Norway where Serit IT Partner have their office is there specially hard to find good experienced programmers.\\
+
+Since F\# is a relatively new language, it will be very difficult to find new programmers that don't need training before they start working. This can make changing language costly especially if the company needs to expand. This may change in the future if F\# become more popular.
 
 \newpage
 \subsubsection{Development time}
-Time equals money, if a programmer can write a application in less time that can help a company save a lot of money.\\ 
+\label{developmentTime}
+Time equals money, if a programmer can write a application in less time that can help a company save a lot of money. In programming there are many aspects that can help save time. Most important is lines of code, debugging and libraries. 
 
-From what we have earlier discussed in \nameref{linesOfCode} at page \pageref{linesOfCode} and \nameref{Testimonials} at page \pageref{Testimonials} can we easy see that the code length in F\# is superior in comparison to C\#. The main reason for this is that F\# offers a way to get around using loops. It does this by substituting the loops with sequence functions. One other reason for the shorter code is that F\# uses a shorter and more simple syntax than C\#. This can shorten down the development time significantly just because the programmer have less code to write before a project is finished.\\ 
+\paragraph{Lines of code}
 
-The shorter development time is major selling point for F\# as you can write applications with less code. This can save programmers huge amount of time and in extension save a company for a lot of money. But this shorter development time is only true if the company have good experienced F\# developers employed. A new and inexperienced developer can take a long time getting up to speed in a new language, this can be exceptionally true in F\# if the developer never have programmed functionally before.   
+From what we have earlier discussed in \nameref{linesOfCode} at page \pageref{linesOfCode} and \nameref{Testimonials} at page \pageref{Testimonials} can we easy see that the code length in F\# is superior in comparison to C\#. The main reason for this is that F\# offers a way to get around using loops. It does this by substituting the loops with sequence functions. One other reason for the shorter code is that F\# uses a shorter and more simple syntax than C\#. This can shorten down the development time significantly just because the programmer have less code to write before a project is finished. 
+
+\paragraph{Debugging}
+
+A programmer uses a large amount of time debugging and fixing code. For F\# this is discussed in detail in \nameref{debug} on page \pageref{debug}. To summary this is F\# superior compared to C\# in this matter
+
+\paragraph{Libraries}
+
+In most programming languages you have the possibility of including libraries. Libraries is a code package that you can include in your code so that you don't have to write it yourself. This can help a programmer save huge amount of time.\\
+
+In F\# we have found the libraries included in Visual Studio extremely helpful and easy to use. This is also true in C\#. So this does not make significant savings of time when we look at it from Serit IT Partner's point of view.
+
+\paragraph{Summary}
+The shorter code and more easy debugging help the programmer expressing their ideas faster, this leads to a shorter development time and faster delivery to the customers. The shorter development time is major selling point for F\# as you can write applications with less code. This can save programmers huge amount of time and in extension save a company for a lot of money. But this shorter development time is only true if the company have good experienced F\# developers employed. A new and inexperienced developer can take a long time getting up to speed in a new language, this can be exceptionally true in F\# if the developer never have programmed functionally before.   
 
 \newpage
 \subsubsection{Customer satisfaction}
-Costumers pay a high price for quality and shorter delivery time. In programming quality often refer the speed of the program and lack of bugs. From what we have found both from our code and research, can we see that F\# does this exceptionally well. This and what we can see from development time can lead to a very high customer satisfaction.
+Costumers pay a high price for quality and shorter delivery time. Customer satisfaction is very important to make the customer come back and use more money. In programming quality often refer the performance and lack of errors in the program.\\
+
+Every aspect of this is discussed earlier in this analysis. Delivery time is discussed in \nameref{developmentTime} on page \pageref{developmentTime}, performance on page \pageref{AnalysisPerformance} and errors in \nameref{debug} on page \pageref{debug}. In short we can see that F\# does all this exceptionally well, this can lead to a good customer satisfaction.\\
+
+C\# does most of this things really well, and that is one of the reason that the programming language have become so popular as it is. But if we compare this to F\# we can see that F\# is even better. 
 
 \newpage
 \subsubsection{Conclusion economic aspects}
 The two main economic problems of switching programming language from C\# to F\# is training employees and recruiting new employees. Both of those problems can be gone in a long term perspective if F\# becomes popular.\\
 
-F\# does it really well in both saving money in development time and creating good customer satisfaction.  So a company that have the experience in F\# can have a great advantage over competitors that don't convert over to F\#. This means that if F\# becomes popular and more developers learn the language there can be a huge gain for a company that develop in F\#. 
+F\# does it really well in both saving money in development time and creating good customer satisfaction.  So a company that have the experience in F\# can have a great advantage over competitors that don't convert over to F\#. This means that if F\# becomes popular and more developers learn the language there can be a huge gain for a company that develop in F\#. But even though the future of F\# can be really hard to predict but the language shows very good promise.
 
 \newpage
 
