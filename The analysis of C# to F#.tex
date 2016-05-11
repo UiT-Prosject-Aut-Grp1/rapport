@@ -616,9 +616,9 @@ let GetTranslations =
 \caption{Refactored to functional code}
 \end{figure}
 
-This is just a short example from the full module that we have translated. For more code you can look at the Appendices section.
-
 \newpage
+
+
 \subsubsection{Detailed look at F\# sTranslate}
 There are a few key points where the functional F\# library differs from the C\# version:
 \begin{itemize}
@@ -694,6 +694,10 @@ The conclusion we can draw from this, is that while we can't prove that either l
 \end{figure}
 
 \newpage
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4eb408802c9ce2aa9c9123129770ecdf3f935c42
 \subsubsection{Experiences}
 The experiences that we can draw from this assignment is that in F\#, it's very easy to read the code and what it does, and that you almost don't need to comment the code. But the thing we appreciated the most was the direct response from the compiler and Microsoft's Intellisense technology in real time while writing the code. At first we thought that this was a bit unfavourable since you always saw errors made in code with the red lines everywhere. However, as the language is very strict about types and such, one is forced to root out many errors before the program even is able to run. Because programming with pure functions eliminates side effects and state changes, the programmer won't have to deal with unexpected errors later while running the program, which could make it misbehave or even crash. Hence we grew to really enjoy this feature. It makes the programmer put a little more time in thinking about what they want the code to do, but they will spend less time dealing with problems later.\\
 
@@ -701,10 +705,15 @@ Since all the group members have object-oriented programming background, the mai
 
 We realised that every time we went back to the written code, improvements could be made both in terms of code length but also with regards to quality. F\# is mainly a function based programming but it actually allows imperative and object-oriented programming in some way. Since it's integrated into Visual Studio and the .NET framework there are a lot of features inherited from C\#. That will allow the user to use for loops, if-else constructs, mutable values, etc. Still, we found that all of these thing were replaceable when programming functionally.\\
 
+<<<<<<< HEAD
 For Michael, the biggest struggle of this experience was that he kept finding himself getting back in think in object-oriented "thinking". It's hard to think in a more functional approach.\\
+=======
+\newpage
+
+>>>>>>> 4eb408802c9ce2aa9c9123129770ecdf3f935c42
 \subsubsection{Lines of code}
 \label{linesOfCode}
-When it breaks down to how many lines of code there is in each project we can right away see big differences.\\
+When it breaks down to how many lines of code there is in each solution we can right away see big differences.\\
 
 Here is a short outline on how many files and lines each project got:\\
 
@@ -720,6 +729,19 @@ Here is a short outline on how many files and lines each project got:\\
  F\# parallel & 91 & 1 & 1\\
  \hline
 \end{tabular}
+
+The savings in code lines come from a few main reasons:
+\begin{itemize}
+	\item F\# uses white-space sensitive syntax
+	\item Refactoring loops to sequence functions
+	\item Removing code that was made obsolete
+\end{itemize}
+
+\paragraph{Syntax} F\# uses white-space sensitive syntax, which means that indentation is used instead of curly braces to denote chunks of code. This saves many code lines and makes the code easier to read through, as very many lines in the C\# code are simply opening and closing curly braces.
+
+\paragraph{Sequence functions} For loops and while loops are very often used to express functionality that F\# has built-in to their sequence functions. Filtering a list, applying a function on each element in a list, and so on, can easily be expressed in F\# on a single line, instead of manually iterating through the list and doing things with the imperative style. This leads to code that is self-documenting and much shorter.
+
+\paragraph{Removing obsolete code} Often when refactoring to functional code, a better understanding of the domain can be reached. When clearly stating what is expected of a function to have as inputs and outputs, one can often find code that is simply not needed any more. Sometimes an interface must be kept to ensure compatibility with other modules.
 
 \newpage
 
@@ -895,7 +917,6 @@ This is a good example to show how easy things can be done in F\#.
 \newpage
 \section{Complete analysis}
 
-Now that we have gone through the sTranslate module and the online research we are gonna take a look at the complete analysis. We are gonna walk through it a bit more in depth and draw conclusions.
 
 
 %\subsection{Development time}
@@ -912,6 +933,7 @@ Now that we have gone through the sTranslate module and the online research we a
 %\paragraph{Employee}
 
 
+\newpage
 \subsection{Readability and clarity}
 Readability and clarity is really important when writing code. The reason for this is that it is much easier to find and remove bugs and add future content. If the programmer does not need to use a lot of time simply to understand what the code is supposed to do. Poorly written code can cause a programmer to spend a lot of time familiarizing themselves with the code before they can do changes to it.\\
 
@@ -1097,21 +1119,25 @@ The debugging in F\# is a bit different from C\# and other programming languages
 
 F\# is using something called type provider where it has an live communication to the database while coding. Lets say that you are making an application where you are going to use an database to import data from. In this case let's say that you are going to use excel as an database tool where the spreadsheets is the tables in the database and the cells in it represents data that is important. \\
 
-In F\# you can easily integrate excel, and with the help of type provider you can access the data in each individual cell. If we also take a quick look at working with a standard database like SQL Server, when writing the code you can "dot" into the database. With that we mean that if we were to make a database connection and store it as \code{db}, we can get access to the table names in the database by using the "dot" in tool without even starting the application. We can see this in figure \ref{fig:DotInTool}, in this case the table name is "Translations" and when we "dot" into the \code{db} connection we can see it in the dropdown list with a short information window next to it. This is not the case in C\# where you have to start up the application before it makes the connection to the database.
+In F\# you can easily integrate excel, and with the help of type provider you can access the data in each individual cell. If we also take a quick look at working with a standard database like SQL Server, when writing the code you can "dot" into the database. With that we mean that if we were to make a database connection and store it as \code{db}, we can get access to the table names in the database by using the "dot" in tool without even starting the application. We can see this in FIGURE, in this case the table name is "Translations" and when we "dot" into the \code{db} connection we can see it in the dropdown list with a short information window next to it. This is not the case in C\# where you have to start up the application before it makes the connection to the database.
 
+\ref{fig:nameOfFigure}
 
 \begin{figure}[!h]
     \includegraphics[width=\textwidth]{visualstudio1}
     \centering
-    \caption{Picture showing table name from database when using the "dot" in tool with F\# with the data provider.}
-    \label{fig:DotInTool}
+    \caption{Tekst her}
+    \label{fig:nameOfFigure}
 \end{figure}
 
 \subsubsection{F\# type system}
 
+<<<<<<< HEAD
 \subsubsection{Error handling in F\#}
 When it comes to error handling in F\# it's just like any other .Net languages in that way that it can throw and catch exceptions. Exceptions is the .Net Frameworks help feature to handle and dealing with any unexpected or exceptional situations that occur when a program is running. So programmers from other .Net framework languages will feel familiar with it in F\#. \\
 
+=======
+>>>>>>> 4eb408802c9ce2aa9c9123129770ecdf3f935c42
 
 
 \newpage
