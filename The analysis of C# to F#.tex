@@ -246,9 +246,9 @@ Puneet Sharma
 \pbox{\linewidth}{
 \vspace{1mm}
 \textbf{Summary:}\\
-In this report do we an analysis of a new programming language called F\#. This analysis is written for Serit IT Partner  to look at the possibility that F\# can be a replacement for the programming language they are using today that is C\#.\\[2mm]
-To help us write this analysis we have translated and optimized a program that Serit have written. This is to get an understanding of the benefits and drawbacks of changing from C\# to F\#. We have also looked at code examples that others have written and looked at what experiences that company's that already have changed language has.\\[2mm]
-Our conlution is that F\# should not completely replace C\# as their main programming language. F\# should be used together with C\# to get the benefits of both languages. 
+In this report we have done an analysis of a new programming language called F\#. This analysis is written for Serit IT Partner to look at the possibility that F\# can be a replacement for the programming language they are using today that is C\#.\\[2mm]
+To help us write this analysis we have translated and optimized a program that Serit has written. This is to get an understanding of the benefits and drawbacks of changing from C\# to F\#. We have also looked at some code examples that others have written and looked at what experiences  companies that already changed to the F\# language had.\\[2mm]
+Our conclusion is that F\# should not completely replace C\# as their main programming language. F\# should be used together with C\# to get the benefits of both languages. 
 \vspace{1mm}
 }
 \\
@@ -267,7 +267,7 @@ F\#, C\#, Functional programming, analysis, programming, SQL
 
 \newpage
 \section*{Summary}
-This report is written by 3 students from the final year in the Automation class at “UiT: University of Tromsø - Arctic university of Norway”.\\
+This report is written by 3 students from the final year in the Automation class at "UiT: University of Tromsø - Arctic university of Norway".\\
 
 The assignment is given by a company named Serit IT Partner from Tromsø. They wanted us to identify the benefits, flaws and our experience from learning a new programming language called F\#. Today Serit mostly uses the famous programming language C\# which is currently widely used around the world. The time spent writing code and debugging, and the stability in these languages is very valuable. Serit IT Partner wanted us to test out if a change of main programming language from C\# to F\# would have an impact on time spent on coding, reduce the number of lines of code and would improve stability.\\
 
@@ -279,7 +279,7 @@ We started out at thinking that F\# was out there to replace C\#, however that w
 \section*{Preface}
 This thesis is written by graduates from the automation program at the department of engineering  at UiT: University of Tromsø - The Arctic University of Norway. This thesis will be used by Serit to help them determine whether incorporating the F\# programming language would be favourable for the company.\\
 
-We chose this assignment because everyone in our group enjoys programming, the assignment had some database management and set up, and because it looked like an interesting project overall. Since we already had some experience in C\#, we thought it would be fun to find the “pros and cons” of this relatively new programming language.\\
+We chose this assignment because everyone in our group enjoys programming, the assignment had some database management and set up, and because it looked like an interesting project overall. Since we already had some experience in C\#, we thought it would be fun to find the "pros and cons" of this relatively new programming language.\\
 
 We have written the thesis in LaTeX which is a word processor and a document markup language. When we were working on the raw text we used Google documents so that we all could work together simultaneously on writing and editing the text for the thesis. On the main assignment we used Visual Studio (with C\# and F\# tools), Atlassian Sourcetree and Github to write and manage our code, and SQL Server Management Studio to handle the database. By using both C\# and database we covered a wide area of our syllabus from the previous semester. We have learnt a lot and have had the privilege of testing out the new attractive programming language F\# that may just be the future. \\
 
@@ -367,7 +367,7 @@ There are many different ways of classifying programming languages and styles. O
 
 \paragraph{Imperative} Imperative programming is a paradigm where statements are used to tell the computer program what to do. It is the programmer’s job to tell the computer how to solve the problem. If an imperative program were to make a person get a cup of coffee, it would have to list all the individual tasks they had to do, like stand up, walk to the coffee machine, place the cup, press the button and so on. 
 
-\paragraph{Declarative} Declarative programming focuses instead on telling the computer program what the desired result is, and then the implementation of the programming language decides how to do it. A declarative program would simply state “Give me a cup of espresso”. Examples of declarative programming include database query languages and functional programming.
+\paragraph{Declarative} Declarative programming focuses instead on telling the computer program what the desired result is, and then the implementation of the programming language decides how to do it. A declarative program would simply state "Give me a cup of espresso". Examples of declarative programming include database query languages and functional programming.
 
 \paragraph{Functional} Functional programming is a form of declarative programming. Instead of using statements, like in imperative programming, functional programming uses expressions. An expression is a combination of one or more values, operators or functions that produce a resulting value when evaluated. A goal in functional programming is to limit side effects and mutable values. This means that if you call a function with the same arguments you should get the same result everytime. Thus, the output of a function should only rely on the inputs to that function, and not any other values or variables.
 
@@ -381,7 +381,7 @@ There are many different ways of classifying programming languages and styles. O
 \subsection{F\# programming language}
 F\# is a modern multi-paradigm programming language with a focus on functional programming. It was originally invented as an implementation of the OCaml language (which comes from ML) in the .NET platform. The first stable version was F\# 2.0 which came in 2010. F\# is open source and cross platform. F\# was influenced by a number of other languages. It gets it’s object model from C\#. Sequence expressions and computation expressions come from Haskell. Finally, the indentation-aware syntax was inspired by Python. F\# began as a .NET language, working together with C\# and .NET libraries. It can also be compiled to Android, Apple iOS, Linux, JavaScript, and GPU code.\\
 
-F\# is “functional first” which means that functional programming is the preferred go-to method for solving problems. However, unlike many other functional languages, F\# works well with imperative and object-oriented programming where those styles are required. F\# is statically typed and type-safe which means the compiler can optimize the code deeply to increase performance, which is not possible in dynamic languages where types do not need to be known during compilation. Despite this, since F\# uses type inference (the compiler deduces what type a value has based on the context and data) it can be more expressive, like a dynamic language.\\
+F\# is "functional first" which means that functional programming is the preferred go-to method for solving problems. However, unlike many other functional languages, F\# works well with imperative and object-oriented programming where those styles are required. F\# is statically typed and type-safe which means the compiler can optimize the code deeply to increase performance, which is not possible in dynamic languages where types do not need to be known during compilation. Despite this, since F\# uses type inference (the compiler deduces what type a value has based on the context and data) it can be more expressive, like a dynamic language.\\
 
 There are four main differences between F\# and a standard imperative language such as C\# or Java.
 \begin{itemize}
@@ -443,7 +443,7 @@ F\# is unique amongst both imperative and declarative languages in that it is th
 
 \newpage
 \subsubsection{Method of translation}
-F\# for fun and profit describes three levels of “sophistication” for porting code from C\# to F\#. The basic level is simply a direct port. Since F\# supports imperative programming, it can be translated directly. At the intermediate level, the code is refactored to be fully functional. The advanced level takes advantage of F\#’s data type system.\\
+F\# for fun and profit describes three levels of "sophistication" for porting code from C\# to F\#. The basic level is simply a direct port. Since F\# supports imperative programming, it can be translated directly. At the intermediate level, the code is refactored to be fully functional. The advanced level takes advantage of F\#’s data type system.\\
 
 There are two paths to achieve this goal: Either by first porting to F\# and then refactoring to functional code, or by converting to functional code in C\# before porting that to F\#.
 
@@ -602,7 +602,7 @@ let GetTranslations (reRead : bool) =
 \newpage
 
 
-\paragraph{F\# Functional version} The functional version gets rid of the mutable value alltogether. The \code{GetTranslations} function uses the \code{FSharp.Data.TypeProviders} library, which gives typed access to the tables of the database. The Type Provider handles caching of the database automatically, so we can get rid of the “storage variable” that was used in the imperative version. The \code{GetTranslations} expression is evaluated once when it is needed, and then the data is there, ready to be used until the program ends.
+\paragraph{F\# Functional version} The functional version gets rid of the mutable value alltogether. The \code{GetTranslations} function uses the \code{FSharp.Data.TypeProviders} library, which gives typed access to the tables of the database. The Type Provider handles caching of the database automatically, so we can get rid of the "storage variable" that was used in the imperative version. The \code{GetTranslations} expression is evaluated once when it is needed, and then the data is there, ready to be used until the program ends.
 
 \begin{figure}[!h]
 \begin{lstlisting}
@@ -669,18 +669,44 @@ In this chapter we will take a look at the analysis of the module sTranslate.
 Looking back on how we used the two different methods of writing the F\# code, the line by line translation and the functional approach, we can say that the direct translation was clearly not the way to go. It became much harder to do the actual programming in an object-oriented way, so much that we even ended up doing the direct translation without using classes at all (while the C\# code of course did have classes). We found that by using the direct translation, we didn't really save many lines of code. We could also notice in the result a clear difference in the actual speed of the program, where the direct translation was inferior to the functional code. We get into this a little more later.
 
 \subsubsection{Performance}
-This chapter is not a demand from Serit, instead this was something we wanted to test out for ourselves, and is just a bonus for Serit if it proves to be better performance in F\# vs C\#.
+This chapter is not a demand from Serit, instead this was something we wanted to test out for ourselves, and is just a bonus for Serit if it proves to be better performance in F\# over C\#. One important thing to keep in mind is that when targeted at .NET, C\# and F\# both compile to the Common Intermediate Language. The same algorithm in both languages should result in exactly the same code when compiled. The key point is that some problems are perhaps more easily represented in one of the languages, and high-performing code will make more sense in that language.\\
+
+To test performance, we increased the size of our test database to 10000 rows by inserting random data. We prepared a list of 1000 queries that the program would try to translate, and wrote a test app to measure how much time each program spent doing 1000 searches in the database. Finally, for each program we did 1000 repetitions of these 1000 searches and found the average time spent to do 1000 searches.\\
+
+As seen in figure \ref{fig:averageChart1}, the direct translation program was very slow, using clunky imperative programming in F\#. The F\# direct version was written when we had only basic skills with F\#, and if we had revisited that program later we would probably have come up with a more efficient design. Our first attempt at a purely functional version worked much better, and even showed some improvement over the C\# program. It must be said that Serit admitted that their program was not very optimized yet.\\
+
+After some refinements to the F\# program, we managed to speed it up by a significant amount. The biggest change was using a much faster list function (\code{List.tryFind} as opposed to multiple \code{List.filter}) to find the correct value. The F\# parallel program, using the same algorithm, but working on multiple processor cores, was even faster. This is shown in figure \ref{fig:averageChart2}. These optimized programs showed real performance gains compared to the C\# program, while at the same time being less complex.\\
+
+The conclusion we can draw from this, is that while we can't prove that either language produces faster programs than the other, it is quite clear that for some tasks, F\# is better suited to solving the problem. The fact that we were able to produce a high performance program with less code proves this.
+
+\begin{figure}[!h]
+    \includegraphics[scale=0.8]{averageChart1}
+    \centering
+    \caption{Shows the average time (in seconds) to perform 1000 searches in the test database.}
+\label{fig:averageChart1}
+\end{figure}
+
+\begin{figure}[!h]
+    \includegraphics[scale=0.8]{averageChart2}
+    \centering
+    \caption{Difference in speed between the first and second versions of the F\# program, and the F\# parallel program.}
+\label{fig:averageChart2}
+\end{figure}
+
+\newpage
+
 \subsubsection{Experiences}
-The experiences that we can draw from this assignment is that in F\#, it’s very easy to read the code and what it does, and that you almost don’t need to comment the code. But the thing we appreciated the most was the direct response from the compiler and Microsoft’s Intellisense technology in real time while writing the code. At first we thought that this was a bit unfavourable since you always saw errors made in code with the red lines everywhere. However, as the language is very strict about types and such, one is forced to root out many errors before the program even is able to run. Because programming with pure functions eleminates side effects and state changes, the programmer won't have to deal with unexpected errors later while running the program, which could make it misbehave or even crash. Hence we grew to really enjoy this feature. It makes the programmer put a little more time in thinking about what they want the code to do, but they will spend less time dealing with problems later.\\
+The experiences that we can draw from this assignment is that in F\#, it's very easy to read the code and what it does, and that you almost don't need to comment the code. But the thing we appreciated the most was the direct response from the compiler and Microsoft's Intellisense technology in real time while writing the code. At first we thought that this was a bit unfavourable since you always saw errors made in code with the red lines everywhere. However, as the language is very strict about types and such, one is forced to root out many errors before the program even is able to run. Because programming with pure functions eliminates side effects and state changes, the programmer won't have to deal with unexpected errors later while running the program, which could make it misbehave or even crash. Hence we grew to really enjoy this feature. It makes the programmer put a little more time in thinking about what they want the code to do, but they will spend less time dealing with problems later.\\
 
-Since all the group members have object-oriented programming background, the main struggle we experienced was our tendency to get back to old habits and thinking in the object-oriented way of programming. The new thinking in functional programming was harder than we imagined. We acknowlegded that it’s probably easier for a person who have never done programming before to learn F\# then a person coming from a background with object-oriented programming at least in some aspects. Of course, that is not completely true because a skilled programmer can quickly find patterns in the code and structure, this varies from programmer to programmer. We had to let go of a lot of hard learned coding and try and think “out of the box” to be able to write “decent” F\# code.\\
+Since all the group members have object-oriented programming background, the main struggle we experienced was our tendency to get back to old habits and thinking in the object-oriented way of programming. The new thinking in functional programming was harder than we imagined. We acknowledged that it's probably easier for a person who have never done programming before to learn F\# then a person coming from a background with object-oriented programming at least in some aspects. Of course, that is not completely true because a skilled programmer can quickly find patterns in the code and structure, this varies from programmer to programmer. We had to let go of a lot of hard learned coding and try and think "outside the box" to be able to write "decent" F\# code.\\
 
-We realised that everytime we went ack to the written code, improvements could be made both in terms of code length but also with regards to quality. F\# is mainly a function based programming but it actually allows imperative and object-oriented programming in some way. Since it’s integrated into Visual Studio and the .NET framework there are a lot of features inherited from C\#. That will allow the user to use for loops, if-else constructs, mutable values, etc. Still, we found that all of these thing were replacable when programming functionally.\\
+We realised that every time we went back to the written code, improvements could be made both in terms of code length but also with regards to quality. F\# is mainly a function based programming but it actually allows imperative and object-oriented programming in some way. Since it's integrated into Visual Studio and the .NET framework there are a lot of features inherited from C\#. That will allow the user to use for loops, if-else constructs, mutable values, etc. Still, we found that all of these thing were replaceable when programming functionally.\\
 
-For Michael, the biggest struggle of this experience was that he kept finding himself getting back in think in object-oriented “thinking”. It's hard to think in a more functional approach.\\
+\newpage
+
 \subsubsection{Lines of code}
 \label{linesOfCode}
-When it breaks down to how many lines of code there is in each project we can right away see big differences.\\
+When it breaks down to how many lines of code there is in each solution we can right away see big differences.\\
 
 Here is a short outline on how many files and lines each project got:\\
 
@@ -688,13 +714,27 @@ Here is a short outline on how many files and lines each project got:\\
  \hline
  \multicolumn{4}{|c|}{Short outline} \\
  \hline
- Language & Lines of code & Files & Projects\\
+ Solution & Lines of code & Files & Projects\\
  \hline
  C\# & 280 & 3 & 2\\
  F\# imperative style & 170 & 4 & 1\\
- F\# functional style & 145 & 2 & 1\\
+ F\# functional style & 124 & 2 & 1\\
+ F\# parallel & 91 & 1 & 1\\
  \hline
 \end{tabular}
+
+The savings in code lines come from a few main reasons:
+\begin{itemize}
+	\item F\# uses white-space sensitive syntax
+	\item Refactoring loops to sequence functions
+	\item Removing code that was made obsolete
+\end{itemize}
+
+\paragraph{Syntax} F\# uses white-space sensitive syntax, which means that indentation is used instead of curly braces to denote chunks of code. This saves many code lines and makes the code easier to read through, as very many lines in the C\# code are simply opening and closing curly braces.
+
+\paragraph{Sequence functions} For loops and while loops are very often used to express functionality that F\# has built-in to their sequence functions. Filtering a list, applying a function on each element in a list, and so on, can easily be expressed in F\# on a single line, instead of manually iterating through the list and doing things with the imperative style. This leads to code that is self-documenting and much shorter.
+
+\paragraph{Removing obsolete code} Often when refactoring to functional code, a better understanding of the domain can be reached. When clearly stating what is expected of a function to have as inputs and outputs, one can often find code that is simply not needed any more. Sometimes an interface must be kept to ensure compatibility with other modules.
 
 \newpage
 
@@ -870,6 +910,7 @@ This is a good example to show how easy things can be done in F\#.
 \newpage
 \section{Complete analysis}
 
+Now that we have gone through the sTranslate module and the online research we are gonna take a look at the complete analysis. We are gonna walk through it a bit more in depth and draw conclusions.
 
 
 %\subsection{Development time}
@@ -886,7 +927,6 @@ This is a good example to show how easy things can be done in F\#.
 %\paragraph{Employee}
 
 
-\newpage
 \subsection{Readability and clarity}
 Readability and clarity is really important when writing code. The reason for this is that it is much easier to find and remove bugs and add future content. If the programmer does not need to use a lot of time simply to understand what the code is supposed to do. Poorly written code can cause a programmer to spend a lot of time familiarizing themselves with the code before they can do changes to it.\\
 
@@ -1062,8 +1102,12 @@ Programmers that have background from functional languages like Haskell, OCaml o
 
 \newpage
 \subsection{Debugging and error handling}
+<<<<<<< HEAD
 \label{debug}
 The debugging and error handling in F\# is one of the very important part on the comparing of the two languages.\\
+=======
+The debugging and error handling in F\# is one of the important parts in the comparing of the two languages.\\
+>>>>>>> 05e3b9f138ee1ec85061ac681f31ed8c9a6c38ed
  
 The debugging in F\# is a bit different from C\# and other programming languages. When you are writing the code in F\# you are basically already debugging while you are writing the code since the compiler is going through all the code while typing. If we take a look at C\# there is also some response back from the compiler while you write the code, some minor things like spelling and declaring of variables etc. But more important and bigger things like responses from databases and inputs and outputs from functions you have to run the code for it to be accessible.
 
@@ -1073,20 +1117,20 @@ The debugging in F\# is a bit different from C\# and other programming languages
 
 F\# is using something called type provider where it has an live communication to the database while coding. Lets say that you are making an application where you are going to use an database to import data from. In this case let's say that you are going to use excel as an database tool where the spreadsheets is the tables in the database and the cells in it represents data that is important. \\
 
-In F\# you can easily integrate excel, and with the help of type provider you can access the data in each individual cell. If we also take a quick look at working with a standard database like SQL Server, when writing the code you can "dot" into the database. With that we mean that if we were to make a database connection and store it as \code{db}, we can get access to the table names in the database by using the "dot" in tool without even starting the application. We can see this in FIGURE, in this case the table name is "Translations" and when we "dot" into the \code{db} connection we can see it in the dropdown list with a short information window next to it. This is not the case in C\# where you have to start up the application before it makes the connection to the database.
+In F\# you can easily integrate excel, and with the help of type provider you can access the data in each individual cell. If we also take a quick look at working with a standard database like SQL Server, when writing the code you can "dot" into the database. With that we mean that if we were to make a database connection and store it as \code{db}, we can get access to the table names in the database by using the "dot" in tool without even starting the application. We can see this in figure \ref{fig:DotInTool}, in this case the table name is "Translations" and when we "dot" into the \code{db} connection we can see it in the dropdown list with a short information window next to it. This is not the case in C\# where you have to start up the application before it makes the connection to the database.
 
-\ref{fig:nameOfFigure}
 
 \begin{figure}[!h]
     \includegraphics[width=\textwidth]{visualstudio1}
     \centering
-    \caption{Tekst her}
-    \label{fig:nameOfFigure}
+    \caption{Picture showing table name from database when using the "dot" in tool in F\# to explore the Type Provider.}
+    \label{fig:DotInTool}
 \end{figure}
 
 \subsubsection{F\# type system}
 
-
+\subsubsection{Error handling in F\#}
+When it comes to error handling in F\# it's just like any other .Net languages in that way that it can throw and catch exceptions. Exceptions is the .Net Frameworks help feature to handle and dealing with any unexpected or exceptional situations that occur when a program is running. So programmers from other .Net framework languages will feel familiar with it in F\#. \\
 
 \newpage
 \subsection{Performance}
