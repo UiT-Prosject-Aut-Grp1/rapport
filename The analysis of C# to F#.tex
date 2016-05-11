@@ -702,13 +702,13 @@ Here is a short outline on how many files and lines each project got:\\
 
 \subsection{Testimonials}
 \label{Testimonials}
-To get a better understanding of how companies could benefit using F\# do we have to look at what experiences programmers and companies have with F\#. The internet contains a lot of testimonials where people write their personal experiences with F\#. It is important to note that those companies have already done the choice of using F\# in their applications. This means that they have found F\# useful and therefore more likely to talk possessively about the language. Here we have taken some of those testimonials to take a closer look.
+To get a better understanding on how companies could benefit using F\# we have to look at what experiences programmers and companies have with F\#. The internet contains a lot of testimonials where people write their personal experiences with F\#. It is important to note that those companies have already done the choice of using F\# in their applications. This means that they have found F\# useful and therefore more likely to talk positively about the language. Here we have taken some of those testimonials to take a closer look.
 
 \paragraph{Simon Cousins}
 
 Simon is a developer at UK-based Power Company. He uses both C\# and F\# to write his applications. What we can learn from what he have written is that F\# and C\# can be used together. He uses C\# to write the client and server components and F\# to write the calculation engine. This is a really smart usage of both programming languages as he uses the best language to each task.\\
 
-He does also write that he is still waiting for the first bug from a bug to came in from a delivered F\# project and that this is not the case with C\#. Here we can see the effect of the strong type system in the F\# compiler.
+He does also writes that he is still waiting for the first bug to appear from a delivered F\# project and that this is not the case in C\#. Here we can see the effect of the strong type system in the F\# compiler comes in great use.
 
 \begin{shadequote}{Simon Cousins, UK-based Power Company}
 I have now delivered three business critical projects written in F\#. I am still waiting for the first bug to come in.
@@ -716,9 +716,9 @@ I have now delivered three business critical projects written in F\#. I am still
 
 \paragraph{Michael Newton}
 
-Michael is a Senior Developer at a development company named 15below. Historically they have written their code in a mix of C\# and VB.NET. They uses F\# for components where the language strength's shine, without discarding or rewrite the existing code.\\
+Michael is a Senior Developer at a development company named 15below. Historically they have written their code in a mix of C\# and VB.NET. They are using F\# for components where the language strength's shine, without discarding or rewriting the existing code.\\
 
-What we can learn from this is that is really well integrated with the .NET framework. This makes it really easy to use with the code that the company already have written. That can be really beneficial for Serit IT Partner as their code today is written in C\# that supports .NET. 
+What we can learn from this is that it's really well integrated with the .NET framework. This makes it really easy to use with the code that the company already have written. This could be really beneficial for Serit IT Partner as their code today is written in C\# that supports .NET. 
 
 \begin{shadequote}{Michael Newton, 15below}
 We would recommend F\# as an additional tool in the kit of any company building software on the .NET stack.
@@ -741,9 +741,9 @@ Our experience shows us that the number of code lines shrinks with a ratio of 1/
 
 \paragraph{Employee at Bayard Rock}
 
-Bayard Rock is a company where they are trying to finding new approaches towards anti-money-laundering. Before they adopted F\# there where often months of turnaround time between development of an idea and actually testing. Now that they are using F\# they can often see their ideas come to life in just days.\\
+Bayard Rock is a company where they are trying to finding new approaches towards anti-money-laundering. Before they adopted F\# there were often months of turnaround time between development of an idea and actually testing. Now that they are using F\# they can often see their ideas come to life in just days.\\
 
-They find that this makes them really competitive in their field. Being one of the first to try out new technology can be risky but often with high reward. For Bayard Rock this have really beneficial, they can deliver projects faster and cheaper than their competitors and therefore corner the market.
+They find that this makes them really competitive in their field. Being one of the first to try out new technology can be risky but often with high reward. For Bayard Rock this was really beneficial, they can now deliver projects faster and cheaper than their competitors and therefore get an edge on the market.
 
 \begin{shadequote}{Employee at Bayard Rock}
 The benefits of functional programming have given us a great advantage over our slow moving competitors. Little do they know that it’s largely thanks to our secret weapon, F\#.
@@ -1060,12 +1060,27 @@ Python and Ruby are examples of dynamical typed languages. Those languages have 
 \paragraph{Functional}
 Programmers that have background from functional languages like Haskell, OCaml or Standard ML for them F\# will be really familiar. They will probably find that F\# to be really easy to read, understand and write. The reason for this is that F\# is a functional language itself. 
 
+\newpage
+\subsection{Debugging and error handling}
+The debugging and error handling in F\# is one of the very important part on the comparing of the two languages.\\
+ 
+The debugging in F\# is a bit different from C\# and other programming languages. When you are writing the code in F\# you are basically already debugging while you are writing the code since the compiler is going through all the code while typing. If we take a look at C\# there is also some response back from the compiler while you write the code, some minor things like spelling and declaring of variables etc. But more important and bigger things like responses from databases and inputs and outputs from functions you have to run the code for it to be accessible.
 
 
 \newpage
+<<<<<<< HEAD
+\subsubsection{Working with data sources}
+
+F\# is using something called type provider where it has an live communication to the database while coding. Lets say that you are making an application where you are going to use an database to import data from. In this case let's say that you are going to use excel as an database tool where the spreadsheets is the tables in the database and the cells in it represents data that is important. \\
+
+In F\# you can easily integrate excel, and with the help of type provider you can access the data in each individual cell. If we also take a quick look at working with a standard database like SQL Server, when writing the code you can "dot" into the database. With that we mean that if we were to make a database connection and store it as \code{db}, we can get access to the table names in the database by using the "dot" in tool without even starting the application. We can see this in FIGURE, in this case the table name is "Translations" and when we "dot" into the \code{db} connection we can see it in the dropdown list with a short information window next to it. This is not the case in C\# where you have to start up the application before it makes the connection to the database.
+
+\subsubsection{F\# type system}
+=======
 \subsection{Debugging and error handling}
 
 
+>>>>>>> 9228d9ab2f7c4524daddd862e3fdb993a3d66ba9
 
 \begin{figure}[!h]
     \includegraphics[width=\textwidth]{visualstudio1}
