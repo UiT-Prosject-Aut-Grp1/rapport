@@ -910,6 +910,7 @@ This is a good example to show how easy things can be done in F\#.
 \newpage
 \section{Complete analysis}
 
+Now that we have gone through the sTranslate module and the online research we are gonna take a look at the complete analysis. We are gonna walk through it a bit more in depth and draw conclusions.
 
 
 %\subsection{Development time}
@@ -926,7 +927,6 @@ This is a good example to show how easy things can be done in F\#.
 %\paragraph{Employee}
 
 
-\newpage
 \subsection{Readability and clarity}
 Readability and clarity is really important when writing code. The reason for this is that it is much easier to find and remove bugs and add future content. If the programmer does not need to use a lot of time simply to understand what the code is supposed to do. Poorly written code can cause a programmer to spend a lot of time familiarizing themselves with the code before they can do changes to it.\\
 
@@ -1112,9 +1112,8 @@ The debugging in F\# is a bit different from C\# and other programming languages
 
 F\# is using something called type provider where it has an live communication to the database while coding. Lets say that you are making an application where you are going to use an database to import data from. In this case let's say that you are going to use excel as an database tool where the spreadsheets is the tables in the database and the cells in it represents data that is important. \\
 
-In F\# you can easily integrate excel, and with the help of type provider you can access the data in each individual cell. If we also take a quick look at working with a standard database like SQL Server, when writing the code you can "dot" into the database. With that we mean that if we were to make a database connection and store it as \code{db}, we can get access to the table names in the database by using the "dot" in tool without even starting the application. We can see this in \ref{fig:DotInTool}, in this case the table name is "Translations" and when we "dot" into the \code{db} connection we can see it in the dropdown list with a short information window next to it. This is not the case in C\# where you have to start up the application before it makes the connection to the database.
+In F\# you can easily integrate excel, and with the help of type provider you can access the data in each individual cell. If we also take a quick look at working with a standard database like SQL Server, when writing the code you can "dot" into the database. With that we mean that if we were to make a database connection and store it as \code{db}, we can get access to the table names in the database by using the "dot" in tool without even starting the application. We can see this in figure \ref{fig:DotInTool}, in this case the table name is "Translations" and when we "dot" into the \code{db} connection we can see it in the dropdown list with a short information window next to it. This is not the case in C\# where you have to start up the application before it makes the connection to the database.
 
-\ref{fig:nameOfFigure}
 
 \begin{figure}[!h]
     \includegraphics[width=\textwidth]{visualstudio1}
@@ -1128,10 +1127,6 @@ In F\# you can easily integrate excel, and with the help of type provider you ca
 \subsubsection{Error handling in F\#}
 When it comes to error handling in F\# it's just like any other .Net languages in that way that it can throw and catch exceptions. Exceptions is the .Net Frameworks help feature to handle and dealing with any unexpected or exceptional situations that occur when a program is running. So programmers from other .Net framework languages will feel familiar with it in F\#. \\
 
-<<<<<<< HEAD
-
-=======
->>>>>>> aaa7c06f41b2ba81fdff0ab9b9b163457e2de45d
 \newpage
 \subsection{Performance}
 
