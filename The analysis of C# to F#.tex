@@ -204,7 +204,7 @@ Automation \vspace{5mm}\\
  		\textbf{Pages:}\\
  		\pageref{LastPage} \\[2mm]
  		\textbf{Attachments:}\\
- 		4\\
+ 		10\\
 	}
  	\\
  	\hline
@@ -271,9 +271,13 @@ This report is written by 3 students from the final year in the Automation class
 
 The assignment is given by a company named Serit IT Partner from Tromsø. They wanted us to identify the benefits, flaws and our experience from learning a new programming language called F\#. Today Serit mostly uses the famous programming language C\# which is currently widely used around the world. The time spent writing code and debugging, and the stability in these languages is very valuable. Serit IT Partner wanted us to test out if a change of main programming language from C\# to F\# would have an impact on time spent on coding, reduce the number of lines of code and would improve stability.\\
 
+We decided to write this rapport in English to make sure that everyone interested could read it in a industry with a large English speaking community. To write this rapport we have used LaTeX that is a word processor markup language made specificity for scientific documents.\\
+
 We found that we could clearly see a difference regarding the numbers of lines of code and the performance in the application that was given to us. Indeed, F\# is better (or perhaps, more convenient) than C\# in some cases. F\# is a programming language which is very good at handling large amounts of data, and is also good with concurrency (dealing with multiple things at the same time). Due to the nature of the language, large operations on data can be broken down into smaller tasks and calculations can be made without fear of unintended side effects.\\
 
-We started out at thinking that F\# was out there to replace C\#, however that was not the case. F\# is made as a tool that should work together with C\# seamlessly to make great applications. Both programs are used in the .NET framework and by that they work very well together. F\# doesn't need to completely replace C\#, instead it should be implemented there where it is suited best. Based on our results Serit should consider starting a small team and use F\# where it’s best and easy to implement and use C\# where its better. Then they could gradually expand the F\# team if they see the need for it.
+We started out at thinking that F\# was out there to replace C\#, however that was not the case. F\# is made as a tool that should work together with C\# seamlessly to make great applications. Both programs are used in the .NET framework and by that they work very well together. F\# doesn't need to completely replace C\#, instead it should be implemented there where it is suited best. Based on our results Serit should consider starting a small team and use F\# where it’s best and easy to implement and use C\# where its better. Then they could gradually expand the F\# team if they see the need for it.\\
+
+Serit IT Partner will now use this report to decide if they want to try to use F\# in their products. Serit have several other offices in Norway that also can have an interest in reading what we have concluded with.
 
 \newpage
 \section*{Preface}
@@ -677,6 +681,8 @@ To test performance we made a test application to do many searches in the databa
 As seen in figure \ref{fig:averageChart1}, the direct translation program was very slow, using clunky imperative programming in F\#. The F\# direct version was written when we had only basic skills with F\#, and if we had revisited that program later we would probably have come up with a more efficient design. Our first attempt at a purely functional version worked much better, and even showed some improvement over the C\# program. It must be said that Serit admitted that their program was not very optimized yet.\\
 
 Looking back at the development process, we found that there were always a way to optimize the program in terms of performance, code lines and clarity. As shown in figure \ref{fig:averageChart2}, we thought we were done with the program at "Version 1" and were happy with the result. However, after some research into List functions, we found a huge improvement in search speed by using a much faster function (\code{List.tryFind} as opposed to multiple calls to \code{List.filter}) to find the correct value. When we also implemented the F\# parallel program, using the same algorithm, but working on multiple processor cores, that was even faster. These optimized programs showed real performance gains compared to the C\# program, while at the same time being less complex.\\
+
+A note that has to be made about the parallel program is that it will only provide a speed increase if the number of searches to perform is large enough. In our tests, we used 1000 searches. In theory, running on 8 cores as opposed to one, should improve the speed by a factor of 8, but in our tests it only increased by a factor of 3. The reason is that relatively much of the processor's time is spent on scheduling, distributing and collecting tasks from each core.\\
 
 The conclusion we can draw from this, is that while we can't prove that either language produces faster programs than the other, it is quite clear that for some tasks, F\# is better suited to solving the problem. The fact that we were able to produce a high performance program with less code proves this.
 
@@ -1106,7 +1112,7 @@ Programmers that comes from a background of functional languages like Haskell, O
 \label{debug}
 
 The debugging and error handling in F\# is one of the important parts in the comparing of the two languages.\\
- 
+
 The debugging in F\# is a bit different from C\# and other programming languages. When you are writing the code in F\# you are basically already debugging while you are writing the code since the compiler is going through all the code while typing. If we take a look at C\# there is also some response back from the compiler while you write the code, some minor things like spelling and declaring of variables etc. But more important and bigger things like responses from databases and inputs and outputs from functions you have to run the code for it to be accessible.
 
 
@@ -1137,16 +1143,25 @@ When it comes to error handling in F\# it's just like any other .Net languages i
 As shown in the chapter \nameref{sTranslatePerformance}, page \pageref{sTranslatePerformance}, there were performance gains to be found by translating the program to F\#. An important point to remember is that the C\# code was not optimized, and there is reason to believe that the C\# code could be made just as fast as the F\# code. The main difference is that we think some problems are easier to solve in F\#.
 
 \subsubsection{Optimizing the code}
-%mange iterasjoner for å komme til optimalisert versjon
+We went through many iterations to come to the final version of the F\# sTranslate library. We always found something to improve when revisiting the code, and our implementation changed as we gained more insight in F\# and through discussions and advice from Jonas Juselius, our contact person in Serit. Working on the code, we gradually reduced the lines of code in the program, and refactored the code to be more idiomatic and "F\#-like". In hindsight, we can say that if we had the same knowledge and experience with F\# then, as we have now, the optimizing stage would have been much shorter. In our experience, when developing F\# code, you first add what you think you need to make it work, and afterwards you take away what you don't need.
 
-\subsubsection{}
-%eksempel på ting som er enkle å gjøre i f#:
-%koble til database
-%jobbe med store samlinger av ting
-%parallel programmering
+\subsubsection{Tasks suitable for F\#}
+In this chapter, we will discuss some programming tasks that were easy to do in F\#. First, we'll discuss connecting to databases with the SQL Type Provider. Then, how F\# makes it easy to work on collections of items. Finally, we will talk about parallel programming in F\#.
+
+\paragraph{Connecting to databases} The very first thing we did when we sat down to learn the language, was to try connecting to a database, reading some rows and inputting some data. We received a sample database from Serit and set it up on our computers using SQL Server. We followed the code example from Microsoft to connect to the database with the SQL Type Provider. As it turns out, that code was actually the code we ended up using in the final version of the program. Connecting to the database and performing database queries were trivial in F\#, and also fast. Keeping in mind that the database was of course hosted locally, and not on the internet.
+
+\paragraph{Collections} F\# worked very well with collections. It was very easy to use list functions to do things with collections. The standard collections in F\#, lists, arrays and sequences all have a lot of functions built-in to the language, like \code{map}, \code{filter} and \code{reduce}. By using the pipeline operator \code{|>} we could easily take the output of one function and feed it as input to the next function. Taking the F\# parallel program as an example, we use list functions in three places: 
+
+\begin{itemize}
+	\item To organize and execute the searches in parallel with the PSeq collection functions,
+	\item to convert the database query result to a list and storing the values in a record type,
+	\item and to do the actual search in the database by using the tryFind function.
+\end{itemize}
+
+\paragraph{Parallel programming} We started out doing the parallel program by following the code example on F\# for Fun and Profit. They suggested using the \code{Async} functions, and it worked very well. Without any prior knowledge of parallel programming at all, we managed to get the program to utilize multi-core processing after just 2 hours of trying. We further optimized the parallel version by switching to \code{PSeq}, an F\# implementation of Parallel LINQ (Language-Integrated Query). This was done to reduce the overhead of scheduling parallel tasks. Both methods (\code{Async} and \code{PSeq}) were trivial to accomplish, and required only 5-10 added lines of code. Also, since the program is purely functional, there are no side effects and no mutable state. This guarantees that we have no racing hazards and shared memory errors during program execution. By this we can confidently say that F\# is well suited to do parallel programming.
 
 \subsubsection{Conclusion Performance}
-
+As mentioned in \nameref{sTranslatePerformance}, page \pageref{sTranslatePerformance}, F\# can be better suited than C\# on some things. We were able to take advantage of the F\# toolkit to rapidly develop a program that satisfied Serit's expectations and even provided performance boosts. We conclude that using F\# will absolutely not decrease performance, and in some cases will provide better performance.
 
 \newpage
 
