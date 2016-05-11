@@ -669,7 +669,31 @@ In this chapter we will take a look at the analysis of the module sTranslate.
 Looking back on how we used the two different methods of writing the F\# code, the line by line translation and the functional approach, we can say that the direct translation was clearly not the way to go. It became much harder to do the actual programming in an object-oriented way, so much that we even ended up doing the direct translation without using classes at all (while the C\# code of course did have classes). We found that by using the direct translation, we didn't really save many lines of code. We could also notice in the result a clear difference in the actual speed of the program, where the direct translation was inferior to the functional code. We get into this a little more later.
 
 \subsubsection{Performance}
-This chapter is not a demand from Serit, instead this was something we wanted to test out for ourselves, and is just a bonus for Serit if it proves to be better performance in F\# vs C\#.
+<<<<<<< HEAD
+This chapter is not a demand from Serit, instead this was something we wanted to test out for ourselves, and is just a bonus for Serit if it proves to be better performance in F\# over C\#. One important thing to keep in mind is that when targeted at .NET, C\# and F\# both compile to the Common Intermediate Language. The same algorithm in both languages should result in exactly the same code when compiled. The key point is that some problems are perhaps more easily represented in one of the languages, and high-performing code will make more sense in that language.\\
+
+To test performance, we increased the size of our test database to 10000 rows by inserting random data. We prepared a list of 1000 queries that the program would try to translate, and wrote a test app to measure how much time each program spent doing 1000 searches in the database. Finally, for each program we did 1000 repetitions of these 1000 searches and found the average time spent to do 1000 searches.\\
+
+As seen in figure \ref{fig:averageChart1}, the direct translation program was very slow, using clunky imperative programming in F\#. The F\# direct version was written when we had only basic skills with F\#, and if we had revisited that program later we would probably have come up with a more efficient design. Our first attempt at a purely functional version worked much better, and even showed some improvement over the C\# program. It must be said that Serit admitted that their program was not very optimized yet.\\
+
+After some refinements to the F\# program, we managed to speed it up by a significant amount. The biggest change was using a much faster list function (\code{List.tryFind} as opposed to multiple \code{List.filter}) to find the correct value. The F\# parallel program, using the same algorithm, but working on multiple processor cores, was even faster. This is shown in figure \ref{fig:averageChart2}. These optimized programs showed real performance gains compared to the C\# program, while at the same time being less complex.\\
+
+The conclusion we can draw from this, is that while we can't prove that either language produces faster programs than the other, it is quite clear that for some tasks, F\# is better suited to solving the problem. The fact that we were able to produce a high performance program with less code proves this.
+
+\begin{figure}[!h]
+    \includegraphics[scale=0.8]{averageChart1}
+    \centering
+    \caption{Shows the average time (in seconds) to perform 1000 searches in the test database.}
+\label{fig:averageChart1}
+\end{figure}
+
+\begin{figure}[!h]
+    \includegraphics[scale=0.8]{averageChart1}
+    \centering
+    \caption{Differences between the first and second versions of the F\# program, and the F\# parallel program.}
+\label{fig:averageChart2}
+\end{figure}
+
 \subsubsection{Experiences}
 The experiences that we can draw from this assignment is that in F\#, it’s very easy to read the code and what it does, and that you almost don’t need to comment the code. But the thing we appreciated the most was the direct response from the compiler and Microsoft’s Intellisense technology in real time while writing the code. At first we thought that this was a bit unfavourable since you always saw errors made in code with the red lines everywhere. However, as the language is very strict about types and such, one is forced to root out many errors before the program even is able to run. Because programming with pure functions eleminates side effects and state changes, the programmer won't have to deal with unexpected errors later while running the program, which could make it misbehave or even crash. Hence we grew to really enjoy this feature. It makes the programmer put a little more time in thinking about what they want the code to do, but they will spend less time dealing with problems later.\\
 
@@ -692,7 +716,7 @@ Here is a short outline on how many files and lines each project got:\\
  \hline
  C\# & 280 & 3 & 2\\
  F\# imperative style & 170 & 4 & 1\\
- F\# functional style & 145 & 2 & 1\\
+ F\# functional style & 124 & 2 & 1\\
  \hline
 \end{tabular}
 
@@ -1083,9 +1107,15 @@ In F\# you can easily integrate excel, and with the help of type provider you ca
 \end{figure}
 
 \subsubsection{F\# type system}
+<<<<<<< HEAD
+=======
+
+>>>>>>> e9816c167a9519511c54c5cbc64a536c467b251b
 
 \subsection{Performance}
 
+<<<<<<< HEAD
+=======
 \begin{figure}[!h]
     \includegraphics[scale=0.8]{averageChart1}
     \centering
@@ -1093,6 +1123,7 @@ In F\# you can easily integrate excel, and with the help of type provider you ca
     \caption{Tekst her}
 \end{figure}
 
+>>>>>>> 9f8e4987f03cdd9224dacc82d7a9158dbd304f51
 \newpage
 \subsection{Economic aspects}
 
@@ -1108,7 +1139,9 @@ Trying to adapt to new programming languages can be a costly affair but, in the 
 \subsubsection{Training and recruiting employees}
 
 \paragraph{Training employees}
-Learning a new programming language can take a lot of time from where the programmers could be making applications that generate income. This is especially true when it comes to F\#. This is both because F\# have a less known syntax and that F\# is a functional programming language.\\
+Learning a new programming language can take a lot of time away from the programmers, this time could be used to making applications that generate income for the company.\\
+
+This is especially true when it comes to F\#. This is both because F\# have a less known syntax and that F\# is a functional programming language.\\
 
 Programmers time is really valuable and shod therefore be used wisely. 
 
