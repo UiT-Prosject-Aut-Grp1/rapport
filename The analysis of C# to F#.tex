@@ -796,7 +796,7 @@ We have done some research on the web to find some concrete code examples to hig
 
 \subsubsection{Basic from 1 to N square function}
 \paragraph{F\#}
-A lot of our research comes from the web page fsharpforfunandprofit, and there they highlight a simple task where they sum the squares from 1 to N. We can see how the code could look like if it was written in F\# in figure \ref{fig:SquareFunctionFSharp}.
+A lot of our research comes from the web page fsharpforfunandprofit, and there they highlight a simple task where they sums the squares from 1 to N. We can see how the code could look like if it was written in F\# in figure \ref{fig:SquareFunctionFSharp}.
 
 \begin{figure}[!h]
 \begin{lstlisting}
@@ -813,7 +813,7 @@ let sumOfSquares n =
 
 Here they made 2 functions, where one uses the other function as an output on it’s own. The \code{|>} is used to send the output from one function and send it as an input to the other.\\
 
-If we break this down to what it does it’s basically, first an function is made that is called square, it simply takes itself and multiply it with itself. Then an other function is made sumOfSquares, it makes a loop from 1 to n, then puts them into a list and each element is used with the square function. Then it sums the list up and sends it back as the output. We didn’t need to do any type declarations, because the compiler figured out that it has to be an integer. That is because the input in sumOfSquares is used to create an array, and that needs an integer. If we now try to write a piece of code that would send for example a floating point number to that function, the program wouldn’t even compile, and you would save yourself some debugging time.\\
+If we break this down to what it does it’s basically, first a function is made that is called \code{square}, it simply takes itself and multiply it with itself. Then another function is made \code{sumOfSquares}, it makes a loop from 1 to n, then puts them into a list and each element is used with the square function. Then it sums the list up and sends it back as the output. We didn’t need to do any type declarations, because the compiler figured out that it has to be an integer. That is because the input in sumOfSquares is used to create an array, and that needs an integer. If we now try to write a piece of code that would send for example a floating point number to that function, the program wouldn’t even compile, and you would save yourself some debugging time.\\
 
 \newpage
 
@@ -844,16 +844,16 @@ public static class SumOfSquaresHelper
 \label{fig:SquareFunctionCSharp}
 \end{figure}
 
-So this code basically does the same thing. The interesting part here is that what F\# could to with 2-3 lines of code, the basic C\# would to in about 16 (to be fair most of the lines is just { and }) that is pretty impressive. However you could make this much more compact but that would make it much harder to read, since this is the standard that is mostly used.\\
+This code basically does the same thing. The interesting part here is that what F\# could to with 2-3 lines of code, the basic C\# would do in about 16 (to be fair most of the lines is just { and }) that is pretty impressive. However, you could make this much more compact but that would make it much harder to read, since this is the standard that is mostly used.\\
 
-So to highlight the differences of these two code examples. First it is that the F\# code is much more compact and still is very readable (almost self explained). The F\# code didn't have any type declarations (f.ex C\# have to do int sum = 0, before sum is even used). The last thing is that F\# can be developed interactively. With that we mean that we can test the functions right away and check if we get back what we want or not without having to go in and out of functions with the use on the interactive window that F\# has.
+To highlight the differences of these two code examples we can look at the following things. Firstly the F\# code is much more compact and still very readable (almost self explained). The F\# code didn't have any type declarations (f.ex C\# have to do int sum = 0, before sum is even used). Lastly F\# can be developed interactively. With that we mean that we can test the functions right away and check if we get back what we want or not without having to go in and out of functions with the use on the interactive window that F\# has.
 
 \newpage
 
 \paragraph{C\# LINQ}
 Today many C\# programmers uses LINQ, a much more modern tool with C\# that in someway lets C\# be more functional.\\
 
-So let’s take a look at how the code would look like using the C\# LINQ extension, we can see this in figure \ref{fig:SquareFunctionCSharpLINQ} below.
+Let’s take a look at how the code would look like using the C\# LINQ extension, we can see this in figure \ref{fig:SquareFunctionCSharpLINQ} below.
 
 \begin{figure}[!h]
 \begin{lstlisting}
@@ -871,16 +871,16 @@ public static class FunctionalSumOfSquaresHelper
 \label{fig:SquareFunctionCSharpLINQ}
 \end{figure}
 
-We took the basic C\# code from 16 lines down to 9 lines. This almost took down the C\# code to half, but still not near the F\# code. Also here we can see that the C\# code is bound to use the  curly braces and periods and semicolons. The code also still needs to be declared to be able to use variables, that we don’t need to do in F\#.\\
+We shortened the basic C\# code from 16 lines down to 9 lines. This almost took down the C\# code to half, but still not near the length of the F\# code. Also here we can see that the C\# code is bound to use the  curly braces and periods and semicolons. Still, the code needs to be declared to be able to use variables, that we don’t need to do in F\#.\\
 
-What we can conclude with this short example is that F\# in this case was superior in many ways, more easy to read, more compact and you can easily check the gained outputs through the interactive window. 
+With this short example it can be concluded that F\# in this case was superior in many ways, more easy to read, more compact and you can easily check the gained outputs through the interactive window. 
 
 \newpage
 \subsubsection{Rotate a tuple}
-Here we are gonna take a look at one more example, this time very short and easy function. The function simply is used to change the order of a tuple (a tuple is set of values, f.ex. cordinates in an aksis).\\
+In this subchapter we take a look at one more example, this time very short and easy function. The function is simply used to change the order of a tuple (a tuple is set of values, f.ex. cordinates in an aksis).\\
    
 \paragraph{F\#}
-First lets take a look on how we would to this in F\#, we can se this in figure below.
+First lets take a look on how we would to this in F\#, we can see this in the figure below.
 
 \begin{figure}[!h]
 \begin{lstlisting}
@@ -891,7 +891,7 @@ let rotate (x,y,z) = (z,x,y)
 \end{figure}
 
 \paragraph{C\#}
-Since we can’t just rearrange the order easily on a tuple in C\#, we have to do it in a little different approach. This is shown in figure below.\\
+Since we can’t just rearrange the order easily on a tuple in C\#, we have to do it in a little different approach, as displayed in the figure below.\\
 
 \begin{figure}[!h]
 \begin{lstlisting}
@@ -904,7 +904,7 @@ Tuple<V,T,U> Rotate(Tuple<T,U,V> t)
 \label{fig:RotateTupleCSharp}
 \end{figure}
 
-So firstly here we have to define that its a tuple first, and then give it a name and in this case it’s Rotate. When we are returning the new values we have to tell the compiler what tuple we are gonna return as well as ref to each item in the new tuple.\\
+Firstly, we have to define that its a tuple, and then give it a name and in this case it’s Rotate. When we are returning the new values we have to tell the compiler what tuple we are returning as well as reference to each item in the new tuple.\\
 
 This is a good example to show how easy things can be done in F\#.
 
@@ -929,9 +929,9 @@ Now that we have gone through the sTranslate module and the online research we a
 
 
 \subsection{Readability and clarity}
-Readability and clarity is really important when writing code. The reason for this is that it is much easier to find and remove bugs and add future content. If the programmer does not need to use a lot of time simply to understand what the code is supposed to do. Poorly written code can cause a programmer to spend a lot of time familiarizing themselves with the code before they can do changes to it.\\
+Readability and clarity is really important when writing code. The reason for this is that it is much easier to find and remove bugs and add future content. If the programmer does not need to use a lot of time to understand what the code is supposed to do. Poorly written code can cause a programmer to spend a lot of time familiarizing themselves with the code before implement changes.\\
 
-For the most part it is up to the programmer to write readable and clear code, but the programming language can have a lot to do with helping the programmer in this matter.\\
+For the most part it is up to the programmer to write readable and clear code, but the programming language can be a key factor in helping the programmer with this matter.\\
 
 %Some programming languages like for example Assembly can be seen as programming language that makes it hard for the programmer to writhe readable code. Other like for example Python make it really easy for the programmer.\\
 
@@ -955,20 +955,20 @@ let a = f+2	// On the same indentation as line 1, starting a new block
 	\label{fig:indentationExample}
 \end{figure}
 
-That means that to some extent the F\# language force the programmer to write code that have good structure in the code. This can make it easier to understand and read the code even if you don't know it beforehand.\\
+That means that to some extent the F\# language force the programmer to write code that have good structure. This can make it easier to understand and read the code even if you don't know it beforehand.\\
 
-For an inexperienced programmer this can be a little confusing at fist. But as this is a really good practice to learn early on it can help the inexperienced programmer write better code.\\
+For an inexperienced programmer this can be a little confusing at fist. Still, this is a really good practice to learn early on as it can help the inexperienced programmer to write better code.\\
 
 In indentation and code structure, F\# really does a good jobb when it comes down to readability and clarity.
 
 \newpage
 \subsubsection{File structure}
 
-In most programming languages the file structure have nothing to do in how the program is compiled or run. F\# does this a little different, all the files have to be in a specific order to run the program correct.\\
+In most programming languages the file structure have nothing to do with how the program is compiled or run. F\# does this a little different, all the files have to be in a specific order to run the program correctly.\\
 
-Whenever you call a function you have to make sure that the function is written before the call in the code is made. And since all the files are read in order you have to make sure that if the function is in another file it has to be placed above the current file in the file structure.\\
+Whenever you call a function you have to make sure that the function is written before the call in the code is made. And since all the files are read in order the programmer have to make sure that if the function is in another file it has to be placed above the current file in the file structure.\\
 
-The most common way to organize the files in a project is to have all the files in the same folder. This makes it more transparent and easy to order the code. This way of organization can work really well for small and medium sized projects, but for really big projects it may be better to organize in multiple folders.\\
+The most common way to organize the files in a project is to store them in the same folder. This ensures transperancy and makes it easier to organizing the code. This way of organization can work really well for small and medium sized projects, but for really big projects it may be better to organize in multiple folders.\\
 
 A good practice when organising the files is to only have one module per file and make the functions inside correspond to the file name.\\
 
@@ -977,9 +977,9 @@ A good practice when organising the files is to only have one module per file an
 
 \paragraph{ML Programming Language}
 
-Even though F\# has taken inspiration from a lot of different modern programming languages it still have a lot of roots to ML. This is a old and not that popular programming language. This makes the syntax very different to how syntaxes normally looks like today, and can make the syntax hard to read and write to any programmer that are not used to ML or other similar programming languages.\\
+Even though F\# has taken inspiration from a lot of different modern programming languages it is rooted in ML. This is an old and less used programming language. This makes the syntax very different to how syntaxes normally looks like today, and can make the syntax hard to read and write to any programmer that are not used to ML or other similar programming languages.\\
 
-If we take a close look at figure \ref{fig:factorialMLExample} and \ref{fig:factorialFsharpExample} we see a lot of similarity in how the programs work. In the F\# example we can read match, that is a way of doing pattern matching. The ML code does also use pattern matching with a small change in the syntax. Line 1 in the ML code we can see that if the function gets a 0 as an input the output will be 1, the same thing happens at line 3 in the F\# example. Line 2 in the ML code tells us that if the input is an int the output will be \code{n * factorial (n-1)} and the same thing happens in F\# line 4 if the input is not 0.\\
+If we take a close look at figure \ref{fig:factorialMLExample} and \ref{fig:factorialFsharpExample} we see a lot of similarity in how the programs work. In the F\# example we can read match, that is a way of doing pattern matching. The ML code also uses pattern matching with a small change in the syntax. Line 1 in the ML code we can see that if the function gets a 0 as an input the output will be 1, the same thing happens at line 3 in the F\# example. Line 2 in the ML code tells us that if the input is an integer the output will be \code{n * factorial (n-1)} and the same thing happens in F\# line 4 if the input is not 0.\\
 
 \begin{figure}[!h]
 	\begin{lstlisting}
@@ -1028,10 +1028,10 @@ def factorial(n):
 
 At a first glance Python and F\# can look similar because both languages is a white space sensitive programming language (Explained on page \ref{indentationAndCodeStructure}). But if you take a closer look at the programming languages they really works different, the main reason for this is that F\# is meant to be a functional programming language and Python is not, even though it have support for it.\\
 
-Python is one of the programming languages that the creators of F\# have been using as a inspiration when making F\#. It is not hard to see the reason for this, because Python has an easy readability as an programming language. Both of them can be really self explanatory and forces the programmer to  write the code in a good structured way. This have made F\# more easy read and understand for programmers that looks at programs others have written.
+Python is one of the programming languages that the creators of F\# have been using as a inspiration when making F\#. This is because Python has an easy readability as an programming language. Both of them can be really self explanatory and forces the programmer to  write the code in a good structured way. This have made F\# more easy read and understand for programmers that looks at programs others have written.
 
 \newpage
-\paragraph{Assembly} One commonly used example for a programming language that is not easy to read or understand is Assembly. The reason that Assembly can be hard to read and understand for some people is that the programmer is working directly with CPU instructions and memory addressing. Even mundane tasks like moving a value to a registry must be explicitly programmed. In figure \ref{fig:assemblyExample} you can see an example of a "Hello world!" program. Most of the other programming languages does this in only one line . You can see an example of this in the F\# example in figure \ref{fig:fSharpHelloWorld}.\\
+\paragraph{Assembly} One commonly used example for a programming language that is not easy to read or understand is Assembly. The reason that Assembly can be hard to read and understand for some people is that the programmer is working directly with CPU instructions and memory addressing. Even mundane tasks like moving a value to a registry must be explicitly programmed. In figure \ref{fig:assemblyExample} you can see an example of a "Hello world!" program. Most of the other programming languages does this in only one line,which is presented in the F\# example in figure \ref{fig:fSharpHelloWorld}.\\
 
 \begin{figure}[!h]
 	\begin{lstlisting}
@@ -1063,7 +1063,7 @@ printfn "Hello, world!"
 	\label{fig:fSharpHelloWorld}
 \end{figure}
 
-It is maybe a little unfair to compare F\# with Assembly because Assembly is a really low level programming language. But there are two points that we can get out from this comparison and that is firstly that F\# is a easier language to write and understand, but this comes with the cost of less control over very basic computing that is important for really good optimization.
+It is maybe a little unfair to compare F\# with Assembly as Assembly is a really low level programming language. But there are two points that are made obvious from this comparison and that is how F\# is an easier language to write and understand. This however comes at the cost of less control over very basic computing that is important for really good optimization.
 
 \newpage
 
@@ -1082,24 +1082,24 @@ It is maybe a little unfair to compare F\# with Assembly because Assembly is a r
 
 \subsubsection{Conclusion readability and clarity}
 
-After analysing the readability and clarity of the F\# programming language we can divide how easy it would be for a programmer to learn F\# into 4 groups.
+After analysing the readability and clarity of the F\# programming language we can see that the code's ease of use (for programmers) can be grouped into four factors.
 
 \paragraph{Inexperienced}
-For a person that is new to programming it will take some time to learn programming regardless of the programming language. But F\# can be a good place to start. It can be easy to read and understand simple code from only looking at the code and you don't already have any mindset that can stand in your way of understanding.
+For a person that is new to programming it will take some time to learn programming regardless of the programming language. But F\# can be a good place to start. It is easy to read and understand the simple code just by looking at. Additionally, an inexperienced programmer would not have an already embedded mindset, this can in some cases support the programme language aquisition as previous experience with programming can act as a barrier and inhibit the process of learning a new language
 
 \paragraph{Object-oriented}
-A programmer that have background from object-oriented programming languages like C++, C\#, Java and Visual Basic can have a problem getting used to F\#. F\# is a functional programming language and works very different to object-oriented language.
+A programmer that have background from object-oriented programming languages like C++, C\#, Java and Visual Basic can have a problem getting used to F\#. F\# is a functional programming language and stands in strong contrast to object-oriented language.
 
 %\begin{shadequote}{Mikkel Eltervåg}
 %After working with an object oriented mindset in programming for several years I found it very difficult to write a good functionally code. Often I went back to old habits and used code written in a object oriented way when there were much better ways to do it functionally.
 %\end{shadequote}
 
 \paragraph{Dynamical typed}
-Python and Ruby are examples of dynamical typed languages. Those languages have a similar syntax to F\# but they are works a little different in how it is typed. It can be easier for programmers that are used to dynamical typed programming languages to learn F\# than it is for programmers with object-oriented background.  
+Python and Ruby are examples of dynamical typed languages. Those languages have a similar syntax to F\# but they works a little differently in how they are typed. It can be easier for programmers that are used to dynamical typed programming languages to learn F\# than it is for programmers with object-oriented background.  
 
 
 \paragraph{Functional}
-Programmers that have background from functional languages like Haskell, OCaml or Standard ML for them F\# will be really familiar. They will probably find that F\# to be really easy to read, understand and write. The reason for this is that F\# is a functional language itself. 
+Programmers that comes from a background of functional languages like Haskell, OCaml or Standard ML for them F\# will be really familiar. They will probably find that F\# to be really easy to read, understand and write. The reason for this is that F\# is a functional language itself. 
 
 \newpage
 \subsection{Debugging and error handling}
@@ -1214,17 +1214,17 @@ F\# does it really well in both saving money in development time and creating go
 \newpage
 
 \section{Conclusion}
-The main goal of this project was to give Serit IT Partner a insight in the programming language F\#, to help them decide if they are going to start using F\# as an replacement for what they are using today that is C\#. To let them get this insight we have done a lot of research and written a thorough analysis.\\
+The main goal of this project was to give Serit IT Partner an insight in the programming language F\#. Today Serit's main programming language is C\#, and we are going to help them decide if they are going to start using F\# as an replacement instead. To provide the company with this insight, extensive research has been conducted and a thorough analysis has been presented.\\
 
-For the research we have translated a concrete example of a program that Serit IT Partner have written in C\#. This program have helped us understand functional programming and get a good understanding of the good and bad sides of F\# in comparison to C\#.\\
+Regarding the research we have translated a concrete example of a program that Serit IT Partner have written in C\#. This program have helped us understand functional programming and get a comprehensive understanding of the good and bad sides of F\# in comparison to C\#.\\
 
-The 4 months that we been working with F\# is not long enough to understand and analyse every aspect of the language. Therefore we have used a lot of on-line resources like code examples and testimonials from both programmers and companies that have been using F\# to get to our conclusion.\\
+The 4 months that we been working with F\# is not long enough to understand and analyse every aspect of the language. Therefore, online resources was used like code examples and testimonials from both programmers and companies that have been using F\# to get to our conclusion.\\
 
 Our final conclusion is that F\# should not completely replace C\# as their main programming language today.\\  
 
-Both C\# and F\# is integrated with the .net framework, this makes communication between the languages really good. C\# and F\# can be used to do the same things, but both languages have their own areas they are superior in. We think that programs should be written in the programming language that is best suitable to the task.\\
+Both C\# and F\# is integrated with the .net framework, this creates a good communication between the two languages. C\# and F\# can be used to do the same things, but both languages have their areas of superiority. We think that programs should be written in the programming language that is best suitable to the task.\\
 
-Serit IT Partner should at first start up one small team that specialise in programming in F\#. This team is going to write programs where F\# is superior. The team have to work close with the C\# teams to create good seamless programs. This can later be expanded, if they have success with it.\\
+Serit IT Partner should start up one small team that specialise in programming in F\#. This team is going to write programs where F\# is superior. The team have to work close with the C\# teams to create good seamless programs. This can later be expanded, if they have success with it.\\
 
 F\# should be used as extra tool for creating better content and not as a replacement for the language they use today. 
 
