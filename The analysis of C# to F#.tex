@@ -669,13 +669,14 @@ In this chapter we will take a look at the analysis of the module sTranslate.
 Looking back on how we used the two different methods of writing the F\# code, the line by line translation and the functional approach, we can say that the direct translation was clearly not the way to go. It became much harder to do the actual programming in an object-oriented way, so much that we even ended up doing the direct translation without using classes at all (while the C\# code of course did have classes). We found that by using the direct translation, we didn't really save many lines of code. We could also notice in the result a clear difference in the actual speed of the program, where the direct translation was inferior to the functional code. We get into this a little more later.
 
 \subsubsection{Performance}
+\label{sTranslatePerformance}
 This chapter is not a demand from Serit, instead this was something we wanted to test out for ourselves, and is just a bonus for Serit if it proves to be better performance in F\# over C\#. One important thing to keep in mind is that when targeted at .NET, C\# and F\# both compile to the Common Intermediate Language. The same algorithm in both languages should result in exactly the same code when compiled. The key point is that some problems are perhaps more easily represented in one of the languages, and high-performing code will make more sense in that language.\\
 
-To test performance, we increased the size of our test database to 10000 rows by inserting random data. We prepared a list of 1000 queries that the program would try to translate, and wrote a test app to measure how much time each program spent doing 1000 searches in the database. Finally, for each program we did 1000 repetitions of these 1000 searches and found the average time spent to do 1000 searches.\\
+To test performance we made a test application to do many searches in the database. We had received a sample database from Serit, but it only contained 73 rows in the translate table. Therefore, we increased the size of the test database to 10000 rows by inserting random data. This was done to ensure that the search function had a "challenge". If the database was too small, the differences in running time between the programs was unmeasurable. We prepared a list of 1000 queries that the program would try to translate, and wrote a test app to measure how much time each program spent doing those searches in the database. Finally, for each program we did 1000 repetitions of these 1000 searches and found the average time spent to do 1000 searches.\\
 
 As seen in figure \ref{fig:averageChart1}, the direct translation program was very slow, using clunky imperative programming in F\#. The F\# direct version was written when we had only basic skills with F\#, and if we had revisited that program later we would probably have come up with a more efficient design. Our first attempt at a purely functional version worked much better, and even showed some improvement over the C\# program. It must be said that Serit admitted that their program was not very optimized yet.\\
 
-After some refinements to the F\# program, we managed to speed it up by a significant amount. The biggest change was using a much faster list function (\code{List.tryFind} as opposed to multiple \code{List.filter}) to find the correct value. The F\# parallel program, using the same algorithm, but working on multiple processor cores, was even faster. This is shown in figure \ref{fig:averageChart2}. These optimized programs showed real performance gains compared to the C\# program, while at the same time being less complex.\\
+Looking back at the development process, we found that there were always a way to optimize the program in terms of performance, code lines and clarity. As shown in figure \ref{fig:averageChart2}, we thought we were done with the program at "Version 1" and were happy with the result. However, after some research into List functions, we found a huge improvement in search speed by using a much faster function (\code{List.tryFind} as opposed to multiple calls to \code{List.filter}) to find the correct value. When we also implemented the F\# parallel program, using the same algorithm, but working on multiple processor cores, that was even faster. These optimized programs showed real performance gains compared to the C\# program, while at the same time being less complex.\\
 
 The conclusion we can draw from this, is that while we can't prove that either language produces faster programs than the other, it is quite clear that for some tasks, F\# is better suited to solving the problem. The fact that we were able to produce a high performance program with less code proves this.
 
@@ -730,7 +731,7 @@ The savings in code lines come from a few main reasons:
 	\item Removing code that was made obsolete
 \end{itemize}
 
-\paragraph{Syntax} F\# uses white-space sensitive syntax, which means that indentation is used instead of curly braces to denote chunks of code. This saves many code lines and makes the code easier to read through, as very many lines in the C\# code are simply opening and closing curly braces.
+\paragraph{Syntax} F\# uses white-space sensitive syntax, which means that indentation is used instead of curly braces to denote chunks of code. This saves many lines of code and makes the code easier to read through, as many lines in the C\# code are simply opening and closing curly braces.
 
 \paragraph{Sequence functions} For loops and while loops are very often used to express functionality that F\# has built-in to their sequence functions. Filtering a list, applying a function on each element in a list, and so on, can easily be expressed in F\# on a single line, instead of manually iterating through the list and doing things with the imperative style. This leads to code that is self-documenting and much shorter.
 
@@ -1129,16 +1130,24 @@ In F\# you can easily integrate excel, and with the help of type provider you ca
 When it comes to error handling in F\# it's just like any other .Net languages in that way that it can throw and catch exceptions. Exceptions is the .Net Frameworks help feature to handle and dealing with any unexpected or exceptional situations that occur when a program is running. So programmers from other .Net framework languages will feel familiar with it in F\#. \\
 
 \newpage
+
 \subsection{Performance}
+As shown in the chapter \nameref{sTranslatePerformance}, page \pageref{sTranslatePerformance}, there were performance gains to be found by translating the program to F\#. An important point to remember is that the C\# code was not optimized, and there is reason to believe that the C\# code could be made just as fast as the F\# code. The main difference is that we think some problems are easier to solve in F\#.
 
-\begin{figure}[!h]
-    \includegraphics[scale=0.8]{averageChart1}
-    \centering
+\subsubsection{Optimizing the code}
+%mange iterasjoner for å komme til optimalisert versjon
 
-    \caption{Tekst her}
-\end{figure}
+\subsubsection{}
+%eksempel på ting som er enkle å gjøre i f#:
+%koble til database
+%jobbe med store samlinger av ting
+%parallel programmering
+
+\subsubsection{Conclusion Performance}
+
 
 \newpage
+
 \subsection{Economic aspects}
 
 To be a company that is trying new untested technology can be a high risk, high reward scenario. Often when we are talking about new technology in software development we are talking about new programming languages. Some languages does never have the time to get popular before it flops and others have stick and have huge success.\\
