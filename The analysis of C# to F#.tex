@@ -669,7 +669,6 @@ In this chapter we will take a look at the analysis of the module sTranslate.
 Looking back on how we used the two different methods of writing the F\# code, the line by line translation and the functional approach, we can say that the direct translation was clearly not the way to go. It became much harder to do the actual programming in an object-oriented way, so much that we even ended up doing the direct translation without using classes at all (while the C\# code of course did have classes). We found that by using the direct translation, we didn't really save many lines of code. We could also notice in the result a clear difference in the actual speed of the program, where the direct translation was inferior to the functional code. We get into this a little more later.
 
 \subsubsection{Performance}
-<<<<<<< HEAD
 This chapter is not a demand from Serit, instead this was something we wanted to test out for ourselves, and is just a bonus for Serit if it proves to be better performance in F\# over C\#. One important thing to keep in mind is that when targeted at .NET, C\# and F\# both compile to the Common Intermediate Language. The same algorithm in both languages should result in exactly the same code when compiled. The key point is that some problems are perhaps more easily represented in one of the languages, and high-performing code will make more sense in that language.\\
 
 To test performance, we increased the size of our test database to 10000 rows by inserting random data. We prepared a list of 1000 queries that the program would try to translate, and wrote a test app to measure how much time each program spent doing 1000 searches in the database. Finally, for each program we did 1000 repetitions of these 1000 searches and found the average time spent to do 1000 searches.\\
@@ -688,18 +687,18 @@ The conclusion we can draw from this, is that while we can't prove that either l
 \end{figure}
 
 \begin{figure}[!h]
-    \includegraphics[scale=0.8]{averageChart1}
+    \includegraphics[scale=0.8]{averageChart2}
     \centering
-    \caption{Differences between the first and second versions of the F\# program, and the F\# parallel program.}
+    \caption{Difference in speed between the first and second versions of the F\# program, and the F\# parallel program.}
 \label{fig:averageChart2}
 \end{figure}
 
 \subsubsection{Experiences}
-The experiences that we can draw from this assignment is that in F\#, it’s very easy to read the code and what it does, and that you almost don’t need to comment the code. But the thing we appreciated the most was the direct response from the compiler and Microsoft’s Intellisense technology in real time while writing the code. At first we thought that this was a bit unfavourable since you always saw errors made in code with the red lines everywhere. However, as the language is very strict about types and such, one is forced to root out many errors before the program even is able to run. Because programming with pure functions eleminates side effects and state changes, the programmer won't have to deal with unexpected errors later while running the program, which could make it misbehave or even crash. Hence we grew to really enjoy this feature. It makes the programmer put a little more time in thinking about what they want the code to do, but they will spend less time dealing with problems later.\\
+The experiences that we can draw from this assignment is that in F\#, it's very easy to read the code and what it does, and that you almost don't need to comment the code. But the thing we appreciated the most was the direct response from the compiler and Microsoft's Intellisense technology in real time while writing the code. At first we thought that this was a bit unfavourable since you always saw errors made in code with the red lines everywhere. However, as the language is very strict about types and such, one is forced to root out many errors before the program even is able to run. Because programming with pure functions eliminates side effects and state changes, the programmer won't have to deal with unexpected errors later while running the program, which could make it misbehave or even crash. Hence we grew to really enjoy this feature. It makes the programmer put a little more time in thinking about what they want the code to do, but they will spend less time dealing with problems later.\\
 
-Since all the group members have object-oriented programming background, the main struggle we experienced was our tendency to get back to old habits and thinking in the object-oriented way of programming. The new thinking in functional programming was harder than we imagined. We acknowlegded that it’s probably easier for a person who have never done programming before to learn F\# then a person coming from a background with object-oriented programming at least in some aspects. Of course, that is not completely true because a skilled programmer can quickly find patterns in the code and structure, this varies from programmer to programmer. We had to let go of a lot of hard learned coding and try and think “out of the box” to be able to write “decent” F\# code.\\
+Since all the group members have object-oriented programming background, the main struggle we experienced was our tendency to get back to old habits and thinking in the object-oriented way of programming. The new thinking in functional programming was harder than we imagined. We acknowledged that it's probably easier for a person who have never done programming before to learn F\# then a person coming from a background with object-oriented programming at least in some aspects. Of course, that is not completely true because a skilled programmer can quickly find patterns in the code and structure, this varies from programmer to programmer. We had to let go of a lot of hard learned coding and try and think "outside the box" to be able to write "decent" F\# code.\\
 
-We realised that everytime we went ack to the written code, improvements could be made both in terms of code length but also with regards to quality. F\# is mainly a function based programming but it actually allows imperative and object-oriented programming in some way. Since it’s integrated into Visual Studio and the .NET framework there are a lot of features inherited from C\#. That will allow the user to use for loops, if-else constructs, mutable values, etc. Still, we found that all of these thing were replacable when programming functionally.\\
+We realised that every time we went back to the written code, improvements could be made both in terms of code length but also with regards to quality. F\# is mainly a function based programming but it actually allows imperative and object-oriented programming in some way. Since it's integrated into Visual Studio and the .NET framework there are a lot of features inherited from C\#. That will allow the user to use for loops, if-else constructs, mutable values, etc. Still, we found that all of these thing were replaceable when programming functionally.\\
 
 For Michael, the biggest struggle of this experience was that he kept finding himself getting back in think in object-oriented “thinking”. It's hard to think in a more functional approach.\\
 \subsubsection{Lines of code}
@@ -712,11 +711,12 @@ Here is a short outline on how many files and lines each project got:\\
  \hline
  \multicolumn{4}{|c|}{Short outline} \\
  \hline
- Language & Lines of code & Files & Projects\\
+ Solution & Lines of code & Files & Projects\\
  \hline
  C\# & 280 & 3 & 2\\
  F\# imperative style & 170 & 4 & 1\\
  F\# functional style & 124 & 2 & 1\\
+ F\# parallel & 91 & 1 & 1\\
  \hline
 \end{tabular}
 
@@ -1114,8 +1114,6 @@ In F\# you can easily integrate excel, and with the help of type provider you ca
 \newpage
 \subsection{Performance}
 
-<<<<<<< HEAD
-=======
 \begin{figure}[!h]
     \includegraphics[scale=0.8]{averageChart1}
     \centering
@@ -1123,7 +1121,6 @@ In F\# you can easily integrate excel, and with the help of type provider you ca
     \caption{Tekst her}
 \end{figure}
 
->>>>>>> 9f8e4987f03cdd9224dacc82d7a9158dbd304f51
 \newpage
 \subsection{Economic aspects}
 
