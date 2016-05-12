@@ -1073,36 +1073,19 @@ It is maybe a little unfair to compare F\# with Assembly as Assembly is a really
 
 \newpage
 
-%Old text below!
-
-%\paragraph{F\# in comparison}
-
-%One other thing that can make programming in F\#  when compared to other languages is that is it a functional programming language. This makes the syntax a lot different to all other major languages.\\
-
-%Those two things makes F\# really different to other languages. This can make it very hard for a experienced programmer learning to read and write this way. For an experienced programmer to learn F\# you have to use a lot of time and resources. For a new programmer it can perhaps be easier to learn F\# just because they will not fall into old habits.
-
-%\begin{shadequote}{Mikkel Eltervåg}
-%After working width an object oriented mindset in programming for several years I found it very difficult to write good functional code. Often I went back to old habits and used code written in a object oriented way when there were much better ways to do it functionally.
-%\end{shadequote}
-%\newpage
 
 \subsubsection{Conclusion readability and clarity}
 
 After analysing the readability and clarity of the F\# programming language we can see that the code's ease of use (for programmers) can be grouped into four factors.
 
 \paragraph{Inexperienced}
-For a person that is new to programming it will take some time to learn programming regardless of the programming language. But F\# can be a good place to start. It is easy to read and understand the simple code just by looking at. Additionally, an inexperienced programmer would not have an already embedded mindset, this can in some cases support the programme language aquisition as previous experience with programming can act as a barrier and inhibit the process of learning a new language
+For a person that is new to programming it will take some time to learn programming regardless of the programming language. But F\# can be a good place to start. It is easy to read and understand the simple code just by looking at. Additionally, an inexperienced programmer would not have an already embedded mindset, this can in some cases support the programme language acquisition as previous experience with programming can act as a barrier and inhibit the process of learning a new language
 
 \paragraph{Object-oriented}
 A programmer that have background from object-oriented programming languages like C++, C\#, Java and Visual Basic can have a problem getting used to F\#. F\# is a functional programming language and stands in strong contrast to object-oriented language.
 
-%\begin{shadequote}{Mikkel Eltervåg}
-%After working with an object oriented mindset in programming for several years I found it very difficult to write a good functionally code. Often I went back to old habits and used code written in a object oriented way when there were much better ways to do it functionally.
-%\end{shadequote}
-
 \paragraph{Dynamical typed}
 Python and Ruby are examples of dynamical typed languages. Those languages have a similar syntax to F\# but they works a little differently in how they are typed. It can be easier for programmers that are used to dynamical typed programming languages to learn F\# than it is for programmers with object-oriented background.  
-
 
 \paragraph{Functional}
 Programmers that comes from a background of functional languages like Haskell, OCaml or Standard ML for them F\# will be really familiar. They will probably find that F\# to be really easy to read, understand and write. The reason for this is that F\# is a functional language itself. 
@@ -1113,16 +1096,24 @@ Programmers that comes from a background of functional languages like Haskell, O
 
 The debugging and error handling in F\# is one of the important parts in the comparing of the two languages.\\
 
-The debugging in F\# is a bit different from C\# and other programming languages. When you are writing the code in F\# you are basically already debugging while you are writing the code since the compiler is going through all the code while typing. If we take a look at C\# there is also some response back from the compiler while you write the code, some minor things like spelling and declaring of variables etc. But more important and bigger things like responses from databases and inputs and outputs from functions you have to run the code for it to be accessible.
+The debugging in F\# is a bit different from C\# and other programming languages. When you are writing the code in F\# you are basically already debugging while you are writing the code since the compiler is going through all the code while typing. If we take a look at C\# there is also some response back from the compiler while you write the code, minor things like spelling and declaring of variables etc. More important and bigger things like responses from databases and inputs and outputs from functions you have to run the code for it to be accessible. The Visual F\# tools from Microsoft allows the Visual Studio debugger to be used to debug F\# programs. In general, developers coming from C\# development in Visual Studio should feel right at home.
 
+In our experience, we did not do much debugging at all, since the type system and the compiler prevented us from writing faulty code. This can seem like a limitation at first, that stops you from doing what you want. When we became proficient with functional programming we came to see it as an aid, helping us make good programs.
+
+\subsubsection{F\# type system}
+F\# uses static type-checking, which means potential type errors are stopped by the compiler. Type errors are undesirable behaviour that occurs when attempting to do operations with data types that are not compatible, for example trying to divide an integer by a string. Everything in F\# is an expression, and each expression has a static type. As a result, F\# is completely type-safe and it is impossible to get type errors during execution of the program.
 
 \newpage
+
 \subsubsection{Working with data sources}
 
-F\# is using something called type provider where it has an live communication to the database while coding. Lets say that you are making an application where you are going to use an database to import data from. In this case let's say that you are going to use excel as an database tool where the spreadsheets is the tables in the database and the cells in it represents data that is important. \\
+F\# is using something called type providers which provide typed access to data sources (like databases or spreadsheets). A unique thing about F\# is that you get a live connection to the data source while coding.\\
 
-In F\# you can easily integrate excel, and with the help of type provider you can access the data in each individual cell. If we also take a quick look at working with a standard database like SQL Server, when writing the code you can "dot" into the database. With that we mean that if we were to make a database connection and store it as \code{db}, we can get access to the table names in the database by using the "dot" in tool without even starting the application. We can see this in figure \ref{fig:DotInTool}, in this case the table name is "Translations" and when we "dot" into the \code{db} connection we can see it in the dropdown list with a short information window next to it. This is not the case in C\# where you have to start up the application before it makes the connection to the database.
+Lets say that you are making an application where you are going to use an database to import data from. In this case let's say that you are going to use Excel as a database tool where the spreadsheets are the tables in the database and the cells in it represents data that is important. In F\# you can easily integrate Excel, and with the help of the type provider you can access the data in each individual cell.\\
 
+If we also take a quick look at working with a standard database like SQL Server, when writing the code you can "dot" into the database. With that we mean that if we were to make a database connection and store it as \code{db}, we can get access to the table names in the database by using the "dot" in tool without even starting the application. We can see this in figure \ref{fig:DotInTool}, in this case the table name is "Translations" and when we "dot" into the \code{db} connection we can see it in the dropdown list with a short information window next to it. This is not the case in C\# where you have to start up the application before it makes the connection to the database.\\
+
+Type providers makes exploring data sources and manipulating data from them easy. In C\#, typically one would use a code generator which would define types and the structure of the data source to your program. However, generated code would have to be updated every time there was a change to the structure of the database.
 
 \begin{figure}[!h]
     \includegraphics[width=\textwidth]{visualstudio1}
@@ -1131,10 +1122,17 @@ In F\# you can easily integrate excel, and with the help of type provider you ca
     \label{fig:DotInTool}
 \end{figure}
 
-\subsubsection{F\# type system}
+\newpage
 
 \subsubsection{Error handling in F\#}
-When it comes to error handling in F\# it's just like any other .Net languages in that way that it can throw and catch exceptions. Exceptions is the .Net Frameworks help feature to handle and dealing with any unexpected or exceptional situations that occur when a program is running. So programmers from other .Net framework languages will feel familiar with it in F\#. \\
+When it comes to error handling in F\# it's just like any other .NET languages in that way that it can throw and catch exceptions. Exceptions is the .NET Frameworks feature to handle and dealing with any unexpected or exceptional situations that occur when a program is running. So programmers from other .NET framework languages will feel familiar with it in F\#.\\
+
+In functional programming, it is generally preferred to return error types rather than throwing exceptions. For example, a simple function can return an option type, returning \code{Some} when successful and \code{None} for errors. Sometimes there are more than one error, and we need to handle each error differently. In that case, a union type can be used as the return type. Each case in the union type would be used for a common error that should be handled differently, and all other errors would be raised as an exception. Unlike C\#, the result of an expression cannot be accidentally thrown away. If a function returns an error, the caller must handle it.\\
+
+We can see that the programmer has many options when it comes to error handling in F\#. The errors that can occur in a program in F\# are very predictable and allows the programmer to handle each case as they see fit.
+
+\subsubsection{Conclusion Debugging and error handling}
+In conclusion, F\# helps the programmer by making sure the program is correct. The full integration with Visual Studio helps C\# developers when they are getting started with F\#. When it comes to debugging and error handling, F\# works very well, and one of the biggest reasons is that you very rarely get errors.
 
 \newpage
 
