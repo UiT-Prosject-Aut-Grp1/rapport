@@ -273,6 +273,8 @@ The assignment is given by a company named Serit IT Partner from Tromsø. They w
 
 We decided to write this rapport in English to make sure that everyone interested could read it in a industry with a large English speaking community. To write this rapport we have used LaTeX that is a word processor markup language made specificity for scientific documents.\\
 
+To help us write a good analysis, we received a C\# program that is in use by Serit IT Partner today. We translated this program to F\# and found that functional programming was indeed a very useful technique. We made many iterations of the program, gradually increasing performance and reducing the number of lines of code. When we presented the code to Serit IT Partner, they were very satisfied with the result. They appreciated that we continued to optimize the program, even when it was feature-complete.
+
 We found that we could clearly see a difference regarding the numbers of lines of code and the performance in the application that was given to us. Indeed, F\# is better (or perhaps, more convenient) than C\# in some cases. F\# is a programming language which is very good at handling large amounts of data, and is also good with concurrency (dealing with multiple things at the same time). Due to the nature of the language, large operations on data can be broken down into smaller tasks and calculations can be made without fear of unintended side effects.\\
 
 We started out at thinking that F\# was out there to replace C\#, however that was not the case. F\# is made as a tool that should work together with C\# seamlessly to make great applications. Both programs are used in the .NET framework and by that they work very well together. F\# doesn't need to completely replace C\#, instead it should be implemented where it is suited best. Based on our results Serit should consider starting a small team and use F\# where it's best and easy to implement and use C\# where its better. Then they could gradually expand the F\# team if they see the need for it.\\
@@ -508,7 +510,7 @@ sTranslate gives only one output, which is the translated phrase as a string. Al
 \label{Solution}
 When porting code from C\# to F\# there are two ways of refactoring the code into being functional. The first way is to translate the C\# code directly to F\# line by line, and then refactor the F\# imperative code into functional code. The second way is to use the functional programming tools in C\# to refactor the program, and then translating that to F\#.\\
 
-We chose to use the first method.\\
+We chose to use the first method. The reason is that this was not really a study on how to write functional code in C\#, but rather an analysis of F\# itself. F\# for Fun and Profit recommended the second method, but we wanted to get a good look at both imperative and functional programming in F\#.\\
 
 For a complete study of the different versions of the sTranslate program, the complete libraries with comments are documented in the appendix, parts \ref{AppendixCSharp} through \ref{AppendixFSharpParallel}. In this chapter, we will first be taking a closer look at one part of the program, which is the part that reads the database and provides a list that another function can use to perform the search. Then we will examine some parts of the final F\# program and see how and why it differs from the C\# program. Finally, we tried to go even further beyond, and made a version of the program that, while it doesn't communicate with Serit's current web application, it does show off some of the power and elegance of the F\# language. This version of the library uses high performance data structures and parallel programming to translate a large number of queries very quickly.
 
@@ -657,7 +659,7 @@ The parallel version of sTranslate is different from the regular version in the 
 
 \paragraph{Search type} We replaced the five input arguments of the regular F\# program with a record type that holds these arguments as members. The type is public so that users of the library can build lists of this type. This is used for the input to the parallel search function. This also helps the readability of the program, since the search function only needs to accept one argument, instead of five.
 
-\paragraph{Function and value names} The identifiers for functions and values were changed to \code{camelCase} to conform with the suggested naming conventions for F\# code. Type names and members were left as \code{PascalCase}. The public function \code{GetToTextAsync} is also \code{PascalCase}.
+\paragraph{Function and value names} There are many naming conventions for values and functions in the programming world. The design guidelines for F\# recommends using the \code{camelCase} and \code{PascalCase} capitalization schemes. The identifiers for functions and values were changed to \code{camelCase} to conform with the suggested naming conventions. Type names and members were left as \code{PascalCase}. The public function \code{GetToTextAsync} is also \code{PascalCase}.
 
 \paragraph{FlatList data structure} The database is copied into a very fast data structure called FlatList. The FlatList is implemented as an array, but unlike arrays, it is an immutable data structure (which we want, to make our program purely functional). Since it is implemented as an array, it is faster than a regular list, except when one needs to append an element to it. Since we always construct the FlatList from a sequence, we don't need fast appending. We only care about iterating through the list and reading the items really fast.
 
@@ -713,7 +715,7 @@ Because programming with pure functions eliminates side effects and state change
 
 Since all the group members have object-oriented programming background, the main struggle we experienced was our tendency to get back to old habits and thinking in the object-oriented way of programming. The new thinking in functional programming was harder than we imagined. We acknowledged that it's probably easier for a person who have never done programming before to learn F\# then a person coming from a background with object-oriented programming at least in some aspects. Of course, that is not completely true because a skilled programmer can quickly find patterns in the code and structure, this varies from programmer to programmer. We had to let go of a lot of hard learned coding and try and think "outside the box" to be able to write "decent" F\# code.\\
 
-We realised that every time we went back to the written code, improvements could be made both in terms of code length but also with regards to quality. F\# is mainly a function based programming but it actually allows imperative and object-oriented programming in some way. Since it's integrated into Visual Studio and the .NET framework there are a lot of features inherited from C\#. That will allow the user to use for loops, if-else constructs, mutable values, etc. Even if these imperative constructs can be used, we found that all of these could be replaced when programming functionally.\\
+We realized that every time we went back to the written code, improvements could be made both in terms of code length but also with regards to quality. F\# is mainly a function based programming but it actually allows imperative and object-oriented programming in some way. Since it's integrated into Visual Studio and the .NET framework there are a lot of features inherited from C\#. That will allow the user to use for loops, if-else constructs, mutable values, etc. Even if these imperative constructs can be used, we found that all of these could be replaced when programming functionally.\\
 
 \newpage
 
@@ -990,14 +992,6 @@ let rec factorial n =
 
 One programming language a lot of programmers can agree on being easy to read and understand is Python. Python is a language with a high level of abstraction, which means it acts as a "middle man" between the nitty gritty stuff that happens inside the computer, and abstract ideas. The syntax of Python has been designed to remove curly braces and semicolons that are used in languages like C and Java, using indentations instead to separate code blocks. Example of Python code can bee seen in figure \ref{fig:pythonFactorial}.\\
 
-%\begin{figure}[!h]
-%	\begin{lstlisting}
-%print "Hello world!"
-%	\end{lstlisting}
-%	\caption{Hello world program in Python}
-%	\label{fig:pythonHelloWorld}
-%\end{figure}
-
 \begin{figure}[!h]
 	\begin{lstlisting}
 def factorial(n):
@@ -1231,9 +1225,31 @@ Antonio Cisternino, Adam Granicz and Don Syme,
 \textit{Expert F}, 
 2007
 
+\bibitem{fsharporg} 
+F\# Software Foundation\\
+\emph{http://fsharp.org/}
+\emph{http://fsharp.org/testimonials/}
+\emph{http://fsharp.org/specs/component-design-guidelines/}
+
+\bibitem{msdn} 
+Microsoft Developer Network\\
+\emph{https://msdn.microsoft.com}
+\emph{https://msdn.microsoft.com/visualfsharpdocs/conceptual/type-providers}
+
 \bibitem{fsharpforfunandprofit} 
-F\# for fun and profit\\
+F\# for Fun and Profit\\
 \emph{https://fsharpforfunandprofit.com}
+\emph{https://fsharpforfunandprofit.com/posts/porting-to-csharp-intro/
+\emph{https://fsharpforfunandprofit.com/posts/fvsc-sum-of-squares/
+\emph{https://fsharpforfunandprofit.com/posts/exceptions/
+
+\bibitem{fastdatastructures}
+The Fastest Functional Data Structures Come to F#\\
+\emph{http://jackfoxy.com/the-fastest-functional-data-structures-come-to-fsharp/}
+
+\bibitem{parallelsequences}
+F\# Parallel Sequences\\
+\emph{http://fsprojects.github.io/FSharp.Collections.ParallelSeq/}
 
 \bibitem{tutorialspoint} 
 Tutorialspoint\\
@@ -1243,16 +1259,6 @@ Tutorialspoint\\
 Carnegie Mellon School of Computer Science\\
 \emph{https://www.cs.cmu.edu/\textasciitilde rwh/introsml/core/recfns.htm}
 
-\bibitem{fsharporg} 
-F\# Software Foundation\\
-\emph{http://fsharp.org/testimonials/}
-
-\bibitem{msdn} 
-Microsoft Developer Network\\
-\emph{https://msdn.microsoft.com}
-
-
- 
 \end{thebibliography}
 \newpage
 
