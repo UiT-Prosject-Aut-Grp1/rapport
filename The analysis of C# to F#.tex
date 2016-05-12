@@ -269,15 +269,15 @@ F\#, C\#, Functional programming, analysis, programming
 \section*{Summary}
 This report is written by 3 students from the final year in the Automation study at "UiT: University of Tromsø - Arctic university of Norway".\\
 
-The assignment is given by a company named Serit IT Partner from Tromsø. They wanted us to identify the benefits, flaws and our experience from learning a new programming language called F\#. Today Serit mostly uses the famous programming language C\# which is currently widely used around the world. The time spent writing code and debugging, and the stability in these languages is very valuable. Serit IT Partner wanted us to test out if a change of main programming language from C\# to F\# would have an impact on time spent on coding, and would improve stability.\\
+The assignment is given by a company named Serit IT Partner from Tromsø. They wanted us to identify the benefits, flaws and our experience from learning a new programming language called F\#. Serit IT Partner wanted us to test out if a change of main programming language from C\# to F\# would have an impact on time spent on coding, and would improve stability.\\
 
-We decided to write this rapport in English to make sure that everyone interested could read it in a industry with a large English speaking community. To write this rapport we have used LaTeX that is a word processor markup language made specificity for scientific documents.\\
+We decided to write this report in English to make sure that everyone interested could read it in a industry with a large English speaking community. To write this rapport we have used LaTeX that is a word processor markup language made specificity for scientific documents.\\
 
-To help us write a good analysis, we received a C\# program that is in use by Serit IT Partner today. We translated this program to F\# and found that functional programming was indeed a very useful technique. We made many iterations of the program, gradually increasing performance and reducing the number of lines of code. When we presented the code to Serit IT Partner, they were very satisfied with the result. They appreciated that we continued to optimize the program, even when it was feature-complete.
+To help us write a good analysis, we received a C\# program that is in use by Serit IT Partner today. We translated this program to F\# and found that functional programming was indeed a very useful technique. We made many iterations of the program, gradually increasing performance and reducing the number of lines of code. When we presented the code to Serit IT Partner, they were very satisfied with the result. They appreciated that we continued to optimize the program, even when it was feature-complete.\\
 
-We found that we could clearly see a difference regarding the numbers of lines of code and the performance in the application that was given to us. Indeed, F\# is better (or perhaps, more convenient) than C\# in some cases. F\# is a programming language which is very good at handling large amounts of data, and is also good with concurrency (dealing with multiple things at the same time). Due to the nature of the language, large operations on data can be broken down into smaller tasks and calculations can be made without fear of unintended side effects.\\
+We found that we could clearly see a difference regarding the numbers of lines of code and the performance in the application that was given to us. Indeed, F\# is better (or perhaps, more convenient) than C\# in some cases. F\# is a programming language which is very good at handling large amounts of data, and is also good with concurrency (dealing with multiple things at the same time). Large operations on data can be broken down into smaller tasks and calculations can be made without fear of unintended side effects.\\
 
-We started out at thinking that F\# was out there to replace C\#, however that was not the case. F\# is made as a tool that should work together with C\# seamlessly to make great applications. Both programs are used in the .NET framework and by that they work very well together. F\# doesn't need to completely replace C\#, instead it should be implemented where it is suited best. Based on our results Serit should consider starting a small team and use F\# where it's best and easy to implement and use C\# where its better. Then they could gradually expand the F\# team if they see the need for it.\\
+We started out at thinking that F\# was out there to replace C\#, however that was not the case. F\# doesn't need to completely replace C\#, instead it should be implemented where it is suited best. Based on our results Serit should consider starting a small team and use F\# where it's best and easy to implement and use C\# where its better.\\
 
 Serit IT Partner will now use this report to decide if they want to try to use F\# in their products. Serit have several other offices in Norway that can also have an interest in reading what we have concluded.
 
@@ -666,6 +666,8 @@ The parallel version of sTranslate is different from the regular version in the 
 \paragraph{Search type} We replaced the five input arguments of the regular F\# program with a record type that holds these arguments as members. The type is public so that users of the library can build lists of this type. This is used for the input to the parallel search function. This also helps the readability of the program, since the search function only needs to accept one argument, instead of five.
 
 \paragraph{Function and value names} There are many naming conventions for values and functions in the programming world. The design guidelines for F\# recommends using the \code{camelCase} and \code{PascalCase} capitalization schemes. The identifiers for functions and values were changed to \code{camelCase} to conform with the suggested naming conventions. Type names and members were left as \code{PascalCase}. The public function \code{GetToTextAsync} is also \code{PascalCase}.
+
+\newpage
 
 \paragraph{FlatList data structure} The database is copied into a very fast data structure called FlatList. The FlatList is implemented as an array, but unlike arrays, it is an immutable data structure (which we want, to make our program purely functional). Since it is implemented as an array, it is faster than a regular list, except when one needs to append an element to it. Since we always construct the FlatList from a sequence, we don't need fast appending. We only care about iterating through the list and reading the items really fast.
 
@@ -1241,24 +1243,24 @@ Antonio Cisternino, Adam Granicz and Don Syme,
 
 \bibitem{fsharporg} 
 F\# Software Foundation\\
-\emph{http://fsharp.org/}
-\emph{http://fsharp.org/testimonials/}
+\emph{http://fsharp.org/}\\
+\emph{http://fsharp.org/testimonials/}\\
 \emph{http://fsharp.org/specs/component-design-guidelines/}
 
 \bibitem{msdn} 
 Microsoft Developer Network\\
-\emph{https://msdn.microsoft.com}
+\emph{https://msdn.microsoft.com}\\
 \emph{https://msdn.microsoft.com/visualfsharpdocs/conceptual/type-providers}
 
 \bibitem{fsharpforfunandprofit} 
 F\# for Fun and Profit\\
-\emph{https://fsharpforfunandprofit.com}
-\emph{https://fsharpforfunandprofit.com/posts/porting-to-csharp-intro/
-\emph{https://fsharpforfunandprofit.com/posts/fvsc-sum-of-squares/
-\emph{https://fsharpforfunandprofit.com/posts/exceptions/
+\emph{https://fsharpforfunandprofit.com}\\
+\emph{https://fsharpforfunandprofit.com/posts/porting-to-csharp-intro/}\\
+\emph{https://fsharpforfunandprofit.com/posts/fvsc-sum-of-squares/}\\
+\emph{https://fsharpforfunandprofit.com/posts/exceptions/}
 
 \bibitem{fastdatastructures}
-The Fastest Functional Data Structures Come to F#\\
+The Fastest Functional Data Structures Come to F\#\\
 \emph{http://jackfoxy.com/the-fastest-functional-data-structures-come-to-fsharp/}
 
 \bibitem{parallelsequences}
